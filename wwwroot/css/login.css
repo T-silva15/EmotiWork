@@ -1,0 +1,148 @@
+﻿/* Login page styles */
+.login-body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1e6;
+}
+
+.login-header {
+    background-color: #a8d8f0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.login-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px; 
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 0; 
+    margin: 0 auto; 
+}
+
+.login-title {
+    text-align: center;
+    font-size: 5.5rem;
+    font-weight: 700;
+    margin-bottom: 80px; 
+    margin-top: 0; 
+    color: #000;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.login-button {
+    width: 107%;
+    padding: 15px;
+    background-color: #a8d8f0;
+    border: none;
+    border-radius: 3px;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    .login-button:hover {
+        background-color: #8bc8e8;
+    }
+
+.login-footer {
+    background-color: #a8d8f0;
+    padding: 15px 20px;
+    margin-top: auto; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.privacy-link {
+    display: inline-block;
+    background-color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+    .privacy-link:hover {
+        background-color: #f1f1f1;
+    }
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+    .logo-link:hover {
+        opacity: 0.9;
+    }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .form-control, .login-button {
+        padding: 12px;
+    }
+}

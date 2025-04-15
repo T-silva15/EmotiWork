@@ -1,0 +1,175 @@
+﻿/* Open Sans Font Face Declarations */
+/* Open Sans Font Face Declarations */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSauceSans-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* Landing page specific styles */
+:root {
+    --primary-bg: #fff5e9;
+    --primary-text: #000000;
+    --accent-color: #ff99bb;
+    --nav-text: #78c6ff;
+}
+
+body {
+    background-color: var(--primary-bg);
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.landing-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.landing-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: transparent; /* Remove orange background */
+}
+
+    .logo img {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+    .nav-links a {
+        color: var(--nav-text);
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+/* Hero section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    max-width: 45%;
+}
+
+.brain-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Features list */
+.features-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+    .features-list li {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-content, .hero-image {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        margin-top: 40px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+}

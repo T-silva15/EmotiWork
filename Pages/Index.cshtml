@@ -1,10 +1,53 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "EMOTIWORK - Monitore o bem-estar da sua equipa";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Navigation -->
+        <nav class="landing-nav">
+            <div class="logo">
+                <img src="~/img/emotiwork.png" alt="Emotiwork Logo" />
+            </div>
+            <div class="nav-links">
+                <a href="/Home">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="/Login">Login</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>EMOTIWORK</h1>
+                <div class="hero-description">
+                    <p>Solução intuitiva para monitorizar o bem-estar da sua equipa. Oferecemos insights valiosos sobre o estado emocional dos seus colaboradores, a sua perceção da carga de trabalho e do ambiente laboral.</p>
+
+                    <ul class="features-list">
+                        <li>Compreenda o bem-estar da sua equipa</li>
+                        <li>Otimize o ambiente de trabalho</li>
+                        <li>Impulsione a produtividade</li>
+                        <li>Tome decisões informadas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="~/img/braintemplatelanding.png" alt="Brain Image" />
+            </div>
+        </section>
+    </div>
+</body>
+</html>

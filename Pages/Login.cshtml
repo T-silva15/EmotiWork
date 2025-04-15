@@ -1,0 +1,59 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body class="login-body">
+    <!-- Header -->
+    <header class="login-header">
+        <div class="logo-container">
+            <a href="/" class="logo-link" >
+                <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                <span class="logo-text">EmotiWork</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="login-container">
+        <div class="login-form-container">
+            <h1 class="login-title">LOGIN</h1>
+
+            <form class="login-form">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="login-button">Login</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+        <div class="footer-content">
+            <div class="copyright">EmotiWork - 2025</div>
+            <div class="privacy-policy">
+                <a href="#" class="privacy-link">Proteção de Dados</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

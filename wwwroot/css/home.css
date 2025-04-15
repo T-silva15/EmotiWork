@@ -1,0 +1,171 @@
+﻿/* Home page styles */
+.home-body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f1f1e6;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Top Bar */
+.top-bar {
+    height: 60px;
+    background-color: #a8d8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Content Area */
+.content-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 80px; /* Increased from 60px to 80px to create more space */
+    text-align: center;
+}
+
+/* Mood Selection */
+.mood-selection {
+    display: flex;
+    justify-content: center;
+    gap: 200px; /* Increased from 60px to 100px for more space between emojis */
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1200px; /* Added max-width to control overall spacing */
+}
+
+.mood-option {
+    width: 350px; /* Increased from 150px to 200px */
+    height: 350px; /* Increased from 150px to 200px */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .mood-option:hover {
+        transform: scale(1.1);
+    }
+
+.mood-emoji {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1)); /* Optional: Added slight shadow for depth */
+}
+
+/* Footer */
+.home-footer {
+    background-color: #a8d8f0;
+    padding: 15px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.privacy-link {
+    display: inline-block;
+    background-color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+    .privacy-link:hover {
+        background-color: #f1f1f1;
+    }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+
+    .mood-selection {
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mood-option {
+        width: 150px;
+        height: 150px;
+    }
+}
