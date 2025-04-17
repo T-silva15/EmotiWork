@@ -1,7 +1,7 @@
 ﻿@page
-@model EmotiWork.Pages.HomeModel
+@model EmotiWork.Pages.ProfileModel
 @{
-    ViewData["Title"] = "Home - EmotiWork";
+    ViewData["Title"] = "Vista Perfil - EmotiWork";
     Layout = null;
 }
 
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
@@ -87,18 +88,31 @@
 
         <!-- Page Content -->
         <div class="content-container">
-            <h1 class="page-title">HOME</h1>
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h1 class="page-title">VISTA PERFIL</h1>
+                    <div class="profile-avatar">
+                        <img src="~/img/user-avatar.png" alt="User Avatar" />
+                    </div>
+                </div>
 
-            <div class="mood-selection">
-                <div class="mood-option">
-                    <img src="~/img/sadEmoji.png" alt="Sad" class="mood-emoji" />
-                </div>
-                <div class="mood-option">
-                    <img src="~/img/neutralEmoji.png" alt="Neutral" class="mood-emoji" />
-                </div>
-                <div class="mood-option">
-                    <img src="~/img/happyEmoji.png" alt="Happy" class="mood-emoji" />
-                </div>
+                <form class="profile-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nome" class="form-control" value="José" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" value="jose@emotiwork.com" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control" value="••••••••" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn-back" onclick="window.location.href='/Home'">Voltar</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -111,6 +125,7 @@
                 </div>
             </div>
         </footer>
-	</main>
+    </main>
 </body>
 </html>
+
