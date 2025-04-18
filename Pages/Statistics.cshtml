@@ -1,0 +1,266 @@
+@page
+@model EmotiWork.Pages.StatisticsModel
+@{
+    ViewData["Title"] = "Histórico/Estatísticas - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="home-body">
+   <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Teams" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Help" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Privacy" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-file-lines"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">José</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container statistics-container">
+            <div class="statistics-header">
+                <h1 class="page-title">HISTÓRICO/ESTATÍSTICAS</h1>
+                <div class="period-selector">
+                    <select class="period-dropdown">
+                        <option selected>Semanal</option>
+                        <option>Mensal</option>
+                        <option>Trimestral</option>
+                        <option>Anual</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="statistics-content">
+                <div class="statistics-summary">
+                    <h2>Estatísticas</h2>
+                    <ul class="stats-list">
+                        <li>Horas Trabalhadas: 20H</li>
+                        <li>Número de Tarefas Concluídas: 10</li>
+                        <li>Média de humor: 35</li>
+                        <li>Esta semana estás acima do humor médio da equipa</li>
+                        <li>Horas extra: 3H</li>
+                        <li>Horas totais da equipa: 100H</li>
+                        <li>Tarefas concluídas pela equipa: 50</li>
+                    </ul>
+                </div>
+
+                <div class="charts-container">
+                    <div class="charts-row">
+                        <div class="chart-item">
+                            <canvas id="pieChart1"></canvas>
+                        </div>
+                        <div class="chart-item">
+                            <canvas id="pieChart2"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-item wide">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="#" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Sample data for charts (static mockup)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pie Chart 1
+            const pieCtx1 = document.getElementById('pieChart1').getContext('2d');
+            const pieChart1 = new Chart(pieCtx1, {
+                type: 'pie',
+                data: {
+                    labels: ['José', 'António', 'Marco'],
+                    datasets: [{
+                        data: [62.5, 25, 12.5],
+                        backgroundColor: [
+                            'rgba(142, 236, 245, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(54, 162, 235, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                generateLabels: function(chart) {
+                                    const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+                                    const labels = original.call(this, chart);
+                                    
+                                    labels.forEach(label => {
+                                        const dataset = chart.data.datasets[0];
+                                        const value = dataset.data[label.index];
+                                        label.text = `${chart.data.labels[label.index]}\n${value}%`;
+                                    });
+                                    
+                                    return labels;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pie Chart 2
+            const pieCtx2 = document.getElementById('pieChart2').getContext('2d');
+            const pieChart2 = new Chart(pieCtx2, {
+                type: 'pie',
+                data: {
+                    labels: ['José', 'António', 'Marco'],
+                    datasets: [{
+                        data: [62.5, 25, 12.5],
+                        backgroundColor: [
+                            'rgba(142, 236, 245, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(54, 162, 235, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                generateLabels: function(chart) {
+                                    const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+                                    const labels = original.call(this, chart);
+                                    
+                                    labels.forEach(label => {
+                                        const dataset = chart.data.datasets[0];
+                                        const value = dataset.data[label.index];
+                                        label.text = `${chart.data.labels[label.index]}\n${value}%`;
+                                    });
+                                    
+                                    return labels;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Line Chart
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            const lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                    datasets: [{
+                        label: 'Humor',
+                        data: [18, 27, 25, 35, 37],
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 40,
+                            ticks: {
+                                stepSize: 10
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

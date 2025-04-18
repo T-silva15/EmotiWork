@@ -1,0 +1,223 @@
+﻿/* Dashboard Styles */
+.dashboard-container {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Full width content layout */
+.fullwidth-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top row layout with gauge and action buttons */
+.top-row {
+    display: flex;
+    width: 96%;
+    height: 86%;
+    margin-bottom: 50px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.gauge-wrapper {
+    flex: 1;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gauge-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.gauge-container {
+    width: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.gauge-image {
+    width: 90%;
+    max-width: 800px;
+    height: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+.gauge-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 140px;
+    background-color: #00b7c3;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.gauge-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+
+.gauge-btn {
+    padding: 12px 12px 12px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a8d8f0;
+    color: #333;
+    font-weight: 1000;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 120px;
+    text-align: center;
+}
+
+    .gauge-btn:hover {
+        background-color: #8bccfa;
+    }
+
+/* Separator line */
+.separator-line {
+    width: 2px;
+    align-self: stretch;
+    background-color: #000;
+    margin: 0 20px;
+}
+
+/* Action buttons section */
+.action-buttons-wrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.action-btn {
+    display: block;
+    background-color: #a8d8f0;
+    color: #333;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+    .action-btn:hover {
+        background-color: #8bccfa;
+    }
+
+/* Bottom row with lists */
+.bottom-row {
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.list-container {
+    flex: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.list-header {
+    background-color: #a8d8f0;
+    padding: 8px 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.list-content {
+    background-color: #f5f5f5;
+    padding: 0;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.user-avatar-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffebcd;
+    margin-right: 10px;
+}
+
+/* Main background */
+.main-content {
+    background-color: #f5f5ef;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .top-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gauge-wrapper {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .separator-line {
+        width: 80%;
+        height: 2px;
+        margin: 20px 0;
+    }
+
+    .action-buttons-wrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 992px) {
+    .bottom-row {
+        flex-direction: column;
+    }
+
+    .list-container {
+        margin-bottom: 20px;
+    }
+
+    .action-buttons-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .gauge-actions {
+        width: 100%;
+    }
+}
