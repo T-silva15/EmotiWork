@@ -1,0 +1,250 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.SendAnnouncementModel
+@{
+    ViewData["Title"] = "Enviar Notificação - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-announcement.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container announcement-management-container">
+            <div class="announcement-header">
+                <h1 class="page-title">BACKOFFICE - ENVIAR NOTIFICAÇÃO</h1>
+            </div>
+
+            <div class="announcement-card">
+                <div class="announcement-content-container">
+                    <textarea id="announcementText" class="announcement-textarea" rows="8" placeholder="Digite aqui o seu anúncio...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+                </div>
+
+                <div class="announcement-options">
+                    <div class="filter-container">
+                        <select id="departmentFilter" class="filter-select">
+                            <option value="all" selected>Departamento</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="desenvolvimento">Desenvolvimento</option>
+                            <option value="rh">Recursos Humanos</option>
+                            <option value="financas">Finanças</option>
+                            <option value="suporte">Suporte</option>
+                            <option value="todos">Todos</option>
+                        </select>
+
+                        <select id="teamFilter" class="filter-select">
+                            <option value="all" selected>Equipa</option>
+                            <option value="mark01">Mark01</option>
+                            <option value="dev02">Dev02</option>
+                            <option value="hr03">HR03</option>
+                            <option value="fin04">Fin04</option>
+                            <option value="sup05">Sup05</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="button" id="cancelBtn" class="action-button cancel-button">Sair</button>
+                    <button type="button" id="sendBtn" class="action-button send-button">Enviar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sendBtn = document.getElementById('sendBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+
+            // Handle send button
+            sendBtn.addEventListener('click', function() {
+                const announcementText = document.getElementById('announcementText').value;
+                const departmentFilter = document.getElementById('departmentFilter');
+                const teamFilter = document.getElementById('teamFilter');
+
+                const selectedDepartment = departmentFilter.options[departmentFilter.selectedIndex].text;
+                const selectedTeam = teamFilter.options[teamFilter.selectedIndex].text;
+
+                if (!announcementText.trim()) {
+                    alert('Por favor, insira o texto do anúncio.');
+                    return;
+                }
+
+                // Here you would typically send the data to the server
+                // For demo purposes, we'll just show an alert
+                alert(`Anúncio enviado com sucesso para ${selectedDepartment === 'Todos' || selectedDepartment === 'Departamento' ? 'todos os departamentos' : selectedDepartment}, ${selectedTeam === 'Todos' || selectedTeam === 'Equipa' ? 'todas as equipas' : selectedTeam}`);
+
+                // Redirect to dashboard
+                window.location.href = '/Dashboard';
+            });
+
+            // Handle cancel button
+            cancelBtn.addEventListener('click', function() {
+                if (confirm('Tem certeza que deseja sair sem enviar o anúncio?')) {
+                    window.location.href = '/Dashboard';
+                }
+            });
+
+            // Update team options based on department selection
+            const departmentFilter = document.getElementById('departmentFilter');
+            const teamFilter = document.getElementById('teamFilter');
+
+            departmentFilter.addEventListener('change', function() {
+                const department = this.options[this.selectedIndex].text;
+
+                // Reset team dropdown
+                teamFilter.innerHTML = '<option value="all" selected>Equipa</option>';
+
+                // If "Todos" or default option is selected, add all teams
+                if (department === 'Todos' || department === 'Departamento') {
+                    addOptions(teamFilter, [
+                        {value: 'mark01', text: 'Mark01'},
+                        {value: 'dev02', text: 'Dev02'},
+                        {value: 'hr03', text: 'HR03'},
+                        {value: 'fin04', text: 'Fin04'},
+                        {value: 'sup05', text: 'Sup05'},
+                        {value: 'todos', text: 'Todos'}
+                    ]);
+                    return;
+                }
+
+                // Otherwise, add department-specific teams
+                switch (department) {
+                    case 'Marketing':
+                        addOptions(teamFilter, [
+                            {value: 'mark01', text: 'Mark01'},
+                            {value: 'mark02', text: 'Mark02'},
+                            {value: 'todos', text: 'Todos'}
+                        ]);
+                        break;
+                    case 'Desenvolvimento':
+                        addOptions(teamFilter, [
+                            {value: 'dev01', text: 'Dev01'},
+                            {value: 'dev02', text: 'Dev02'},
+                            {value: 'dev03', text: 'Dev03'},
+                            {value: 'todos', text: 'Todos'}
+                        ]);
+                        break;
+                    case 'Recursos Humanos':
+                        addOptions(teamFilter, [
+                            {value: 'hr01', text: 'HR01'},
+                            {value: 'hr03', text: 'HR03'},
+                            {value: 'todos', text: 'Todos'}
+                        ]);
+                        break;
+                    case 'Finanças':
+                        addOptions(teamFilter, [
+                            {value: 'fin04', text: 'Fin04'},
+                            {value: 'todos', text: 'Todos'}
+                        ]);
+                        break;
+                    case 'Suporte':
+                        addOptions(teamFilter, [
+                            {value: 'sup05', text: 'Sup05'},
+                            {value: 'sup06', text: 'Sup06'},
+                            {value: 'todos', text: 'Todos'}
+                        ]);
+                        break;
+                    default:
+                        addOptions(teamFilter, [{value: 'todos', text: 'Todos'}]);
+                }
+            });
+
+            // Helper function to add options to a select element
+            function addOptions(selectElement, optionsArray) {
+                optionsArray.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.textContent = option.text;
+                    optionElement.value = option.value;
+                    selectElement.appendChild(optionElement);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

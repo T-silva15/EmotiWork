@@ -1,0 +1,163 @@
+﻿/* backoffice-announcement.css */
+
+/* Announcement Management Container */
+.announcement-management-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    width: 100%;
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+/* Announcement Card */
+.announcement-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.announcement-content-container {
+    width: 100%;
+}
+
+.announcement-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+    .announcement-textarea:focus {
+        outline: none;
+        border-color: #75bef0;
+        box-shadow: 0 0 0 2px rgba(117, 190, 240, 0.2);
+    }
+
+/* Filter Container */
+.announcement-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-container {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.filter-select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    flex: 1;
+    cursor: pointer;
+}
+
+    .filter-select:focus {
+        outline: none;
+        border-color: #75bef0;
+    }
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    min-width: 120px;
+}
+
+.send-button {
+    background-color: #74b9e8;
+    color: white;
+}
+
+    .send-button:hover {
+        background-color: #5ca8d8;
+    }
+
+.cancel-button {
+    background-color: #ff7052;
+    color: white;
+}
+
+    .cancel-button:hover {
+        background-color: #e66046;
+    }
+
+/* Make sure the main content fills the screen properly */
+.main-content {
+    background-color: #f5f5ef;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .announcement-management-container {
+        padding: 20px;
+    }
+
+    .announcement-card {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+    }
+
+    .button-container {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .action-button {
+        width: 100%;
+    }
+}
