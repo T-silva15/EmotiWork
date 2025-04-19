@@ -1,0 +1,129 @@
+﻿/* Reports Page Styles */
+
+.reports-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.report-form {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.report-text-container {
+    width: 100%;
+}
+
+.report-text {
+    width: 100%;
+    min-height: 220px;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    resize: vertical;
+}
+
+.report-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.report-action-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.report-type-container {
+    position: relative;
+    width: 150px;
+}
+
+.report-type {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.report-type-container::after {
+    content: "▼";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.report-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.report-button {
+    padding: 15px 0;
+    width: 250px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button {
+    background-color: #FF7052;
+    color: #000;
+}
+
+    .cancel-button:hover {
+        background-color: #ff5533;
+    }
+
+.submit-button {
+    background-color: #8EECF5;
+    color: #000;
+}
+
+    .submit-button:hover {
+        background-color: #7ad9e2;
+    }
+
+/* Make sure the sidebar active state is properly styled */
+.nav-item.active .nav-link {
+    background-color: #0088a9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .report-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .report-button {
+        width: 100%;
+    }
+}

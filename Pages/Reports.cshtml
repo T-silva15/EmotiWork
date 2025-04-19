@@ -1,7 +1,7 @@
 ﻿@page
-@model EmotiWork.Pages.ProfileModel
+@model EmotiWork.Pages.ReportsModel
 @{
-    ViewData["Title"] = "Vista Perfil - EmotiWork";
+    ViewData["Title"] = "Denúncia Anónima - EmotiWork";
     Layout = null;
 }
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/reports.css" asp-append-version="true" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
@@ -38,7 +38,7 @@
                         <i class="fas fa-circle-question"></i>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="/Statistics" class="nav-link">
                         <i class="fas fa-chart-line"></i>
                     </a>
@@ -49,11 +49,12 @@
                         <span class="notification-badge"></span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a href="/Reports" class="nav-link">
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
+                
                 <li class="nav-item nav-item-bottom">
                     <a href="/Settings" class="nav-link">
                         <i class="fas fa-gear"></i>
@@ -82,32 +83,32 @@
         </header>
 
         <!-- Page Content -->
-        <div class="content-container">
-            <div class="profile-container">
-                <div class="profile-header">
-                    <h1 class="page-title">VISTA PERFIL</h1>
-                    <div class="profile-avatar">
-                        <img src="~/img/user-avatar.png" alt="User Avatar" />
-                    </div>
+        <div class="content-container reports-container">
+            <h1 class="page-title">DENÚNCIA ANÓNIMA</h1>
+
+            <div class="report-form">
+                <div class="report-text-container">
+                    <textarea id="reportContent" class="report-text" placeholder="Escreva aqui a sua denúncia anónima...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
                 </div>
 
-                <form class="profile-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Nome" class="form-control" value="José" />
+                <div class="report-actions">
+                    <div class="report-action-right">
+                        <div class="report-type-container">
+                            <select id="reportType" class="report-type">
+                                <option value="" disabled selected hidden>Tipo</option>
+                                <option value="assedio">Assédio</option>
+                                <option value="discriminacao">Discriminação</option>
+                                <option value="bullying">Bullying</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" class="form-control" value="jose@emotiwork.com" />
+                    <div class="report-buttons">
+                        <button id="cancelReport" class="report-button cancel-button">Sair</button>
+                        <button id="submitReport" class="report-button submit-button">Enviar</button>
                     </div>
-
-                    <div class="form-group">
-                        <input type="password" id="password" name="password" placeholder="Password" class="form-control" value="••••••••" />
-                    </div>
-
-                    <div class="form-group">
-                        <button type="button" class="btn-back" onclick="window.location.href='/Home'">Voltar</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
 
@@ -116,11 +117,27 @@
             <div class="footer-content">
                 <div class="copyright">EmotiWork - 2025</div>
                 <div class="privacy-policy">
-                    <a href="#" class="privacy-link">Proteção de Dados</a>
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
                 </div>
             </div>
         </footer>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle cancel button click
+            document.getElementById('cancelReport').addEventListener('click', function() {
+                window.location.href = '/Home';
+            });
+
+            // Handle submit button click
+            document.getElementById('submitReport').addEventListener('click', function() {
+                // This is just a prototype, so we'll just show an alert
+                alert('Relatório enviado com sucesso!');
+                document.getElementById('reportContent').value = '';
+                document.getElementById('reportType').selectedIndex = 0;
+            });
+        });
+    </script>
 </body>
 </html>
-
