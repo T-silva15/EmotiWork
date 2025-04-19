@@ -1,0 +1,133 @@
+﻿/* Questionnaire Container Styles */
+.questionnaire-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 180px);
+    padding: 20px;
+}
+
+/* Question Navigation Styles */
+.question-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.question-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .question-number.active {
+        background-color: #8EECF5;
+    }
+
+/* Question Content Styles */
+.question-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.question-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+/* Emotion Options Styles */
+.emotion-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.emotion-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.emotion-option {
+    flex: 1;
+}
+
+.emotion-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .emotion-box:hover {
+        background-color: #f0f0f0;
+    }
+
+    .emotion-box.selected {
+        background-color: #8EECF5;
+    }
+
+/* Navigation Buttons Styles */
+.questionnaire-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 200px;
+}
+
+.questionnaire-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav-button {
+    width: 50px;
+    height: 50px;
+    background-color: #8EECF5;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .nav-button:hover {
+        background-color: #6dcbd5;
+    }
+
+    .nav-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }

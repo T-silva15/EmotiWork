@@ -1,0 +1,205 @@
+﻿@page
+@model EmotiWork.Pages.QuestionnaireModel
+@{
+    ViewData["Title"] = "Questionário - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/questionnaire.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Teams" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Privacy" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-file-lines"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">José</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container questionnaire-container">
+            <!-- Question Navigation -->
+            <div class="question-navigation">
+                <div class="question-number active">1</div>
+                <div class="question-number">2</div>
+                <div class="question-number">3</div>
+                <div class="question-number">4</div>
+                <div class="question-number">5</div>
+            </div>
+
+            <!-- Question Content -->
+            <div class="question-content">
+                <div class="question-text">Como te sentiste hoje?</div>
+
+                <div class="emotion-options">
+                    <div class="emotion-row">
+                        <div class="emotion-option">
+                            <div class="emotion-box">Feliz</div>
+                        </div>
+                        <div class="emotion-option">
+                            <div class="emotion-box">Impaciente</div>
+                        </div>
+                    </div>
+                    <div class="emotion-row">
+                        <div class="emotion-option">
+                            <div class="emotion-box">Nervoso</div>
+                        </div>
+                        <div class="emotion-option">
+                            <div class="emotion-box">Triste</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="questionnaire-navigation">
+                <button id="prev-question" class="nav-button"><</button>
+                <div class="questionnaire-title">QUESTIONÁRIO</div>
+                <button id="next-question" class="nav-button">></button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="#" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = [
+                "Como te sentiste hoje?",
+                "O que causou esse sentimento?",
+                "Como foi o teu dia de trabalho?",
+                "Tiveste algum problema hoje?",
+                "O que esperas para amanhã?"
+            ];
+
+            let currentQuestionIndex = 0;
+            const questionNumbers = document.querySelectorAll('.question-number');
+            const questionText = document.querySelector('.question-text');
+            const prevButton = document.getElementById('prev-question');
+            const nextButton = document.getElementById('next-question');
+
+            // Set active question
+            function setActiveQuestion(index) {
+                // Update question numbers
+                questionNumbers.forEach((num, i) => {
+                    if (i === index) {
+                        num.classList.add('active');
+                    } else {
+                        num.classList.remove('active');
+                    }
+                });
+
+                // Update question text
+                questionText.textContent = questions[index];
+
+                // Update button states
+                prevButton.disabled = index === 0;
+                nextButton.disabled = index === questions.length - 1;
+            }
+
+            // Navigation button event listeners
+            prevButton.addEventListener('click', function() {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    setActiveQuestion(currentQuestionIndex);
+                }
+            });
+
+            nextButton.addEventListener('click', function() {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    setActiveQuestion(currentQuestionIndex);
+                }
+            });
+
+            // Number navigation
+            questionNumbers.forEach((num, i) => {
+                num.addEventListener('click', function() {
+                    currentQuestionIndex = i;
+                    setActiveQuestion(i);
+                });
+            });
+
+            // Initialize
+            setActiveQuestion(0);
+        });
+    </script>
+</body>
+</html>

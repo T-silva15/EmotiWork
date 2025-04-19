@@ -168,13 +168,13 @@ AutoTest.Net/
 
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
-DocProject/Help/*.HxT
-DocProject/Help/*.HxC
-DocProject/Help/*.hhc
-DocProject/Help/*.hhk
-DocProject/Help/*.hhp
-DocProject/Help/Html2
-DocProject/Help/html
+DocProject/Questionnaire/*.HxT
+DocProject/Questionnaire/*.HxC
+DocProject/Questionnaire/*.hhc
+DocProject/Questionnaire/*.hhk
+DocProject/Questionnaire/*.hhp
+DocProject/Questionnaire/Html2
+DocProject/Questionnaire/html
 
 # Click-Once directory
 publish/
