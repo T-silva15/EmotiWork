@@ -221,3 +221,14 @@
         width: 100%;
     }
 }
+
+.empty-space {
+    display: block;
+    visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .empty-space {
+        display: none;
+    }
+}

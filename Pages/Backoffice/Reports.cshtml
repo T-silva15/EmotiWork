@@ -1,0 +1,498 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.ReportsModel
+@{
+    ViewData["Title"] = "Gestão de Denúncias - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-reports.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container reports-management-container">
+            <div class="reports-header">
+                <h1 class="page-title">BACKOFFICE - GESTÃO DE DENÚNCIAS</h1>
+                <div class="filter-container">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">Todos os Estados</option>
+                        <option value="new">Novos</option>
+                        <option value="inProgress">Em Progresso</option>
+                        <option value="resolved">Resolvidos</option>
+                    </select>
+                    <select id="typeFilter" class="filter-select">
+                        <option value="all">Todos os Tipos</option>
+                        <option value="assedio">Assédio</option>
+                        <option value="discriminacao">Discriminação</option>
+                        <option value="bullying">Bullying</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="reports-table-container">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Conteúdo</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="report-row new">
+                            <td>#001</td>
+                            <td>15-04-2025</td>
+                            <td>Assédio</td>
+                            <td class="report-content-cell">
+                                <div class="report-content-preview">Um colega tem feito comentários inadequados sobre...</div>
+                                <div class="report-content-full">Um colega tem feito comentários inadequados sobre a aparência constantemente, mesmo após pedidos para parar. Isto está a criar um ambiente de trabalho desconfortável e a afetar a produtividade da equipa.</div>
+                            </td>
+                            <td><span class="status-badge new">Novo</span></td>
+                            <td class="actions-cell">
+                                <button class="view-btn" title="Ver detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="status-btn in-progress-btn" title="Marcar como Em Progresso">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </button>
+                                <button class="status-btn resolve-btn" title="Marcar como Resolvido">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="report-row in-progress">
+                            <td>#002</td>
+                            <td>10-04-2025</td>
+                            <td>Discriminação</td>
+                            <td class="report-content-cell">
+                                <div class="report-content-preview">Há um padrão de exclusão de algumas pessoas em...</div>
+                                <div class="report-content-full">Há um padrão de exclusão de algumas pessoas em reuniões importantes do departamento. Parece haver preferência por um grupo específico, enquanto outros são ignorados nas tomadas de decisão, apesar de terem ideias relevantes.</div>
+                            </td>
+                            <td><span class="status-badge in-progress">Em Progresso</span></td>
+                            <td class="actions-cell">
+                                <button class="view-btn" title="Ver detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="status-btn new-btn" title="Marcar como Novo">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="status-btn resolve-btn" title="Marcar como Resolvido">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="report-row resolved">
+                            <td>#003</td>
+                            <td>02-04-2025</td>
+                            <td>Bullying</td>
+                            <td class="report-content-cell">
+                                <div class="report-content-preview">Um gestor está constantemente a criticar um...</div>
+                                <div class="report-content-full">Um gestor está constantemente a criticar um membro da equipa em público, fazendo piadas à custa desta pessoa e ignorando as suas contribuições. Este comportamento está a afetar o moral de toda a equipa.</div>
+                            </td>
+                            <td><span class="status-badge resolved">Resolvido</span></td>
+                            <td class="actions-cell">
+                                <button class="view-btn" title="Ver detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="status-btn new-btn" title="Marcar como Novo">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="status-btn in-progress-btn" title="Marcar como Em Progresso">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="report-row new">
+                            <td>#004</td>
+                            <td>18-04-2025</td>
+                            <td>Outro</td>
+                            <td class="report-content-cell">
+                                <div class="report-content-preview">Tenho notado comportamentos estranhos na...</div>
+                                <div class="report-content-full">Tenho notado comportamentos estranhos na contabilidade da empresa. Algumas despesas não parecem estar documentadas corretamente e há inconsistências nos relatórios financeiros que podem indicar uma situação irregular.</div>
+                            </td>
+                            <td><span class="status-badge new">Novo</span></td>
+                            <td class="actions-cell">
+                                <button class="view-btn" title="Ver detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="status-btn in-progress-btn" title="Marcar como Em Progresso">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </button>
+                                <button class="status-btn resolve-btn" title="Marcar como Resolvido">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="report-row in-progress">
+                            <td>#005</td>
+                            <td>05-04-2025</td>
+                            <td>Assédio</td>
+                            <td class="report-content-cell">
+                                <div class="report-content-preview">Um membro da equipa recebe constantemente...</div>
+                                <div class="report-content-full">Um membro da equipa recebe constantemente mensagens fora do horário de trabalho de um superior, com conteúdo que ultrapassa a relação profissional. Esta pessoa está a sentir-se pressionada a responder para não prejudicar a sua posição na empresa.</div>
+                            </td>
+                            <td><span class="status-badge in-progress">Em Progresso</span></td>
+                            <td class="actions-cell">
+                                <button class="view-btn" title="Ver detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="status-btn new-btn" title="Marcar como Novo">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="status-btn resolve-btn" title="Marcar como Resolvido">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Report Detail Modal -->
+    <div id="reportDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Detalhes da Denúncia</h1>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="report-detail-container">
+                    <div class="report-detail-header">
+                        <div class="report-metadata">
+                            <div class="report-metadata-item">
+                                <span class="metadata-label">ID:</span>
+                                <span id="modalReportId" class="metadata-value">#001</span>
+                            </div>
+                            <div class="report-metadata-item">
+                                <span class="metadata-label">Data:</span>
+                                <span id="modalReportDate" class="metadata-value">15-04-2025</span>
+                            </div>
+                            <div class="report-metadata-item">
+                                <span class="metadata-label">Tipo:</span>
+                                <span id="modalReportType" class="metadata-value">Assédio</span>
+                            </div>
+                            <div class="report-metadata-item">
+                                <span class="metadata-label">Estado:</span>
+                                <span id="modalReportStatus" class="metadata-value">
+                                    <span class="status-badge new">Novo</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="report-detail-content">
+                        <h3>Conteúdo da Denúncia</h3>
+                        <div id="modalReportContent" class="report-detail-text">
+                            Um colega tem feito comentários inadequados sobre a aparência constantemente, mesmo após pedidos para parar. Isto está a criar um ambiente de trabalho desconfortável e a afetar a produtividade da equipa.
+                        </div>
+                    </div>
+                    <div class="report-notes-section">
+                        <h3>Notas de Acompanhamento</h3>
+                        <textarea id="reportNotes" class="report-notes" placeholder="Adicione notas sobre o progresso da investigação desta denúncia..."></textarea>
+                    </div>
+                    <div class="report-detail-actions">
+                        <button id="modalNewBtn" class="btn btn-status btn-new">Marcar como Novo</button>
+                        <button id="modalInProgressBtn" class="btn btn-status btn-in-progress">Marcar como Em Progresso</button>
+                        <button id="modalResolveBtn" class="btn btn-status btn-resolve">Marcar como Resolvido</button>
+                        <button id="saveNotesBtn" class="btn btn-submit">Guardar Notas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const reportModal = document.getElementById('reportDetailModal');
+            const closeModal = reportModal.querySelector('.close-modal');
+            const viewButtons = document.querySelectorAll('.view-btn');
+
+            // Status change buttons in table
+            const statusButtons = document.querySelectorAll('.status-btn');
+
+            // Modal elements
+            const modalReportId = document.getElementById('modalReportId');
+            const modalReportDate = document.getElementById('modalReportDate');
+            const modalReportType = document.getElementById('modalReportType');
+            const modalReportStatus = document.getElementById('modalReportStatus');
+            const modalReportContent = document.getElementById('modalReportContent');
+            const modalStatusButtons = document.querySelectorAll('.btn-status');
+            const saveNotesBtn = document.getElementById('saveNotesBtn');
+            const reportNotes = document.getElementById('reportNotes');
+
+            // Filter elements
+            const statusFilter = document.getElementById('statusFilter');
+            const typeFilter = document.getElementById('typeFilter');
+
+            // Store notes for each report
+            const reportNotesMap = {};
+
+            // Show content on click
+            const contentCells = document.querySelectorAll('.report-content-cell');
+            contentCells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+
+            // Open modal when view button is clicked
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+
+                    // Get data from the row
+                    const id = row.cells[0].textContent;
+                    const date = row.cells[1].textContent;
+                    const type = row.cells[2].textContent;
+                    const content = row.querySelector('.report-content-full').textContent;
+                    const statusBadge = row.querySelector('.status-badge').cloneNode(true);
+
+                    // Set modal data
+                    modalReportId.textContent = id;
+                    modalReportDate.textContent = date;
+                    modalReportType.textContent = type;
+                    modalReportContent.textContent = content;
+
+                    // Clear previous status badge and append the new one
+                    modalReportStatus.innerHTML = '';
+                    modalReportStatus.appendChild(statusBadge);
+
+                    // Set notes if they exist for this report
+                    reportNotes.value = reportNotesMap[id] || '';
+
+                    // Show the modal
+                    reportModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            });
+
+            // Change status buttons in table
+            statusButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering other click events
+                    const row = this.closest('tr');
+                    const statusCell = row.querySelector('td:nth-child(5)');
+                    const currentStatus = statusCell.querySelector('.status-badge');
+
+                    // Determine which status button was clicked
+                    if (this.classList.contains('new-btn')) {
+                        updateStatus(row, 'new', 'Novo');
+                    } else if (this.classList.contains('in-progress-btn')) {
+                        updateStatus(row, 'in-progress', 'Em Progresso');
+                    } else if (this.classList.contains('resolve-btn')) {
+                        updateStatus(row, 'resolved', 'Resolvido');
+                    }
+                });
+            });
+
+            // Change status buttons in modal
+            modalStatusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = modalReportId.textContent;
+                    const row = findRowById(id);
+
+                    if (this.id === 'modalNewBtn') {
+                        updateStatus(row, 'new', 'Novo');
+                        modalReportStatus.innerHTML = '<span class="status-badge new">Novo</span>';
+                    } else if (this.id === 'modalInProgressBtn') {
+                        updateStatus(row, 'in-progress', 'Em Progresso');
+                        modalReportStatus.innerHTML = '<span class="status-badge in-progress">Em Progresso</span>';
+                    } else if (this.id === 'modalResolveBtn') {
+                        updateStatus(row, 'resolved', 'Resolvido');
+                        modalReportStatus.innerHTML = '<span class="status-badge resolved">Resolvido</span>';
+                    }
+                });
+            });
+
+            // Save notes button
+            saveNotesBtn.addEventListener('click', function() {
+                const id = modalReportId.textContent;
+                const notes = reportNotes.value;
+
+                // Save notes in our map
+                reportNotesMap[id] = notes;
+
+                // Show confirmation message
+                alert('Notas guardadas com sucesso!');
+            });
+
+            // Function to find row by ID
+            function findRowById(id) {
+                const rows = document.querySelectorAll('.report-row');
+                for (let row of rows) {
+                    if (row.cells[0].textContent === id) {
+                        return row;
+                    }
+                }
+                return null;
+            }
+
+            // Function to update status in row
+            function updateStatus(row, statusClass, statusText) {
+                if (!row) return;
+
+                // Update status cell
+                const statusCell = row.querySelector('td:nth-child(5)');
+                statusCell.innerHTML = `<span class="status-badge ${statusClass}">${statusText}</span>`;
+
+                // Update row class
+                row.className = `report-row ${statusClass}`;
+
+                // Apply filters again to maintain current filter state
+                applyFilters();
+            }
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                reportModal.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === reportModal) {
+                    reportModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && reportModal.style.display === 'block') {
+                    reportModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Filters functionality
+            statusFilter.addEventListener('change', applyFilters);
+            typeFilter.addEventListener('change', applyFilters);
+
+            function applyFilters() {
+                const rows = document.querySelectorAll('.report-row');
+                const statusValue = statusFilter.value;
+                const typeValue = typeFilter.value;
+
+                rows.forEach(row => {
+                    const rowType = row.cells[2].textContent.toLowerCase();
+                    const rowStatus = row.className.replace('report-row ', '');
+
+                    let showRow = true;
+
+                    // Check status filter
+                    if (statusValue !== 'all') {
+                        if (statusValue === 'new' && !row.classList.contains('new')) {
+                            showRow = false;
+                        } else if (statusValue === 'inProgress' && !row.classList.contains('in-progress')) {
+                            showRow = false;
+                        } else if (statusValue === 'resolved' && !row.classList.contains('resolved')) {
+                            showRow = false;
+                        }
+                    }
+
+                    // Check type filter
+                    if (typeValue !== 'all' && !rowType.includes(typeValue.toLowerCase())) {
+                        showRow = false;
+                    }
+
+                    // Show or hide row
+                    row.style.display = showRow ? '' : 'none';
+                });
+            }
+
+            // Initialize the page with default filters
+            applyFilters();
+        });
+    </script>
+</body>
+</html>
