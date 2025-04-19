@@ -1,0 +1,193 @@
+﻿@page
+@model EmotiWork.Pages.SettingsModel
+@{
+    ViewData["Title"] = "Definições - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/setting.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom active">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">José</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container settings-container">
+            <h1 class="page-title">DEFINIÇÕES</h1>
+
+            <div class="settings-form">
+                <!-- Preferred Time Section -->
+                <div class="settings-section">
+                    <div class="settings-label">Horário Preferido</div>
+                    <div class="settings-options">
+                        <div class="vertical-highlight"></div>
+                        <div class="option-group">
+                            <label class="radio-option">
+                                <input type="radio" name="preferred-time" checked />
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Fim do Dia de Trabalho</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="preferred-time" />
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Início do Dia Seguinte</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questionnaire Notifications Section -->
+                <div class="settings-section">
+                    <div class="settings-label">Notificações de Questionários</div>
+                    <div class="settings-options">
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notifications-toggle" class="toggle-input" checked />
+                            <label for="notifications-toggle" class="toggle-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Timing Options -->
+                <div class="notification-timing-container">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="time-5" class="checkbox-input" checked />
+                        <label for="time-5" class="checkbox-label">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">5 minutos</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="time-15" class="checkbox-input" checked />
+                        <label for="time-15" class="checkbox-label">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">15 minutos</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="time-30" class="checkbox-input" />
+                        <label for="time-30" class="checkbox-label">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">30 minutos</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-option custom-time">
+                        <input type="checkbox" id="time-custom" class="checkbox-input" />
+                        <label for="time-custom" class="checkbox-label">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">Outro (Especifique):</span>
+                        </label>
+                        <input type="text" class="custom-time-input" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle custom time input based on checkbox state
+            const customTimeCheckbox = document.getElementById('time-custom');
+            const customTimeInput = document.querySelector('.custom-time-input');
+
+            customTimeCheckbox.addEventListener('change', function() {
+                customTimeInput.disabled = !this.checked;
+                if (this.checked) {
+                    customTimeInput.focus();
+                }
+            });
+
+            // Toggle notification timing options based on notifications toggle
+            const notificationsToggle = document.getElementById('notifications-toggle');
+            const notificationTiming = document.querySelector('.notification-timing-container');
+
+            notificationsToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    notificationTiming.classList.remove('disabled');
+                } else {
+                    notificationTiming.classList.add('disabled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

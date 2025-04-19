@@ -1,0 +1,329 @@
+﻿@page
+@model EmotiWork.Pages.TeamModel
+@{
+    ViewData["Title"] = "Equipa - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/team.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item active">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">José</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container teams-container">
+            <h1 class="page-title">EQUIPA</h1>
+
+            <!-- Team Overview Section -->
+            <div class="team-overview">
+                <div class="team-header">
+                    <div class="team-info">
+                        <h2 class="team-name">Marketing</h2>
+                        <span class="team-members">8 membros</span>
+                    </div>
+                </div>
+
+                <!-- Team Health Metrics Section -->
+                <div class="team-metrics">
+                    <div class="metric-card">
+                        <div class="metric-header">Bem-Estar da Equipa</div>
+                        <div class="metric-value positive">85%</div>
+                        <div class="metric-trend">
+                            <i class="fas fa-arrow-up"></i> 5% último mês
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">Produtividade</div>
+                        <div class="metric-value neutral">72%</div>
+                        <div class="metric-trend">
+                            <i class="fas fa-minus"></i> sem alteração
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">Presença</div>
+                        <div class="metric-value warning">68%</div>
+                        <div class="metric-trend">
+                            <i class="fas fa-arrow-down"></i> 8% último mês
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">Colaboração</div>
+                        <div class="metric-value positive">90%</div>
+                        <div class="metric-trend">
+                            <i class="fas fa-arrow-up"></i> 12% último mês
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Trend Chart -->
+                <div class="team-chart-container">
+                    <h3 class="section-title">Tendências de Bem-Estar</h3>
+                    <div class="chart-container">
+                        <canvas id="teamTrendsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Team Members Status Section -->
+                <div class="team-members-section">
+                    <h3 class="section-title">Membros da Equipa</h3>
+
+                    <div class="member-status-container">
+                        <div class="member-card">
+                            <div class="member-header">
+                                <div class="member-avatar" style="background-color: #FFD699;"></div>
+                                <div class="member-info">
+                                    <div class="member-name">Ana Silva</div>
+                                    <div class="member-role">Team Lead</div>
+                                </div>
+                            </div>
+                            <div class="member-status">
+                                <div class="status-item">
+                                    <span class="status-label">Status:</span>
+                                    <span class="status-value online">Online</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Humor:</span>
+                                    <span class="status-value">😃 Positivo</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-header">
+                                <div class="member-avatar" style="background-color: #A8D5BA;"></div>
+                                <div class="member-info">
+                                    <div class="member-name">Carlos Santos</div>
+                                    <div class="member-role">Senior Developer</div>
+                                </div>
+                            </div>
+                            <div class="member-status">
+                                <div class="status-item">
+                                    <span class="status-label">Status:</span>
+                                    <span class="status-value online">Online</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Humor:</span>
+                                    <span class="status-value">😐 Neutro</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-header">
+                                <div class="member-avatar" style="background-color: #95B8D1;"></div>
+                                <div class="member-info">
+                                    <div class="member-name">Maria Oliveira</div>
+                                    <div class="member-role">Developer</div>
+                                </div>
+                            </div>
+                            <div class="member-status">
+                                <div class="status-item">
+                                    <span class="status-label">Status:</span>
+                                    <span class="status-value away">Ausente</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Humor:</span>
+                                    <span class="status-value">😔 Cansado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-header">
+                                <div class="member-avatar" style="background-color: #E8DAB2;"></div>
+                                <div class="member-info">
+                                    <div class="member-name">Pedro Costa</div>
+                                    <div class="member-role">Junior Developer</div>
+                                </div>
+                            </div>
+                            <div class="member-status">
+                                <div class="status-item">
+                                    <span class="status-label">Status:</span>
+                                    <span class="status-value offline">Offline</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Humor:</span>
+                                    <span class="status-value">-- Não disponível</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view-all-wrapper">
+                        <a href="#" class="view-all-btn">Ver todos os membros</a>
+                    </div>
+                </div>
+
+                <!-- Team Alerts Section -->
+                <div class="team-alerts-section">
+                    <h3 class="section-title">Alertas da Equipa</h3>
+
+                    <div class="alert-items">
+                        <div class="alert-item warning">
+                            <div class="alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="alert-content">
+                                <div class="alert-title">Queda de Bem-Estar Detectada</div>
+                                <div class="alert-description">2 membros reportaram níveis mais baixos de satisfação esta semana</div>
+                            </div>
+                        </div>
+
+                        <div class="alert-item info">
+                            <div class="alert-icon"><i class="fas fa-info-circle"></i></div>
+                            <div class="alert-content">
+                                <div class="alert-title">Férias Próximas</div>
+                                <div class="alert-description">3 membros estarão de férias no próximo mês</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Chart.js setup for team trends
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('teamTrendsChart').getContext('2d');
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                    datasets: [
+                        {
+                            label: 'Bem-Estar',
+                            data: [65, 70, 68, 72, 80, 85],
+                            borderColor: '#2e86c1',
+                            backgroundColor: 'rgba(46, 134, 193, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Produtividade',
+                            data: [72, 68, 70, 75, 72, 72],
+                            borderColor: '#58D68D',
+                            backgroundColor: 'rgba(88, 214, 141, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Presença',
+                            data: [90, 85, 82, 75, 70, 68],
+                            borderColor: '#F7DC6F',
+                            backgroundColor: 'rgba(247, 220, 111, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 50,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
