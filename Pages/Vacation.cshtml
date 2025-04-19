@@ -1,7 +1,7 @@
-﻿@page
-@model EmotiWork.Pages.DashboardModel
+@page
+@model EmotiWork.Pages.VacationModel
 @{
-    ViewData["Title"] = "Dashboard - EmotiWork";
+    ViewData["Title"] = "Marcar F�rias - EmotiWork";
     Layout = null;
 }
 
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/vacation.css" asp-append-version="true" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
@@ -28,7 +29,7 @@
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="/Dashboard" class="nav-link">
                         <i class="fas fa-gauge-high"></i>
                     </a>
@@ -81,70 +82,60 @@
             <div class="user-info">
                 <a href="/Profile" class="user-link">
                     <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
-                    <span class="user-name">José</span>
+                    <span class="user-name">Jos�</span>
                 </a>
             </div>
         </header>
 
         <!-- Page Content -->
-        <div class="content-container dashboard-container">
-            <h1 class="page-title">DASHBOARD</h1>
+<div class="content-container vacation-container" style="padding-top: 20px; justify-content: flex-start;">
+    <h1 class="vacation-title">MARCAR F�RIAS</h1>
 
-            <div class="fullwidth-content">
-                <!-- Top row with gauge and buttons -->
-                <div class="top-row">
-                    <div class="gauge-wrapper">
-                        <div class="gauge-title">Almoço</div>
-                        <div class="gauge-container">
-                            <img src="~/img/gauge.png" alt="Gauge" class="gauge-image" />
-                            <div class="gauge-line"></div>
-                        </div>
-                        <div class="gauge-actions">
-                            <button class="gauge-btn check-in">Check-in</button>
-                            <button class="gauge-btn check-out">Check-out</button>
+    <div class="vacation-form-container" style="margin-bottom: 80px;">
+                <div class="date-inputs-container">
+                    <div class="date-field">
+                        <input type="text" id="startDate" class="date-input" placeholder="Data de in�cio..." readonly />
+                        <i class="fas fa-caret-down dropdown-icon"></i>
+                        <div id="startDateCalendar" class="calendar-dropdown">
+                            <div class="calendar-header">
+                                <button type="button" class="month-nav prev"><i class="fas fa-caret-up"></i></button>
+                                <div class="month-year">abril de 2025</div>
+                                <button type="button" class="month-nav next"><i class="fas fa-caret-down"></i></button>
+                            </div>
+                            <div class="calendar-body">
+                                <div class="weekday-header">
+                                    <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                                </div>
+                                <div class="days-grid">
+                                    <!-- Calendar days inserted with JavaScript -->
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="separator-line"></div>
-
-                    <div class="action-buttons-wrapper">
-                        <a href="/Teams" class="action-btn">Ver Equipa</a>
-                        <a href="/Notifications" class="action-btn">Notificações</a>
-                        <a href="/Vacation" class="action-btn">Marcar Férias</a>
+                    <div class="date-field">
+                        <input type="text" id="endDate" class="date-input" placeholder="Data de fim..." readonly />
+                        <i class="fas fa-caret-down dropdown-icon"></i>
+                        <div id="endDateCalendar" class="calendar-dropdown">
+                            <div class="calendar-header">
+                                <button type="button" class="month-nav prev"><i class="fas fa-caret-up"></i></button>
+                                <div class="month-year">junho de 2025</div>
+                                <button type="button" class="month-nav next"><i class="fas fa-caret-down"></i></button>
+                            </div>
+                            <div class="calendar-body">
+                                <div class="weekday-header">
+                                    <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                                </div>
+                                <div class="days-grid">
+                                    <!-- Calendar days will be inserted with JavaScript -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Bottom row with lists -->
-                <div class="bottom-row">
-                    <div class="list-container">
-                        <div class="list-header">Aniversariantes</div>
-                        <div class="list-content">
-                            <div class="list-item">
-                                <div class="user-avatar-small"></div>
-                                <span>José</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-container">
-                        <div class="list-header">Férias</div>
-                        <div class="list-content">
-                            <div class="list-item">
-                                <div class="user-avatar-small"></div>
-                                <span>José</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-container">
-                        <div class="list-header">Contratados</div>
-                        <div class="list-content">
-                            <div class="list-item">
-                                <div class="user-avatar-small"></div>
-                                <span>José</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="vacation-actions">
+                    <button type="button" class="submit-btn">Submeter</button>
                 </div>
             </div>
         </div>
@@ -154,10 +145,12 @@
             <div class="footer-content">
                 <div class="copyright">EmotiWork - 2025</div>
                 <div class="privacy-policy">
-                    <a href="#" class="privacy-link">Proteção de Dados</a>
+                    <a href="#" class="privacy-link">Prote��o de Dados</a>
                 </div>
             </div>
         </footer>
     </main>
+
+    <script src="~/js/vacation.js" asp-append-version="true"></script>
 </body>
 </html>
