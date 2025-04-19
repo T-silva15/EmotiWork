@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Chart.js for gauge -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Gauge plugin for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-gauge@0.3.0/dist/chartjs-gauge.min.js"></script>
 </head>
 <body class="home-body">
     <!-- Left Sidebar -->
@@ -92,11 +96,12 @@
                     <div class="gauge-wrapper">
                         <div class="gauge-title">Almoço</div>
                         <div class="gauge-container">
-                            <img src="~/img/gauge.png" alt="Gauge" class="gauge-image" />
+                            <canvas id="gaugeChart"></canvas>
+                            <div class="gauge-time" id="gaugeTime">00:00</div>
                         </div>
                         <div class="gauge-actions">
-                            <button class="gauge-btn check-in">Check-in</button>
-                            <button class="gauge-btn check-out">Check-out</button>
+                            <button class="gauge-btn check-in" id="checkInBtn">Check-in</button>
+                            <button class="gauge-btn check-out" id="checkOutBtn">Check-out</button>
                         </div>
                     </div>
 
@@ -198,7 +203,7 @@
                             <span class="card-text">Gerir Questionários</span>
                         </div>
                     </a>
-                    
+
                     <!-- Third row -->
                     <div class="empty-space"></div>
                     <a href="/Backoffice/Reports" class="backoffice-card">
@@ -214,9 +219,188 @@
 
     <!-- JavaScript -->
     <script>
-        // Modal functionality
+        // Gauge functionality for displaying current time
         document.addEventListener('DOMContentLoaded', function() {
-            // Get modal elements
+            const ctx = document.getElementById('gaugeChart').getContext('2d');
+            const gaugeTimeDisplay = document.getElementById('gaugeTime');
+            const checkInBtn = document.getElementById('checkInBtn');
+            const checkOutBtn = document.getElementById('checkOutBtn');
+
+            // Remove any existing time markers if they're present
+            const existingTimeMarkers = document.querySelector('.time-markers');
+            if (existingTimeMarkers) {
+                existingTimeMarkers.remove();
+            }
+
+            // Variables for gauge and time tracking
+            let gaugeValue = 0;
+            let checkInTime = null;
+            let checkOutScheduled = false;
+            let timerInterval = null;
+
+            // Working hours (9:00 to 17:00 = 8 hours)
+            const workStartHour = 9;
+            const workEndHour = 17;
+            const totalWorkMinutes = (workEndHour - workStartHour) * 60;
+
+            // Initialize the gauge chart
+            const gaugeChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [gaugeValue, 100 - gaugeValue],
+                        backgroundColor: [
+                            '#00b7c3',
+                            '#e9ecef'   
+                        ],
+                        borderWidth: 0,
+                        circumference: 180,
+                        rotation: 270
+                    }]
+                },
+                options: {
+                    cutout: '75%',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 500
+                    },
+                    plugins: {
+                        tooltip: {
+                            enabled: false
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+                    // Update gauge based on current time
+        function updateGaugeToCurrentTime() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+
+            // Calculate minutes elapsed since work day start
+            let minutesElapsed = (currentHour - workStartHour) * 60 + currentMinute;
+
+            // Constrain to work hours
+            if (currentHour < workStartHour) {
+                minutesElapsed = 0; // Before work hours
+            } else if (currentHour >= workEndHour) {
+                // If it's past end of workday (5:00 PM/17:00), set to 100%
+                minutesElapsed = totalWorkMinutes; // This should be 480 minutes (8 hours)
+            }
+
+            // Calculate percentage through work day
+            const percentComplete = Math.min(Math.max((minutesElapsed / totalWorkMinutes) * 100, 0), 100);
+
+            // Update gauge - ensure it's 100% if past workday end
+            gaugeValue = currentHour >= workEndHour ? 100 : percentComplete;
+            gaugeChart.data.datasets[0].data = [gaugeValue, 100 - gaugeValue];
+            gaugeChart.update();
+
+            // Update time display
+            const formattedHour = currentHour.toString().padStart(2, '0');
+            const formattedMinute = currentMinute.toString().padStart(2, '0');
+            gaugeTimeDisplay.textContent = `${formattedHour}:${formattedMinute}`;
+
+            // Update button states based on time of day
+            if (currentHour < 12) {
+                enableCheckIn();
+            } else if (currentHour >= 17) {
+                enableCheckOut();
+            }
+        }
+
+            // Check-in button functionality
+            checkInBtn.addEventListener('click', function() {
+                if (checkInBtn.disabled) return;
+
+                checkInTime = new Date();
+
+                // Visual feedback
+                checkInBtn.disabled = true;
+                checkInBtn.classList.add('disabled');
+                checkOutBtn.disabled = false;
+                checkOutBtn.classList.remove('disabled');
+
+                // Indicate check-in time
+                const currentHour = checkInTime.getHours();
+                const currentMinute = checkInTime.getMinutes();
+                const formattedHour = currentHour.toString().padStart(2, '0');
+                const formattedMinute = currentMinute.toString().padStart(2, '0');
+
+                alert(`Checked in at ${formattedHour}:${formattedMinute}`);
+            });
+
+            // Check-out button functionality
+            checkOutBtn.addEventListener('click', function() {
+                if (checkOutBtn.disabled) return;
+
+                const checkOutTime = new Date();
+
+                // Visual feedback
+                checkOutBtn.disabled = true;
+                checkOutBtn.classList.add('disabled');
+                checkInBtn.disabled = false;
+                checkInBtn.classList.remove('disabled');
+
+                // Determine total work duration
+                let duration = "Unknown";
+                if (checkInTime) {
+                    const durationMinutes = Math.floor((checkOutTime - checkInTime) / 60000);
+                    const hours = Math.floor(durationMinutes / 60);
+                    const minutes = durationMinutes % 60;
+                    duration = `${hours}h ${minutes}m`;
+                }
+
+                // Indicate check-out time
+                const currentHour = checkOutTime.getHours();
+                const currentMinute = checkOutTime.getMinutes();
+                const formattedHour = currentHour.toString().padStart(2, '0');
+                const formattedMinute = currentMinute.toString().padStart(2, '0');
+
+                alert(`Checked out at ${formattedHour}:${formattedMinute}\nTotal work duration: ${duration}`);
+
+                // Reset check-in time
+                checkInTime = null;
+            });
+
+            // Helper functions for button state management
+            function enableCheckIn() {
+                if (!checkInTime) {
+                    checkInBtn.disabled = false;
+                    checkInBtn.classList.remove('disabled');
+                    checkOutBtn.disabled = true;
+                    checkOutBtn.classList.add('disabled');
+                }
+            }
+
+            function enableCheckOut() {
+                if (checkInTime && !checkOutScheduled) {
+                    checkOutBtn.disabled = false;
+                    checkOutBtn.classList.remove('disabled');
+                }
+            }
+
+            // Initial update
+            updateGaugeToCurrentTime();
+
+            // Update gauge every minute
+            setInterval(updateGaugeToCurrentTime, 60000);
+
+            // Also update on page load and when user returns to the page
+            window.addEventListener('focus', updateGaugeToCurrentTime);
+
+            // Initial button state
+            enableCheckIn();
+        });
+
+        // Keep the existing modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
             const modal = document.getElementById('backofficeModal');
             const modalTriggers = document.querySelectorAll('[data-open-modal="backoffice"]');
             const closeModal = modal.querySelector('.close-modal');
@@ -255,4 +439,3 @@
     </script>
 </body>
 </html>
-
