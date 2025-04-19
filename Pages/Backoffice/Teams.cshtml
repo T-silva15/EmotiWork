@@ -1,0 +1,456 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.TeamsModel
+@{
+    ViewData["Title"] = "Gerir Equipas - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-teams.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom active">
+                    <a href="#" class="nav-link" data-open-modal="backoffice">
+                        <i class="fas fa-tools"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container teams-management-container">
+            <div class="teams-header">
+                <h1 class="page-title">BACKOFFICE - GERIR EQUIPAS</h1>
+                <button id="addTeamBtn" class="add-team-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="teams-table-container">
+                <table class="teams-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Departamento</th>
+                            <th>Questionários Associados</th>
+                            <th>Nº Colaboradores</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark01</td>
+                            <td>Marketing</td>
+                            <td>Q-Marketing</td>
+                            <td>5</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar equipa">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar equipa">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dev02</td>
+                            <td>Desenvolvimento</td>
+                            <td>Q-Desenvolvimento</td>
+                            <td>8</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar equipa">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar equipa">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>HR03</td>
+                            <td>Recursos Humanos</td>
+                            <td>Q-RH</td>
+                            <td>3</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar equipa">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar equipa">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fin04</td>
+                            <td>Finanças</td>
+                            <td>Q-Finanças</td>
+                            <td>4</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar equipa">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar equipa">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sup05</td>
+                            <td>Suporte</td>
+                            <td>Q-Suporte</td>
+                            <td>6</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar equipa">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar equipa">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Team Modal (For both Add and Edit) -->
+    <div id="addTeamModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Adicionar Equipa</h1>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addTeamForm" class="team-form">
+                    <div class="form-group">
+                        <label for="teamName">Nome da Equipa</label>
+                        <input type="text" id="teamName" name="teamName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamDepartment">Departamento</label>
+                        <select id="teamDepartment" name="teamDepartment" class="form-control" required>
+                            <option value="">Selecione um departamento</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Desenvolvimento">Desenvolvimento</option>
+                            <option value="Recursos Humanos">Recursos Humanos</option>
+                            <option value="Finanças">Finanças</option>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Vendas">Vendas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamQuestionnaire">Questionário Associado</label>
+                        <select id="teamQuestionnaire" name="teamQuestionnaire" class="form-control" required>
+                            <option value="">Selecione um questionário</option>
+                            <option value="Q-Marketing">Q-Marketing</option>
+                            <option value="Q-Desenvolvimento">Q-Desenvolvimento</option>
+                            <option value="Q-RH">Q-RH</option>
+                            <option value="Q-Finanças">Q-Finanças</option>
+                            <option value="Q-Suporte">Q-Suporte</option>
+                            <option value="Q-Geral">Q-Geral</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Membros da Equipa</label>
+                        <div class="team-members-selector">
+                            <div class="available-members">
+                                <h3>Colaboradores Disponíveis</h3>
+                                <div class="members-list">
+                                    <div class="member-item">
+                                        <input type="checkbox" id="member1" name="members[]" value="1">
+                                        <label for="member1">Ana Silva</label>
+                                    </div>
+                                    <div class="member-item">
+                                        <input type="checkbox" id="member2" name="members[]" value="2">
+                                        <label for="member2">Carlos Santos</label>
+                                    </div>
+                                    <div class="member-item">
+                                        <input type="checkbox" id="member3" name="members[]" value="3">
+                                        <label for="member3">Sofia Oliveira</label>
+                                    </div>
+                                    <div class="member-item">
+                                        <input type="checkbox" id="member4" name="members[]" value="4">
+                                        <label for="member4">Miguel Costa</label>
+                                    </div>
+                                    <div class="member-item">
+                                        <input type="checkbox" id="member5" name="members[]" value="5">
+                                        <label for="member5">Joana Martins</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel close-modal-btn">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const modal = document.getElementById('addTeamModal');
+            const modalTitle = modal.querySelector('.modal-title');
+            const addTeamBtn = document.getElementById('addTeamBtn');
+            const closeModal = modal.querySelector('.close-modal');
+            const cancelBtn = modal.querySelector('.btn-cancel');
+            const teamForm = document.getElementById('addTeamForm');
+            const submitBtn = document.querySelector('.btn-submit');
+
+            // Variables to track if we're editing or adding
+            let isEditing = false;
+            let currentTeamRow = null;
+
+            // Open modal when add button is clicked
+            addTeamBtn.addEventListener('click', function() {
+                // Reset form and set title for adding
+                teamForm.reset();
+                modalTitle.textContent = 'Adicionar Equipa';
+                submitBtn.textContent = 'Adicionar';
+                isEditing = false;
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                closeModalFunction();
+            });
+
+            // Close modal when Cancel button is clicked
+            cancelBtn.addEventListener('click', function() {
+                closeModalFunction();
+            });
+
+            // Function to close the modal
+            function closeModalFunction() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                teamForm.reset();
+            }
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunction();
+                }
+            });
+
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalFunction();
+                }
+            });
+
+            // Handle form submission (just for visual demo)
+            teamForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const teamName = document.getElementById('teamName').value;
+                const teamDepartment = document.getElementById('teamDepartment').value;
+                const teamQuestionnaire = document.getElementById('teamQuestionnaire').value;
+
+                // Count checked members
+                const checkedMembers = document.querySelectorAll('.member-item input:checked').length;
+
+                // In a real implementation, you would send this data to the server
+                if (isEditing && currentTeamRow) {
+                    // Update existing row with new values
+                    const cells = currentTeamRow.querySelectorAll('td');
+                    cells[0].textContent = teamName;
+                    cells[1].textContent = teamDepartment;
+                    cells[2].textContent = teamQuestionnaire;
+                    cells[3].textContent = checkedMembers;
+
+                    alert('Equipa atualizada com sucesso!');
+                } else {
+                    // Create a new row
+                    const tableBody = document.querySelector('.teams-table tbody');
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${teamName}</td>
+                        <td>${teamDepartment}</td>
+                        <td>${teamQuestionnaire}</td>
+                        <td>${checkedMembers}</td>
+                        <td class="actions-cell">
+                            <button class="delete-btn" title="Eliminar equipa">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="edit-btn" title="Editar equipa">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    `;
+
+                    // Add event listeners to the new buttons
+                    const newDeleteBtn = newRow.querySelector('.delete-btn');
+                    const newEditBtn = newRow.querySelector('.edit-btn');
+
+                    addDeleteEventListener(newDeleteBtn);
+                    addEditEventListener(newEditBtn);
+
+                    tableBody.appendChild(newRow);
+                    alert('Equipa adicionada com sucesso!');
+                }
+
+                closeModalFunction();
+            });
+
+            // Function to add delete event listener
+            function addDeleteEventListener(button) {
+                button.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja excluir esta equipa?')) {
+                        this.closest('tr').remove();
+                    }
+                });
+            }
+
+            // Function to add edit event listener
+            function addEditEventListener(button) {
+                button.addEventListener('click', function() {
+                    currentTeamRow = this.closest('tr');
+                    const cells = currentTeamRow.querySelectorAll('td');
+
+                    // Get data from the row
+                    const name = cells[0].textContent;
+                    const department = cells[1].textContent;
+                    const questionnaire = cells[2].textContent;
+                    const memberCount = parseInt(cells[3].textContent, 10);
+
+                    // Set form values
+                    document.getElementById('teamName').value = name;
+                    document.getElementById('teamDepartment').value = department;
+                    document.getElementById('teamQuestionnaire').value = questionnaire;
+
+                    // Check random members (for demo purposes)
+                    // In a real application, you'd fetch the actual team members
+                    const checkboxes = document.querySelectorAll('.member-item input[type="checkbox"]');
+
+                    // Clear all checkboxes first
+                    checkboxes.forEach(cb => cb.checked = false);
+
+                    // Check a number of random checkboxes equal to the team member count
+                    const availableCheckboxes = Array.from(checkboxes);
+                    for (let i = 0; i < Math.min(memberCount, availableCheckboxes.length); i++) {
+                        const randomIndex = Math.floor(Math.random() * availableCheckboxes.length);
+                        availableCheckboxes[randomIndex].checked = true;
+                        availableCheckboxes.splice(randomIndex, 1);
+                    }
+
+                    // Update modal for editing
+                    modalTitle.textContent = 'Editar Equipa';
+                    submitBtn.textContent = 'Atualizar';
+                    isEditing = true;
+
+                    // Show the modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Add event listeners to existing delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                addDeleteEventListener(button);
+            });
+
+            // Add event listeners to existing edit buttons
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                addEditEventListener(button);
+            });
+        });
+    </script>
+</body>
+</html>
