@@ -1,0 +1,510 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.DepartmentsModel
+@{
+    ViewData["Title"] = "Gerir Departamentos - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-departments.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom active">
+                    <a href="#" class="nav-link" data-open-modal="backoffice">
+                        <i class="fas fa-tools"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container departments-management-container">
+            <div class="departments-header">
+                <h1 class="page-title">BACKOFFICE - GERIR DEPARTAMENTOS</h1>
+                <button id="addDepartmentBtn" class="add-department-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="departments-table-container">
+                <table class="departments-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Áreas</th>
+                            <th>Questionários Associados</th>
+                            <th>Nº Equipas</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vendas</td>
+                            <td>Vendas, Marketing</td>
+                            <td>Q-Marketing, Q-Vendas, Q-CargaHorária</td>
+                            <td>4</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar departamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar departamento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tecnologia</td>
+                            <td>Desenvolvimento, Infraestrutura, Suporte</td>
+                            <td>Q-Desenvolvimento, Q-Tecnologia</td>
+                            <td>3</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar departamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar departamento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Administrativo</td>
+                            <td>Finanças, RH, Legal</td>
+                            <td>Q-RH, Q-Administrativo</td>
+                            <td>3</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar departamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar departamento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Operações</td>
+                            <td>Logística, Produção</td>
+                            <td>Q-Operações</td>
+                            <td>2</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar departamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar departamento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marketing</td>
+                            <td>Digital, Produto</td>
+                            <td>Q-Marketing, Q-Produto</td>
+                            <td>2</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar departamento">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar departamento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Department Modal (For both Add and Edit) -->
+    <div id="departmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Adicionar Departamento</h1>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="departmentForm" class="department-form">
+                    <div class="form-group">
+                        <label for="departmentName">Nome do Departamento</label>
+                        <input type="text" id="departmentName" name="departmentName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departmentAreas">Áreas</label>
+                        <div class="areas-container">
+                            <div class="tags-input-container">
+                                <div id="areasTagsContainer" class="tags-container"></div>
+                                <input type="text" id="areasInput" class="areas-input" placeholder="Digite uma área e pressione Enter">
+                            </div>
+                            <input type="hidden" id="departmentAreas" name="departmentAreas">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Questionários Associados</label>
+                        <div class="questionnaires-selector">
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q1" name="questionnaires[]" value="Q-Marketing">
+                                <label for="q1">Q-Marketing</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q2" name="questionnaires[]" value="Q-Vendas">
+                                <label for="q2">Q-Vendas</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q3" name="questionnaires[]" value="Q-CargaHorária">
+                                <label for="q3">Q-CargaHorária</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q4" name="questionnaires[]" value="Q-Desenvolvimento">
+                                <label for="q4">Q-Desenvolvimento</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q5" name="questionnaires[]" value="Q-RH">
+                                <label for="q5">Q-RH</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q6" name="questionnaires[]" value="Q-Produto">
+                                <label for="q6">Q-Produto</label>
+                            </div>
+                            <div class="questionnaire-item">
+                                <input type="checkbox" id="q7" name="questionnaires[]" value="Q-Operações">
+                                <label for="q7">Q-Operações</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel close-modal-btn">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const modal = document.getElementById('departmentModal');
+            const modalTitle = modal.querySelector('.modal-title');
+            const addDepartmentBtn = document.getElementById('addDepartmentBtn');
+            const closeModal = modal.querySelector('.close-modal');
+            const cancelBtn = modal.querySelector('.btn-cancel');
+            const departmentForm = document.getElementById('departmentForm');
+            const submitBtn = document.querySelector('.btn-submit');
+            const areasInput = document.getElementById('areasInput');
+            const areasTagsContainer = document.getElementById('areasTagsContainer');
+            const departmentAreasInput = document.getElementById('departmentAreas');
+
+            // Variables to track if we're editing or adding
+            let isEditing = false;
+            let currentDepartmentRow = null;
+            let areasTags = [];
+
+            // Function to update the hidden input with all areas
+            function updateAreasInput() {
+                departmentAreasInput.value = areasTags.join(', ');
+            }
+
+            // Function to create a tag element
+            function createTag(text) {
+                const tag = document.createElement('div');
+                tag.classList.add('tag');
+
+                const tagText = document.createElement('span');
+                tagText.textContent = text;
+                tag.appendChild(tagText);
+
+                const closeBtn = document.createElement('span');
+                closeBtn.classList.add('close-tag');
+                closeBtn.innerHTML = '&times;';
+                closeBtn.addEventListener('click', function() {
+                    const index = areasTags.indexOf(text);
+                    if (index !== -1) {
+                        areasTags.splice(index, 1);
+                        areasTagsContainer.removeChild(tag);
+                        updateAreasInput();
+                    }
+                });
+
+                tag.appendChild(closeBtn);
+                return tag;
+            }
+
+            // Function to add a new tag
+            function addTag(text) {
+                text = text.trim();
+                if (text === '' || areasTags.includes(text)) return;
+
+                areasTags.push(text);
+                areasTagsContainer.appendChild(createTag(text));
+                updateAreasInput();
+            }
+
+            // Handle areas input
+            areasInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ',') {
+                    e.preventDefault();
+                    addTag(this.value);
+                    this.value = '';
+                }
+            });
+
+            // Open modal when add button is clicked
+            addDepartmentBtn.addEventListener('click', function() {
+                // Reset form and set title for adding
+                departmentForm.reset();
+                modalTitle.textContent = 'Adicionar Departamento';
+                submitBtn.textContent = 'Adicionar';
+                isEditing = false;
+
+                // Clear areas tags
+                areasTagsContainer.innerHTML = '';
+                areasTags = [];
+                updateAreasInput();
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                closeModalFunction();
+            });
+
+            // Close modal when Cancel button is clicked
+            cancelBtn.addEventListener('click', function() {
+                closeModalFunction();
+            });
+
+            // Function to close the modal
+            function closeModalFunction() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                departmentForm.reset();
+                areasTagsContainer.innerHTML = '';
+                areasTags = [];
+            }
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunction();
+                }
+            });
+
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalFunction();
+                }
+            });
+
+            // Handle form submission (just for visual demo)
+            departmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const departmentName = document.getElementById('departmentName').value;
+                const areas = areasTags.join(', ');
+
+                // Get selected questionnaires
+                const selectedQuestionnaires = [];
+                document.querySelectorAll('.questionnaire-item input:checked').forEach(checkbox => {
+                    selectedQuestionnaires.push(checkbox.value);
+                });
+                const questionnaires = selectedQuestionnaires.join(', ');
+
+                // For demonstration purposes, we'll set a random number of teams
+                const numTeams = isEditing ?
+                    parseInt(currentDepartmentRow.querySelector('td:nth-child(4)').textContent, 10) :
+                    Math.floor(Math.random() * 5) + 1;
+
+                // In a real implementation, you would send this data to the server
+                if (isEditing && currentDepartmentRow) {
+                    // Update existing row with new values
+                    const cells = currentDepartmentRow.querySelectorAll('td');
+                    cells[0].textContent = departmentName;
+                    cells[1].textContent = areas;
+                    cells[2].textContent = questionnaires;
+                    // We don't update the number of teams in edit mode
+
+                    alert('Departamento atualizado com sucesso!');
+                } else {
+                    // Create a new row
+                    const tableBody = document.querySelector('.departments-table tbody');
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${departmentName}</td>
+                        <td>${areas}</td>
+                        <td>${questionnaires}</td>
+                        <td>${numTeams}</td>
+                        <td class="actions-cell">
+                            <button class="delete-btn" title="Eliminar departamento">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="edit-btn" title="Editar departamento">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    `;
+
+                    // Add event listeners to the new buttons
+                    const newDeleteBtn = newRow.querySelector('.delete-btn');
+                    const newEditBtn = newRow.querySelector('.edit-btn');
+
+                    addDeleteEventListener(newDeleteBtn);
+                    addEditEventListener(newEditBtn);
+
+                    tableBody.appendChild(newRow);
+                    alert('Departamento adicionado com sucesso!');
+                }
+
+                closeModalFunction();
+            });
+
+            // Function to add delete event listener
+            function addDeleteEventListener(button) {
+                button.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja excluir este departamento?')) {
+                        this.closest('tr').remove();
+                    }
+                });
+            }
+
+            // Function to add edit event listener
+            function addEditEventListener(button) {
+                button.addEventListener('click', function() {
+                    currentDepartmentRow = this.closest('tr');
+                    const cells = currentDepartmentRow.querySelectorAll('td');
+
+                    // Get data from the row
+                    const name = cells[0].textContent;
+                    const areas = cells[1].textContent;
+                    const questionnaires = cells[2].textContent.split(', ');
+
+                    // Set form values
+                    document.getElementById('departmentName').value = name;
+
+                    // Set areas as tags
+                    areasTagsContainer.innerHTML = '';
+                    areasTags = [];
+                    if (areas) {
+                        const areasList = areas.split(', ');
+                        areasList.forEach(area => {
+                            addTag(area);
+                        });
+                    }
+
+                    // Set questionnaires checkboxes
+                    document.querySelectorAll('.questionnaire-item input').forEach(checkbox => {
+                        checkbox.checked = questionnaires.includes(checkbox.value);
+                    });
+
+                    // Update modal for editing
+                    modalTitle.textContent = 'Editar Departamento';
+                    submitBtn.textContent = 'Atualizar';
+                    isEditing = true;
+
+                    // Show the modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Add event listeners to existing delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                addDeleteEventListener(button);
+            });
+
+            // Add event listeners to existing edit buttons
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                addEditEventListener(button);
+            });
+        });
+    </script>
+</body>
+</html>
+

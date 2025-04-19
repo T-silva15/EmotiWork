@@ -1,0 +1,406 @@
+﻿/* Backoffice Departments Management Styles */
+.departments-management-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    width: 100%;
+}
+
+.departments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.add-department-btn {
+    background-color: #FFD699;
+    border: none;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+    .add-department-btn:hover {
+        background-color: #FFB347;
+        transform: translateY(-3px);
+    }
+
+/* Departments Table Styles */
+.departments-table-container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #FFEFD5;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.departments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .departments-table th,
+    .departments-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #FFE4B5;
+    }
+
+    .departments-table th {
+        background-color: #FFD699;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .departments-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .departments-table tr:hover {
+        background-color: #FFF5E6;
+    }
+
+/* Table Actions Cell */
+.actions-cell {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.delete-btn,
+.edit-btn {
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn {
+    background-color: #FFE4E1;
+    color: #FF6347;
+}
+
+    .delete-btn:hover {
+        background-color: #FF6347;
+        color: white;
+    }
+
+.edit-btn {
+    background-color: #E6F7FF;
+    color: #1890FF;
+}
+
+    .edit-btn:hover {
+        background-color: #1890FF;
+        color: white;
+    }
+
+/* Modal Styles (reused from backoffice-teams.css but with departments-specific additions) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: #f5f5f5;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.2s;
+}
+
+    .close-modal:hover {
+        color: #333;
+    }
+
+/* Form Styles */
+.department-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+.form-control {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: #97CAEC;
+        box-shadow: 0 0 0 2px rgba(151, 202, 236, 0.2);
+    }
+
+/* Areas Tags Input */
+.areas-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.tags-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #E6F7FF;
+    border: 1px solid #97CAEC;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.close-tag {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    font-size: 16px;
+}
+
+    .close-tag:hover {
+        color: #333;
+    }
+
+.areas-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+    .areas-input:focus {
+        outline: none;
+        border-color: #97CAEC;
+    }
+
+/* Questionnaire Selector */
+.questionnaires-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.questionnaire-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .questionnaire-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
+
+    .questionnaire-item label {
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-cancel {
+    background-color: #f5f5f5;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+    .btn-cancel:hover {
+        background-color: #eee;
+    }
+
+.btn-submit {
+    background-color: #97CAEC;
+    color: #333;
+}
+
+    .btn-submit:hover {
+        background-color: #7AB5D7;
+    }
+
+/* Modal Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .departments-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .add-department-btn {
+        align-self: flex-end;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .questionnaires-selector {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .departments-table-container {
+        overflow-x: auto;
+    }
+
+    .departments-table th,
+    .departments-table td {
+        padding: 10px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .departments-management-container {
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}
