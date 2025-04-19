@@ -1,0 +1,575 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.UsersModel
+@{
+    ViewData["Title"] = "Gerir Utilizadores - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-users.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container users-management-container">
+            <div class="users-header">
+                <h1 class="page-title">BACKOFFICE - GERIR UTILIZADORES</h1>
+                <button id="addUserBtn" class="add-user-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="users-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Equipa</th>
+                            <th>Departamento</th>
+                            <th>Valor de Humor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>João Carlos</td>
+                            <td>jcarlos@utad.pt</td>
+                            <td>Mark01</td>
+                            <td>Vendas</td>
+                            <td>77.24</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar utilizador">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar utilizador">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ana Silva</td>
+                            <td>asilva@utad.pt</td>
+                            <td>Dev02</td>
+                            <td>Tecnologia</td>
+                            <td>85.10</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar utilizador">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar utilizador">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maria Oliveira</td>
+                            <td>moliveira@utad.pt</td>
+                            <td>HR03</td>
+                            <td>Recursos Humanos</td>
+                            <td>68.75</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar utilizador">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar utilizador">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Santos</td>
+                            <td>csantos@utad.pt</td>
+                            <td>Fin04</td>
+                            <td>Finanças</td>
+                            <td>72.33</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar utilizador">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar utilizador">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sofia Martins</td>
+                            <td>smartins@utad.pt</td>
+                            <td>Mark01</td>
+                            <td>Vendas</td>
+                            <td>81.92</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar utilizador">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar utilizador">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- User Modal (For both Add and Edit) -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Adicionar Utilizador</h1>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="userForm" class="user-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userName">Nome Completo</label>
+                            <input type="text" id="userName" name="userName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" name="userEmail" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userTeam">Equipa</label>
+                            <select id="userTeam" name="userTeam" class="form-control" required>
+                                <option value="">Selecione uma equipa</option>
+                                <option value="Mark01">Mark01</option>
+                                <option value="Dev02">Dev02</option>
+                                <option value="HR03">HR03</option>
+                                <option value="Fin04">Fin04</option>
+                                <option value="Sup05">Sup05</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userDepartment">Departamento</label>
+                            <select id="userDepartment" name="userDepartment" class="form-control" required>
+                                <option value="">Selecione um departamento</option>
+                                <option value="Vendas">Vendas</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Recursos Humanos">Recursos Humanos</option>
+                                <option value="Finanças">Finanças</option>
+                                <option value="Suporte">Suporte</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userRole">Cargo</label>
+                            <input type="text" id="userRole" name="userRole" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userPhone">Telefone</label>
+                            <input type="tel" id="userPhone" name="userPhone" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userPassword">Password</label>
+                            <input type="password" id="userPassword" name="userPassword" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userConfirmPassword">Confirmar Password</label>
+                            <input type="password" id="userConfirmPassword" name="userConfirmPassword" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permissões</label>
+                        <div class="permissions-container">
+                            <div class="permission-item">
+                                <input type="checkbox" id="permAdmin" name="permissions[]" value="admin">
+                                <label for="permAdmin">Administrador</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="permManager" name="permissions[]" value="manager">
+                                <label for="permManager">Gestor</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="permReports" name="permissions[]" value="reports">
+                                <label for="permReports">Ver Relatórios</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="permTeamLead" name="permissions[]" value="teamlead">
+                                <label for="permTeamLead">Líder de Equipa</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="permUser" name="permissions[]" value="user" checked>
+                                <label for="permUser">Utilizador Regular</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel close-modal-btn">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const modal = document.getElementById('userModal');
+            const modalTitle = modal.querySelector('.modal-title');
+            const addUserBtn = document.getElementById('addUserBtn');
+            const closeModal = modal.querySelector('.close-modal');
+            const cancelBtn = modal.querySelector('.btn-cancel');
+            const userForm = document.getElementById('userForm');
+            const submitBtn = document.querySelector('.btn-submit');
+            const passwordFields = document.querySelectorAll('#userPassword, #userConfirmPassword');
+            
+            // Variables to track if we're editing or adding
+            let isEditing = false;
+            let currentUserRow = null;
+            
+            // Function to update department options based on selected team
+            function updateDepartmentOptions(selectedTeam) {
+                const departmentSelect = document.getElementById('userDepartment');
+                
+                // Clear current options except first one
+                const defaultOption = departmentSelect.options[0];
+                departmentSelect.innerHTML = '';
+                departmentSelect.appendChild(defaultOption);
+                
+                // Add departments based on team
+                if (selectedTeam === "Mark01") {
+                    addOption(departmentSelect, "Vendas", "Vendas");
+                    addOption(departmentSelect, "Marketing", "Marketing");
+                } else if (selectedTeam === "Dev02") {
+                    addOption(departmentSelect, "Tecnologia", "Tecnologia");
+                } else if (selectedTeam === "HR03") {
+                    addOption(departmentSelect, "Recursos Humanos", "Recursos Humanos");
+                } else if (selectedTeam === "Fin04") {
+                    addOption(departmentSelect, "Finanças", "Finanças");
+                } else if (selectedTeam === "Sup05") {
+                    addOption(departmentSelect, "Suporte", "Suporte");
+                } else {
+                    // All departments if no team selected
+                    addOption(departmentSelect, "Vendas", "Vendas");
+                    addOption(departmentSelect, "Marketing", "Marketing");
+                    addOption(departmentSelect, "Tecnologia", "Tecnologia");
+                    addOption(departmentSelect, "Recursos Humanos", "Recursos Humanos");
+                    addOption(departmentSelect, "Finanças", "Finanças");
+                    addOption(departmentSelect, "Suporte", "Suporte");
+                }
+            }
+            
+            // Helper function to add options to select
+            function addOption(selectElement, value, text) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = text;
+                selectElement.appendChild(option);
+            }
+            
+            // Add team select event listener
+            document.getElementById('userTeam').addEventListener('change', function() {
+                updateDepartmentOptions(this.value);
+            });
+            
+            // Open modal when add button is clicked
+            addUserBtn.addEventListener('click', function() {
+                // Reset form and set title for adding
+                userForm.reset();
+                modalTitle.textContent = 'Adicionar Utilizador';
+                submitBtn.textContent = 'Adicionar';
+                isEditing = false;
+                
+                // Enable password fields for new users
+                passwordFields.forEach(field => {
+                    field.required = true;
+                    field.disabled = false;
+                });
+                
+                // Reset departments
+                updateDepartmentOptions('');
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+            
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                closeModalFunction();
+            });
+            
+            // Close modal when Cancel button is clicked
+            cancelBtn.addEventListener('click', function() {
+                closeModalFunction();
+            });
+            
+            // Function to close the modal
+            function closeModalFunction() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunction();
+                }
+            });
+            
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalFunction();
+                }
+            });
+            
+            // Password validation
+            userForm.addEventListener('submit', function(e) {
+                const password = document.getElementById('userPassword').value;
+                const confirmPassword = document.getElementById('userConfirmPassword').value;
+                
+                // Check passwords match if they're required
+                if (password !== confirmPassword && !isEditing) {
+                    e.preventDefault();
+                    alert('As passwords não correspondem.');
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Handle form submission (just for visual demo)
+            userForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Only validate passwords for new users
+                if (!isEditing) {
+                    const password = document.getElementById('userPassword').value;
+                    const confirmPassword = document.getElementById('userConfirmPassword').value;
+                    
+                    if (password !== confirmPassword) {
+                        alert('As passwords não correspondem.');
+                        return;
+                    }
+                    
+                    if (password.length < 6) {
+                        alert('A password deve ter pelo menos 6 caracteres.');
+                        return;
+                    }
+                }
+                
+                const userName = document.getElementById('userName').value;
+                const userEmail = document.getElementById('userEmail').value;
+                const userTeam = document.getElementById('userTeam').value;
+                const userDepartment = document.getElementById('userDepartment').value;
+                
+                // Generate random mood value for demo
+                const moodValue = (Math.random() * (90 - 60) + 60).toFixed(2);
+                
+                // In a real implementation, you would send this data to the server
+                if (isEditing && currentUserRow) {
+                    // Update existing row with new values
+                    const cells = currentUserRow.querySelectorAll('td');
+                    cells[0].textContent = userName;
+                    cells[1].textContent = userEmail;
+                    cells[2].textContent = userTeam;
+                    cells[3].textContent = userDepartment;
+                    // Don't update the mood value when editing
+                    
+                    alert('Utilizador atualizado com sucesso!');
+                } else {
+                    // Create a new row
+                    const tableBody = document.querySelector('.users-table tbody');
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${userName}</td>
+                        <td>${userEmail}</td>
+                        <td>${userTeam}</td>
+                        <td>${userDepartment}</td>
+                        <td>${moodValue}</td>
+                        <td class="actions-cell">
+                            <button class="delete-btn" title="Eliminar utilizador">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="edit-btn" title="Editar utilizador">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    // Add event listeners to the new buttons
+                    const newDeleteBtn = newRow.querySelector('.delete-btn');
+                    const newEditBtn = newRow.querySelector('.edit-btn');
+                    
+                    addDeleteEventListener(newDeleteBtn);
+                    addEditEventListener(newEditBtn);
+                    
+                    tableBody.appendChild(newRow);
+                    alert('Utilizador adicionado com sucesso!');
+                }
+                
+                closeModalFunction();
+            });
+            
+            // Function to add delete event listener
+            function addDeleteEventListener(button) {
+                button.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja excluir este utilizador?')) {
+                        this.closest('tr').remove();
+                    }
+                });
+            }
+            
+            // Function to add edit event listener
+            function addEditEventListener(button) {
+                button.addEventListener('click', function() {
+                    currentUserRow = this.closest('tr');
+                    const cells = currentUserRow.querySelectorAll('td');
+                    
+                    // Get data from the row
+                    const name = cells[0].textContent;
+                    const email = cells[1].textContent;
+                    const team = cells[2].textContent;
+                    const department = cells[3].textContent;
+                    
+                    // Set form values
+                    document.getElementById('userName').value = name;
+                    document.getElementById('userEmail').value = email;
+                    document.getElementById('userTeam').value = team;
+                    
+                    // Update department options based on team
+                    updateDepartmentOptions(team);
+                    document.getElementById('userDepartment').value = department;
+                    
+                    // For demo purposes set a placeholder role and phone
+                    document.getElementById('userRole').value = team == "Mark01" ? "Marketing Specialist" : 
+                                                              team == "Dev02" ? "Developer" :
+                                                              team == "HR03" ? "HR Associate" :
+                                                              team == "Fin04" ? "Financial Analyst" : "Support Specialist";
+                    document.getElementById('userPhone').value = "9" + Math.floor(10000000 + Math.random() * 90000000);
+                    
+                    // Disable password fields when editing
+                    passwordFields.forEach(field => {
+                        field.required = false;
+                        field.disabled = true;
+                        field.value = '';
+                    });
+                    
+                    // Update modal for editing
+                    modalTitle.textContent = 'Editar Utilizador';
+                    submitBtn.textContent = 'Atualizar';
+                    isEditing = true;
+                    
+                    // Show the modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Add event listeners to existing delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                addDeleteEventListener(button);
+            });
+            
+            // Add event listeners to existing edit buttons
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                addEditEventListener(button);
+            });
+        });
+    </script>
+</body>
+</html>
+

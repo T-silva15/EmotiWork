@@ -1,0 +1,609 @@
+﻿@page
+@model EmotiWork.Pages.Backoffice.QuestionnairesModel
+@{
+    ViewData["Title"] = "Gerir Questionários - EmotiWork";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/backoffice-questionnaires.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">ADM</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container questionnaires-management-container">
+            <div class="questionnaires-header">
+                <h1 class="page-title">BACKOFFICE - GERIR QUESTIONÁRIOS</h1>
+                <button id="addQuestionnaireBtn" class="add-questionnaire-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="questionnaires-table-container">
+                <table class="questionnaires-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Nº Perguntas</th>
+                            <th>Área</th>
+                            <th>Última Realização</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q-Marketing</td>
+                            <td>8</td>
+                            <td>Vendas</td>
+                            <td>28-03-2025</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar questionário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar questionário">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Q-Desenvolvimento</td>
+                            <td>10</td>
+                            <td>Tecnologia</td>
+                            <td>25-03-2025</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar questionário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar questionário">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Q-RH</td>
+                            <td>6</td>
+                            <td>Recursos Humanos</td>
+                            <td>27-03-2025</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar questionário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar questionário">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Q-Finanças</td>
+                            <td>5</td>
+                            <td>Finanças</td>
+                            <td>21-03-2025</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar questionário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar questionário">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Q-CargaHorária</td>
+                            <td>4</td>
+                            <td>Geral</td>
+                            <td>15-03-2025</td>
+                            <td class="actions-cell">
+                                <button class="delete-btn" title="Eliminar questionário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <button class="edit-btn" title="Editar questionário">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Questionnaire Modal (For both Add and Edit) -->
+    <div id="questionnaireModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Adicionar Questionário</h1>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="questionnaireForm" class="questionnaire-form">
+                    <div class="form-group">
+                        <label for="questionnaireName">Nome do Questionário</label>
+                        <input type="text" id="questionnaireName" name="questionnaireName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="questionnaireArea">Área</label>
+                        <select id="questionnaireArea" name="questionnaireArea" class="form-control" required>
+                            <option value="">Selecione uma área</option>
+                            <option value="Vendas">Vendas</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="Recursos Humanos">Recursos Humanos</option>
+                            <option value="Finanças">Finanças</option>
+                            <option value="Geral">Geral</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Perguntas</label>
+                        <div id="questions-container">
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-number">Pergunta 1</span>
+                                    <button type="button" class="remove-question-btn">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="question-input-group">
+                                    <input type="text" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
+                                </div>
+                                <div class="answer-type-select">
+                                    <label>Tipo de Resposta:</label>
+                                    <select name="answerTypes[]" class="form-control answer-type">
+                                        <option value="text">Texto</option>
+                                        <option value="multiplechoice">Escolha Múltipla</option>
+                                        <option value="emotion">Emoção</option>
+                                        <option value="scale">Escala (1-10)</option>
+                                    </select>
+                                </div>
+                                <div class="options-container" style="display: none;">
+                                    <label>Opções:</label>
+                                    <div class="options-list">
+                                        <div class="option-input">
+                                            <input type="text" class="form-control" placeholder="Opção 1">
+                                            <button type="button" class="remove-option-btn">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="add-option-btn">
+                                        <i class="fas fa-plus"></i> Adicionar Opção
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="add-question-btn" class="btn btn-secondary">
+                            <i class="fas fa-plus"></i> Adicionar Pergunta
+                        </button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel close-modal-btn">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const modal = document.getElementById('questionnaireModal');
+            const modalTitle = modal.querySelector('.modal-title');
+            const addQuestionnaireBtn = document.getElementById('addQuestionnaireBtn');
+            const closeModal = modal.querySelector('.close-modal');
+            const cancelBtn = modal.querySelector('.btn-cancel');
+            const questionnaireForm = document.getElementById('questionnaireForm');
+            const submitBtn = document.querySelector('.btn-submit');
+            const addQuestionBtn = document.getElementById('add-question-btn');
+            const questionsContainer = document.getElementById('questions-container');
+            
+            // Variables to track if we're editing or adding
+            let isEditing = false;
+            let currentQuestionnaireRow = null;
+            let questionCounter = 1;
+
+            // Function to create a new question item
+            function createQuestionItem() {
+                questionCounter++;
+                const questionItem = document.createElement('div');
+                questionItem.className = 'question-item';
+                questionItem.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">Pergunta ${questionCounter}</span>
+                        <button type="button" class="remove-question-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="question-input-group">
+                        <input type="text" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
+                    </div>
+                    <div class="answer-type-select">
+                        <label>Tipo de Resposta:</label>
+                        <select name="answerTypes[]" class="form-control answer-type">
+                            <option value="text">Texto</option>
+                            <option value="multiplechoice">Escolha Múltipla</option>
+                            <option value="emotion">Emoção</option>
+                            <option value="scale">Escala (1-10)</option>
+                        </select>
+                    </div>
+                    <div class="options-container" style="display: none;">
+                        <label>Opções:</label>
+                        <div class="options-list">
+                            <div class="option-input">
+                                <input type="text" class="form-control" placeholder="Opção 1">
+                                <button type="button" class="remove-option-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-option-btn">
+                            <i class="fas fa-plus"></i> Adicionar Opção
+                        </button>
+                    </div>
+                `;
+
+                // Add event listeners for the new question item
+                const answerTypeSelect = questionItem.querySelector('.answer-type');
+                answerTypeSelect.addEventListener('change', function() {
+                    const optionsContainer = this.parentElement.nextElementSibling;
+                    if (this.value === 'multiplechoice') {
+                        optionsContainer.style.display = 'block';
+                    } else {
+                        optionsContainer.style.display = 'none';
+                    }
+                });
+
+                const removeQuestionBtn = questionItem.querySelector('.remove-question-btn');
+                removeQuestionBtn.addEventListener('click', function() {
+                    questionsContainer.removeChild(questionItem);
+                    updateQuestionNumbers();
+                });
+
+                const addOptionBtn = questionItem.querySelector('.add-option-btn');
+                addOptionBtn.addEventListener('click', function() {
+                    const optionsList = this.previousElementSibling;
+                    const optionsCount = optionsList.querySelectorAll('.option-input').length;
+                    
+                    const optionInput = document.createElement('div');
+                    optionInput.className = 'option-input';
+                    optionInput.innerHTML = `
+                        <input type="text" class="form-control" placeholder="Opção ${optionsCount + 1}">
+                        <button type="button" class="remove-option-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    const removeOptionBtn = optionInput.querySelector('.remove-option-btn');
+                    removeOptionBtn.addEventListener('click', function() {
+                        optionsList.removeChild(optionInput);
+                    });
+                    
+                    optionsList.appendChild(optionInput);
+                });
+
+                return questionItem;
+            }
+
+            // Function to update question numbers
+            function updateQuestionNumbers() {
+                const questionItems = questionsContainer.querySelectorAll('.question-item');
+                questionCounter = questionItems.length;
+                questionItems.forEach((item, index) => {
+                    item.querySelector('.question-number').textContent = `Pergunta ${index + 1}`;
+                });
+            }
+
+            // Add question button event listener
+            addQuestionBtn.addEventListener('click', function() {
+                const newQuestion = createQuestionItem();
+                questionsContainer.appendChild(newQuestion);
+            });
+
+            // Set up initial event listeners for the first question
+            const answerTypeSelects = document.querySelectorAll('.answer-type');
+            answerTypeSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    const optionsContainer = this.parentElement.nextElementSibling;
+                    if (this.value === 'multiplechoice') {
+                        optionsContainer.style.display = 'block';
+                    } else {
+                        optionsContainer.style.display = 'none';
+                    }
+                });
+            });
+
+            const removeQuestionBtns = document.querySelectorAll('.remove-question-btn');
+            removeQuestionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (questionsContainer.querySelectorAll('.question-item').length > 1) {
+                        questionsContainer.removeChild(this.closest('.question-item'));
+                        updateQuestionNumbers();
+                    } else {
+                        alert('O questionário deve ter pelo menos uma pergunta.');
+                    }
+                });
+            });
+
+            const addOptionBtns = document.querySelectorAll('.add-option-btn');
+            addOptionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const optionsList = this.previousElementSibling;
+                    const optionsCount = optionsList.querySelectorAll('.option-input').length;
+                    
+                    const optionInput = document.createElement('div');
+                    optionInput.className = 'option-input';
+                    optionInput.innerHTML = `
+                        <input type="text" class="form-control" placeholder="Opção ${optionsCount + 1}">
+                        <button type="button" class="remove-option-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    const removeOptionBtn = optionInput.querySelector('.remove-option-btn');
+                    removeOptionBtn.addEventListener('click', function() {
+                        optionsList.removeChild(optionInput);
+                    });
+                    
+                    optionsList.appendChild(optionInput);
+                });
+            });
+
+            // Open modal when add button is clicked
+            addQuestionnaireBtn.addEventListener('click', function() {
+                // Reset form and set title for adding
+                questionnaireForm.reset();
+                modalTitle.textContent = 'Adicionar Questionário';
+                submitBtn.textContent = 'Adicionar';
+                isEditing = false;
+                
+                // Reset questions container to just one question
+                questionsContainer.innerHTML = '';
+                questionsContainer.appendChild(createQuestionItem());
+                questionCounter = 1;
+                updateQuestionNumbers();
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+            
+            // Close modal when X is clicked
+            closeModal.addEventListener('click', function() {
+                closeModalFunction();
+            });
+            
+            // Close modal when Cancel button is clicked
+            cancelBtn.addEventListener('click', function() {
+                closeModalFunction();
+            });
+            
+            // Function to close the modal
+            function closeModalFunction() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunction();
+                }
+            });
+            
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModalFunction();
+                }
+            });
+            
+            // Handle form submission (just for visual demo)
+            questionnaireForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const questionnaireName = document.getElementById('questionnaireName').value;
+                const questionnaireArea = document.getElementById('questionnaireArea').value;
+                const questionsCount = document.querySelectorAll('.question-item').length;
+                
+                // Generate current date for "last executed" field
+                const today = new Date();
+                const day = String(today.getDate()).padStart(2, '0');
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const year = today.getFullYear();
+                const formattedDate = day + '-' + month + '-' + year;
+                
+                // In a real implementation, you would send this data to the server
+                if (isEditing && currentQuestionnaireRow) {
+                    // Update existing row with new values
+                    const cells = currentQuestionnaireRow.querySelectorAll('td');
+                    cells[0].textContent = questionnaireName;
+                    cells[1].textContent = questionsCount;
+                    cells[2].textContent = questionnaireArea;
+                    // Don't update the last execution date when editing
+                    
+                    alert('Questionário atualizado com sucesso!');
+                } else {
+                    // Create a new row
+                    const tableBody = document.querySelector('.questionnaires-table tbody');
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${questionnaireName}</td>
+                        <td>${questionsCount}</td>
+                        <td>${questionnaireArea}</td>
+                        <td>${formattedDate}</td>
+                        <td class="actions-cell">
+                            <button class="delete-btn" title="Eliminar questionário">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="edit-btn" title="Editar questionário">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    // Add event listeners to the new buttons
+                    const newDeleteBtn = newRow.querySelector('.delete-btn');
+                    const newEditBtn = newRow.querySelector('.edit-btn');
+                    
+                    addDeleteEventListener(newDeleteBtn);
+                    addEditEventListener(newEditBtn);
+                    
+                    tableBody.appendChild(newRow);
+                    alert('Questionário adicionado com sucesso!');
+                }
+                
+                closeModalFunction();
+            });
+            
+            // Function to add delete event listener
+            function addDeleteEventListener(button) {
+                button.addEventListener('click', function() {
+                    if (confirm('Tem certeza que deseja excluir este questionário?')) {
+                        this.closest('tr').remove();
+                    }
+                });
+            }
+            
+            // Function to add edit event listener
+            function addEditEventListener(button) {
+                button.addEventListener('click', function() {
+                    currentQuestionnaireRow = this.closest('tr');
+                    const cells = currentQuestionnaireRow.querySelectorAll('td');
+                    
+                    // Get data from the row
+                    const name = cells[0].textContent;
+                    const questionsCount = parseInt(cells[1].textContent, 10);
+                    const area = cells[2].textContent;
+                    
+                    // Set form values
+                    document.getElementById('questionnaireName').value = name;
+                    document.getElementById('questionnaireArea').value = area;
+                    
+                    // Reset questions container
+                    questionsContainer.innerHTML = '';
+                    
+                    // Add the appropriate number of question fields
+                    for (let i = 0; i < questionsCount; i++) {
+                        const newQuestion = createQuestionItem();
+                        
+                        // Set some placeholder questions for demo purposes
+                        if (i === 0) newQuestion.querySelector('input[name="questions[]"]').value = "Como te sentiste hoje?";
+                        if (i === 1) newQuestion.querySelector('input[name="questions[]"]').value = "O que causou esse sentimento?";
+                        if (i === 2) newQuestion.querySelector('input[name="questions[]"]').value = "Como foi o teu dia de trabalho?";
+                        
+                        questionsContainer.appendChild(newQuestion);
+                    }
+                    
+                    // Update question numbering
+                    updateQuestionNumbers();
+                    
+                    // Update modal for editing
+                    modalTitle.textContent = 'Editar Questionário';
+                    submitBtn.textContent = 'Atualizar';
+                    isEditing = true;
+                    
+                    // Show the modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Add event listeners to existing delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                addDeleteEventListener(button);
+            });
+            
+            // Add event listeners to existing edit buttons
+            const editButtons = document.querySelectorAll('.edit-btn');
+            editButtons.forEach(button => {
+                addEditEventListener(button);
+            });
+        });
+    </script>
+</body>
+</html>
