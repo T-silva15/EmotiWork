@@ -1,7 +1,7 @@
 @page
 @model EmotiWork.Pages.StatisticsModel
 @{
-    ViewData["Title"] = "Histórico/Estatísticas - EmotiWork";
+    ViewData["Title"] = "As Minhas Estatísticas - EmotiWork";
     Layout = null;
 }
 
@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="home-body">
-   <!-- Left Sidebar -->
+    <!-- Left Sidebar -->
     <aside class="sidebar-left">
         <nav class="sidebar-nav">
             <ul class="nav-items">
@@ -86,9 +86,9 @@
         <!-- Page Content -->
         <div class="content-container statistics-container">
             <div class="statistics-header">
-                <h1 class="page-title">HISTÓRICO/ESTATÍSTICAS</h1>
+                <h1 class="page-title">AS MINHAS ESTATÍSTICAS</h1>
                 <div class="period-selector">
-                    <select class="period-dropdown">
+                    <select id="periodFilter" class="period-dropdown">
                         <option selected>Semanal</option>
                         <option>Mensal</option>
                         <option>Trimestral</option>
@@ -97,32 +97,141 @@
                 </div>
             </div>
 
-            <div class="statistics-content">
-                <div class="statistics-summary">
-                    <h2>Estatísticas</h2>
-                    <ul class="stats-list">
-                        <li>Horas Trabalhadas: 20H</li>
-                        <li>Número de Tarefas Concluídas: 10</li>
-                        <li>Média de humor: 35</li>
-                        <li>Esta semana estás acima do humor médio da equipa</li>
-                        <li>Horas extra: 3H</li>
-                        <li>Horas totais da equipa: 100H</li>
-                        <li>Tarefas concluídas pela equipa: 50</li>
-                    </ul>
-                </div>
-
-                <div class="charts-container">
-                    <div class="charts-row">
-                        <div class="chart-item">
-                            <canvas id="pieChart1"></canvas>
-                        </div>
-                        <div class="chart-item">
-                            <canvas id="pieChart2"></canvas>
+            <!-- User Overview Cards -->
+            <div class="user-stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-title">Humor Médio</div>
+                        <div class="stat-value">35/40</div>
+                        <div class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 8%
                         </div>
                     </div>
-                    <div class="chart-row">
-                        <div class="chart-item wide">
-                            <canvas id="lineChart"></canvas>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-title">Taxa de Resposta</div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 5%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-title">Produtividade</div>
+                        <div class="stat-value">85%</div>
+                        <div class="stat-trend neutral">
+                            <i class="fas fa-minus"></i> 0%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-title">Horas Trabalhadas</div>
+                        <div class="stat-value">38h</div>
+                        <div class="stat-trend negative">
+                            <i class="fas fa-arrow-down"></i> 2h
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="statistics-content">
+                <!-- Main Statistics Content -->
+                <div class="statistics-main">
+                    <!-- Mood History Chart -->
+                    <div class="chart-container">
+                        <h2 class="chart-title">Histórico de Humor</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="moodHistoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Productivity vs Hours Chart -->
+                    <div class="chart-container">
+                        <h2 class="chart-title">Produtividade vs. Horas Trabalhadas</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="productivityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Emotion Distribution Pie Chart -->
+                    <div class="chart-container half-width">
+                        <h2 class="chart-title">Distribuição de Emoções</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="emotionPieChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Response Timeline Chart -->
+                    <div class="chart-container half-width">
+                        <h2 class="chart-title">Horários de Resposta</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="responseTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Summary Box -->
+                <div class="statistics-summary">
+                    <h2>O Meu Resumo</h2>
+                    <ul class="stats-list">
+                        <li>Horas Trabalhadas: 38h (esta semana)</li>
+                        <li>Tarefas Concluídas: 15</li>
+                        <li>Humor Médio: 35/40</li>
+                        <li>Questionários Respondidos: 5/5</li>
+                        <li>Horas Extra: 2h</li>
+                        <li>Melhor Dia: Terça-feira</li>
+                        <li>Dia Mais Desafiante: Segunda-feira</li>
+                    </ul>
+
+                    <!-- Personal Insights Section -->
+                    <div class="personal-insights">
+                        <h3>Insights Personalizados</h3>
+                        <div class="insight-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>O seu humor melhora significativamente após pausas regulares.</p>
+                        </div>
+                        <div class="insight-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>As tardes de quinta-feira são o seu período mais produtivo.</p>
+                        </div>
+                        <div class="insight-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>A sua produtividade aumenta 15% quando tem reuniões pela manhã.</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Items -->
+                    <div class="action-items">
+                        <h3>Ações Recomendadas</h3>
+                        <div class="action-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Agende pausas curtas de 5 minutos a cada hora.</p>
+                        </div>
+                        <div class="action-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Considere marcar reuniões para o período da manhã.</p>
+                        </div>
+                        <div class="action-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Dedique as quintas-feiras a tarefas que exigem maior concentração.</p>
                         </div>
                     </div>
                 </div>
@@ -141,110 +250,36 @@
     </main>
 
     <script>
-        // Sample data for charts (static mockup)
         document.addEventListener('DOMContentLoaded', function() {
-            // Pie Chart 1
-            const pieCtx1 = document.getElementById('pieChart1').getContext('2d');
-            const pieChart1 = new Chart(pieCtx1, {
-                type: 'pie',
-                data: {
-                    labels: ['José', 'António', 'Marco'],
-                    datasets: [{
-                        data: [62.5, 25, 12.5],
-                        backgroundColor: [
-                            'rgba(142, 236, 245, 0.8)',
-                            'rgba(75, 192, 192, 0.8)',
-                            'rgba(54, 162, 235, 0.8)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                generateLabels: function(chart) {
-                                    const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
-                                    const labels = original.call(this, chart);
-                                    
-                                    labels.forEach(label => {
-                                        const dataset = chart.data.datasets[0];
-                                        const value = dataset.data[label.index];
-                                        label.text = `${chart.data.labels[label.index]}\n${value}%`;
-                                    });
-                                    
-                                    return labels;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
+            // Period filter functionality
+            const periodFilter = document.getElementById('periodFilter');
 
-            // Pie Chart 2
-            const pieCtx2 = document.getElementById('pieChart2').getContext('2d');
-            const pieChart2 = new Chart(pieCtx2, {
-                type: 'pie',
-                data: {
-                    labels: ['José', 'António', 'Marco'],
-                    datasets: [{
-                        data: [62.5, 25, 12.5],
-                        backgroundColor: [
-                            'rgba(142, 236, 245, 0.8)',
-                            'rgba(75, 192, 192, 0.8)',
-                            'rgba(54, 162, 235, 0.8)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                generateLabels: function(chart) {
-                                    const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
-                                    const labels = original.call(this, chart);
-                                    
-                                    labels.forEach(label => {
-                                        const dataset = chart.data.datasets[0];
-                                        const value = dataset.data[label.index];
-                                        label.text = `${chart.data.labels[label.index]}\n${value}%`;
-                                    });
-                                    
-                                    return labels;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Line Chart
-            const lineCtx = document.getElementById('lineChart').getContext('2d');
-            const lineChart = new Chart(lineCtx, {
+            // Initialize Mood History Chart
+            const moodCtx = document.getElementById('moodHistoryChart').getContext('2d');
+            const moodHistoryChart = new Chart(moodCtx, {
                 type: 'line',
                 data: {
                     labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
                     datasets: [{
-                        label: 'Humor',
-                        data: [18, 27, 25, 35, 37],
+                        label: 'Nível de Humor',
+                        data: [28, 35, 32, 38, 40],
                         borderColor: 'rgb(75, 192, 192)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                        tension: 0.4
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.4,
+                        fill: true
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         y: {
-                            beginAtZero: true,
+                            beginAtZero: false,
+                            min: 20,
                             max: 40,
-                            ticks: {
-                                stepSize: 10
+                            title: {
+                                display: true,
+                                text: 'Nível de Humor (0-40)'
                             }
                         }
                     },
@@ -253,6 +288,197 @@
                             display: false
                         }
                     }
+                }
+            });
+
+            // Initialize Productivity vs Hours Chart
+            const productivityCtx = document.getElementById('productivityChart').getContext('2d');
+            const productivityChart = new Chart(productivityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                    datasets: [
+                        {
+                            label: 'Produtividade (%)',
+                            data: [75, 85, 80, 95, 90],
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Horas Trabalhadas',
+                            data: [8.5, 7.5, 8, 7, 7],
+                            backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Produtividade (%)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            beginAtZero: true,
+                            max: 10,
+                            title: {
+                                display: true,
+                                text: 'Horas'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initialize Emotion Distribution Pie Chart
+            const emotionCtx = document.getElementById('emotionPieChart').getContext('2d');
+            const emotionPieChart = new Chart(emotionCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Feliz', 'Neutro', 'Cansado', 'Stressado', 'Motivado'],
+                    datasets: [{
+                        data: [45, 20, 15, 10, 10],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(255, 205, 86, 0.7)',
+                            'rgba(201, 203, 207, 0.7)',
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+
+            // Initialize Response Timeline Chart
+            const responseCtx = document.getElementById('responseTimeChart').getContext('2d');
+            const responseTimeChart = new Chart(responseCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['8-10h', '10-12h', '12-14h', '14-16h', '16-18h'],
+                    datasets: [{
+                        label: 'Questionários Respondidos',
+                        data: [1, 1, 0, 2, 1],
+                        backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 3,
+                            title: {
+                                display: true,
+                                text: 'Número de Respostas'
+                            },
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Period filter change event
+            periodFilter.addEventListener('change', function() {
+                const selectedPeriod = this.value;
+
+                // Update charts based on selected period
+                if (selectedPeriod === 'Mensal') {
+                    // Update Mood History Chart
+                    moodHistoryChart.data.labels = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'];
+                    moodHistoryChart.data.datasets[0].data = [30, 32, 35, 38];
+                    moodHistoryChart.update();
+
+                    // Update Productivity Chart
+                    productivityChart.data.labels = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'];
+                    productivityChart.data.datasets[0].data = [78, 82, 85, 90];
+                    productivityChart.data.datasets[1].data = [38, 37, 39, 35];
+                    productivityChart.update();
+
+                    // Update Response Timeline Chart
+                    responseTimeChart.data.labels = ['8-10h', '10-12h', '12-14h', '14-16h', '16-18h'];
+                    responseTimeChart.data.datasets[0].data = [5, 7, 2, 8, 6];
+                    responseTimeChart.update();
+                }
+                else if (selectedPeriod === 'Trimestral') {
+                    // Update Mood History Chart
+                    moodHistoryChart.data.labels = ['Janeiro', 'Fevereiro', 'Março'];
+                    moodHistoryChart.data.datasets[0].data = [28, 32, 36];
+                    moodHistoryChart.update();
+
+                    // Update Productivity Chart
+                    productivityChart.data.labels = ['Janeiro', 'Fevereiro', 'Março'];
+                    productivityChart.data.datasets[0].data = [75, 82, 88];
+                    productivityChart.data.datasets[1].data = [160, 155, 165];
+                    productivityChart.update();
+
+                    // Update Response Timeline Chart
+                    responseTimeChart.data.labels = ['8-10h', '10-12h', '12-14h', '14-16h', '16-18h'];
+                    responseTimeChart.data.datasets[0].data = [15, 22, 8, 25, 18];
+                    responseTimeChart.update();
+                }
+                else if (selectedPeriod === 'Anual') {
+                    // Update Mood History Chart
+                    moodHistoryChart.data.labels = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+                    moodHistoryChart.data.datasets[0].data = [25, 28, 32, 33, 35, 38, 36, 34, 32, 30, 32, 35];
+                    moodHistoryChart.update();
+
+                    // Update Productivity Chart
+                    productivityChart.data.labels = ['Q1', 'Q2', 'Q3', 'Q4'];
+                    productivityChart.data.datasets[0].data = [80, 85, 82, 88];
+                    productivityChart.data.datasets[1].data = [480, 485, 470, 490];
+                    productivityChart.update();
+
+                    // Update Response Timeline Chart
+                    responseTimeChart.data.labels = ['8-10h', '10-12h', '12-14h', '14-16h', '16-18h'];
+                    responseTimeChart.data.datasets[0].data = [60, 85, 30, 95, 70];
+                    responseTimeChart.update();
+                }
+                else {
+                    // Reset to weekly data
+                    moodHistoryChart.data.labels = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
+                    moodHistoryChart.data.datasets[0].data = [28, 35, 32, 38, 40];
+                    moodHistoryChart.update();
+
+                    productivityChart.data.labels = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
+                    productivityChart.data.datasets[0].data = [75, 85, 80, 95, 90];
+                    productivityChart.data.datasets[1].data = [8.5, 7.5, 8, 7, 7];
+                    productivityChart.update();
+
+                    responseTimeChart.data.labels = ['8-10h', '10-12h', '12-14h', '14-16h', '16-18h'];
+                    responseTimeChart.data.datasets[0].data = [1, 1, 0, 2, 1];
+                    responseTimeChart.update();
                 }
             });
         });
