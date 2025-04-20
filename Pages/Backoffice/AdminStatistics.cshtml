@@ -71,7 +71,7 @@
         <!-- Top Bar -->
         <header class="top-bar">
             <div class="logo-container">
-                <a href="/" class="logo-link">
+                <a href="/Home" class="logo-link">
                     <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
                     <span class="logo-text">EmotiWork</span>
                 </a>
@@ -318,6 +318,195 @@
                 </div>
             </div>
         </div>
+        <div class="wellbeing-recommendations">
+            <h2 class="recommendations-title">
+                <i class="fas fa-lightbulb"></i> Recomendações de Bem-Estar
+                <button class="recommendations-info-btn" id="recommendationsInfoBtn" title="Sobre as Recomendações">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </h2>
+
+            <div class="recommendations-container">
+                <div class="recommendation-card">
+                    <div class="recommendation-header">
+                        <i class="fas fa-clock recommendation-icon"></i>
+                        <h3>Pausa Ativa</h3>
+                    </div>
+                    <p class="recommendation-text">
+                        Considere fazer uma pausa de 5 minutos a cada hora de trabalho. Os dados mostram que o período mais produtivo é durante a manhã.
+                    </p>
+                    <span class="recommendation-tag personal">Pessoal</span>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="recommendation-header">
+                        <i class="fas fa-users recommendation-icon"></i>
+                        <h3>Dinâmica de Equipa</h3>
+                    </div>
+                    <p class="recommendation-text">
+                        A sua equipa está com níveis de humor abaixo da média. Considere realizar uma reunião para alinhar expectativas e melhorar o ambiente.
+                    </p>
+                    <span class="recommendation-tag team">Equipa</span>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="recommendation-header">
+                        <i class="fas fa-building recommendation-icon"></i>
+                        <h3>Gestão de Carga</h3>
+                    </div>
+                    <p class="recommendation-text">
+                        O departamento de Marketing apresenta sinais de sobrecarga. Considere redistribuir tarefas ou estender prazos para melhorar o bem-estar.
+                    </p>
+                    <span class="recommendation-tag department">Departamento</span>
+                </div>
+            </div>
+
+            <button class="view-all-recommendations-btn" id="viewAllRecommendationsBtn">
+                Ver Todas as Recomendações
+            </button>
+        </div>
+
+        <!-- Recommendations Info Modal -->
+        <div id="recommendationsInfoModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Sobre as Recomendações</h1>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>As recomendações de bem-estar são geradas automaticamente com base em:</p>
+                    <ul>
+                        <li><strong>Dados de humor:</strong> Obtidos através dos questionários preenchidos</li>
+                        <li><strong>Padrões de trabalho:</strong> Horários de entrada/saída e horas trabalhadas</li>
+                        <li><strong>Métricas da equipa:</strong> Níveis médios de humor e produtividade</li>
+                        <li><strong>Métricas departamentais:</strong> Comparações entre equipas e departamentos</li>
+                    </ul>
+                    <p>As recomendações são atualizadas semanalmente e não substituem a orientação profissional de saúde mental.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Recommendations Modal -->
+        <div id="allRecommendationsModal" class="modal">
+            <div class="modal-content modal-content-large">
+                <div class="modal-header">
+                    <h1 class="modal-title">Recomendações de Bem-Estar</h1>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="recommendations-filter">
+                        <button class="filter-btn active" data-filter="all">Todas</button>
+                        <button class="filter-btn" data-filter="personal">Pessoais</button>
+                        <button class="filter-btn" data-filter="team">Equipa</button>
+                        <button class="filter-btn" data-filter="department">Departamentais</button>
+                    </div>
+
+                    <div class="recommendations-grid">
+                        <!-- Personal recommendations -->
+                        <div class="recommendation-card" data-type="personal">
+                            <div class="recommendation-header">
+                                <i class="fas fa-clock recommendation-icon"></i>
+                                <h3>Pausa Ativa</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                Considere fazer uma pausa de 5 minutos a cada hora de trabalho. Os dados mostram que o período mais produtivo é durante a manhã.
+                            </p>
+                            <span class="recommendation-tag personal">Pessoal</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="personal">
+                            <div class="recommendation-header">
+                                <i class="fas fa-moon recommendation-icon"></i>
+                                <h3>Melhor Descanso</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                O seu padrão de entrada indica possível cansaço matinal. Considere ajustar a rotina de sono para melhorar o descanso.
+                            </p>
+                            <span class="recommendation-tag personal">Pessoal</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="personal">
+                            <div class="recommendation-header">
+                                <i class="fas fa-mug-hot recommendation-icon"></i>
+                                <h3>Intervalos Regulares</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                Recomenda-se fazer intervalos curtos entre tarefas longas. Considere utilizar a técnica Pomodoro para maior produtividade.
+                            </p>
+                            <span class="recommendation-tag personal">Pessoal</span>
+                        </div>
+
+                        <!-- Team recommendations -->
+                        <div class="recommendation-card" data-type="team">
+                            <div class="recommendation-header">
+                                <i class="fas fa-users recommendation-icon"></i>
+                                <h3>Dinâmica de Equipa</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                A sua equipa está com níveis de humor abaixo da média. Considere realizar uma reunião para alinhar expectativas e melhorar o ambiente.
+                            </p>
+                            <span class="recommendation-tag team">Equipa</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="team">
+                            <div class="recommendation-header">
+                                <i class="fas fa-calendar recommendation-icon"></i>
+                                <h3>Almoços em Equipa</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                As equipas que fazem refeições juntas regularmente reportam maior sentido de pertença. Considere organizar um almoço em grupo.
+                            </p>
+                            <span class="recommendation-tag team">Equipa</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="team">
+                            <div class="recommendation-header">
+                                <i class="fas fa-comments recommendation-icon"></i>
+                                <h3>Comunicação Eficaz</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                Os dados indicam oportunidade para melhorar a comunicação interna. Considere implementar reuniões semanais mais curtas e objetivas.
+                            </p>
+                            <span class="recommendation-tag team">Equipa</span>
+                        </div>
+
+                        <!-- Department recommendations -->
+                        <div class="recommendation-card" data-type="department">
+                            <div class="recommendation-header">
+                                <i class="fas fa-building recommendation-icon"></i>
+                                <h3>Gestão de Carga</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                O departamento de Marketing apresenta sinais de sobrecarga. Considere redistribuir tarefas ou estender prazos para melhorar o bem-estar.
+                            </p>
+                            <span class="recommendation-tag department">Departamento</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="department">
+                            <div class="recommendation-header">
+                                <i class="fas fa-clipboard-list recommendation-icon"></i>
+                                <h3>Gestão de Expectativas</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                Os dados indicam que as expectativas de produtividade podem estar muito elevadas. Considere rever metas com a liderança.
+                            </p>
+                            <span class="recommendation-tag department">Departamento</span>
+                        </div>
+
+                        <div class="recommendation-card" data-type="department">
+                            <div class="recommendation-header">
+                                <i class="fas fa-handshake recommendation-icon"></i>
+                                <h3>Colaboração Interdepartamental</h3>
+                            </div>
+                            <p class="recommendation-text">
+                                Os dados mostram oportunidades de melhoria na colaboração entre Marketing e Desenvolvimento. Considere sessões de alinhamento.
+                            </p>
+                            <span class="recommendation-tag department">Departamento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer class="home-footer">
@@ -484,6 +673,161 @@
                                 stepSize: 20
                             }
                         }
+                    }
+                }
+            });
+        });
+
+        // Recommendations functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Info modal functionality
+            const infoModal = document.getElementById('recommendationsInfoModal');
+            const infoBtn = document.getElementById('recommendationsInfoBtn');
+            const infoModalClose = infoModal.querySelector('.close-modal');
+
+            infoBtn.addEventListener('click', function() {
+                infoModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+
+            infoModalClose.addEventListener('click', function() {
+                infoModal.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+
+            // All recommendations modal functionality
+            const allRecsModal = document.getElementById('allRecommendationsModal');
+            const allRecsBtn = document.getElementById('viewAllRecommendationsBtn');
+            const allRecsModalClose = allRecsModal.querySelector('.close-modal');
+
+            allRecsBtn.addEventListener('click', function() {
+                allRecsModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+
+            allRecsModalClose.addEventListener('click', function() {
+                allRecsModal.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+
+            // Filter recommendations
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const recommendationCards = document.querySelectorAll('.recommendations-grid .recommendation-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    // Show/hide cards based on filter
+                    recommendationCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Simple recommendation generation system
+            function generateRecommendations() {
+                // In a real implementation, this would use actual data from the backend
+                // and apply more sophisticated rules to generate recommendations
+
+                // For this demo, we're using static recommendations
+                const personalRecommendations = [
+                    {
+                        icon: 'fa-clock',
+                        title: 'Pausa Ativa',
+                        text: 'Considere fazer uma pausa de 5 minutos a cada hora de trabalho. Os dados mostram que o período mais produtivo é durante a manhã.',
+                        type: 'personal'
+                    },
+                    {
+                        icon: 'fa-moon',
+                        title: 'Melhor Descanso',
+                        text: 'O seu padrão de entrada indica possível cansaço matinal. Considere ajustar a rotina de sono para melhorar o descanso.',
+                        type: 'personal'
+                    },
+                    {
+                        icon: 'fa-mug-hot',
+                        title: 'Intervalos Regulares',
+                        text: 'Recomenda-se fazer intervalos curtos entre tarefas longas. Considere utilizar a técnica Pomodoro para maior produtividade.',
+                        type: 'personal'
+                    }
+                ];
+
+                const teamRecommendations = [
+                    {
+                        icon: 'fa-users',
+                        title: 'Dinâmica de Equipa',
+                        text: 'A sua equipa está com níveis de humor abaixo da média. Considere realizar uma reunião para alinhar expectativas e melhorar o ambiente.',
+                        type: 'team'
+                    },
+                    {
+                        icon: 'fa-calendar',
+                        title: 'Almoços em Equipa',
+                        text: 'As equipas que fazem refeições juntas regularmente reportam maior sentido de pertença. Considere organizar um almoço em grupo.',
+                        type: 'team'
+                    },
+                    {
+                        icon: 'fa-comments',
+                        title: 'Comunicação Eficaz',
+                        text: 'Os dados indicam oportunidade para melhorar a comunicação interna. Considere implementar reuniões semanais mais curtas e objetivas.',
+                        type: 'team'
+                    }
+                ];
+
+                const departmentRecommendations = [
+                    {
+                        icon: 'fa-building',
+                        title: 'Gestão de Carga',
+                        text: 'O departamento de Marketing apresenta sinais de sobrecarga. Considere redistribuir tarefas ou estender prazos para melhorar o bem-estar.',
+                        type: 'department'
+                    },
+                    {
+                        icon: 'fa-clipboard-list',
+                        title: 'Gestão de Expectativas',
+                        text: 'Os dados indicam que as expectativas de produtividade podem estar muito elevadas. Considere rever metas com a liderança.',
+                        type: 'department'
+                    },
+                    {
+                        icon: 'fa-handshake',
+                        title: 'Colaboração Interdepartamental',
+                        text: 'Os dados mostram oportunidades de melhoria na colaboração entre Marketing e Desenvolvimento. Considere sessões de alinhamento.',
+                        type: 'department'
+                    }
+                ];
+
+                return [...personalRecommendations, ...teamRecommendations, ...departmentRecommendations];
+            }
+
+
+            // Close modals when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === infoModal) {
+                    infoModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+                if (e.target === allRecsModal) {
+                    allRecsModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close modals with escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (infoModal.style.display === 'block') {
+                        infoModal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                    if (allRecsModal.style.display === 'block') {
+                        allRecsModal.style.display = 'none';
+                        document.body.style.overflow = '';
                     }
                 }
             });
