@@ -155,7 +155,7 @@
             <div class="footer-content">
                 <div class="copyright">EmotiWork - 2025</div>
                 <div class="privacy-policy">
-                    <a href="#" class="privacy-link">Proteção de Dados</a>
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
                 </div>
             </div>
         </footer>
@@ -332,7 +332,7 @@
                 const formattedHour = currentHour.toString().padStart(2, '0');
                 const formattedMinute = currentMinute.toString().padStart(2, '0');
 
-                alert(`Checked in at ${formattedHour}:${formattedMinute}`);
+                alert(`Check-in: ${formattedHour}:${formattedMinute}`);
             });
 
             // Check-out button functionality
@@ -362,7 +362,7 @@
                 const formattedHour = currentHour.toString().padStart(2, '0');
                 const formattedMinute = currentMinute.toString().padStart(2, '0');
 
-                alert(`Checked out at ${formattedHour}:${formattedMinute}\nTotal work duration: ${duration}`);
+                alert(`Check-out: ${formattedHour}:${formattedMinute}\nDuração do turno: ${duration}`);
 
                 // Reset check-in time
                 checkInTime = null;

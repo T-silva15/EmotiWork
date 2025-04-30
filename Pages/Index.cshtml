@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 <body>
     <div class="landing-container">
@@ -22,8 +24,8 @@
             </div>
             <div class="nav-links">
                 <a href="/Login">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
+                <a href="#" id="aboutUsLink">About Us</a>
+                <a href="#" id="contactUsLink">Contact Us</a>
                 <a href="/Login">Login</a>
             </div>
         </nav>
@@ -49,5 +51,157 @@
             </div>
         </section>
     </div>
+
+    <!-- About Us Popup -->
+    <div id="aboutUsPopup" class="popup-container">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Sobre Nós</h2>
+            <div class="popup-body">
+                <p>A EmotiWork é uma empresa inovadora fundada em 2025, especializada em soluções de monitorização de bem-estar no ambiente de trabalho.</p>
+
+                <h3>Nossa Missão</h3>
+                <p>Transformar ambientes de trabalho através da inteligência emocional e análise de dados, criando locais de trabalho mais saudáveis e produtivos.</p>
+
+                <h3>Nossa Visão</h3>
+                <p>Ser líder global em soluções de bem-estar corporativo, ajudando organizações a compreender e melhorar o estado emocional das suas equipas.</p>
+
+                <h3>Nossa Equipa</h3>
+                <p>Somos uma equipa multidisciplinar de especialistas em psicologia organizacional, ciência de dados e desenvolvimento de software, comprometidos em melhorar o ambiente de trabalho através da tecnologia.</p>
+
+                <div class="team-values">
+                    <div class="value-item">
+                        <i class="fas fa-brain"></i>
+                        <h4>Inovação</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Privacidade</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Crescimento</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Popup -->
+    <div id="contactUsPopup" class="popup-container">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Contacte-nos</h2>
+            <div class="popup-body">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Email: <a href="mailto:info@emotiwork.com">info@emotiwork.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Telefone: +351 210 000 000</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Morada: Quinta de Prados, 5000-801 Vila Real, Portugal</p>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <h3>Envie-nos uma mensagem</h3>
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </form>
+
+                <div class="social-media">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add JavaScript for popup functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get popup elements
+            const aboutUsPopup = document.getElementById('aboutUsPopup');
+            const contactUsPopup = document.getElementById('contactUsPopup');
+
+            // Get trigger links
+            const aboutUsLink = document.getElementById('aboutUsLink');
+            const contactUsLink = document.getElementById('contactUsLink');
+
+            // Get close buttons
+            const closeButtons = document.querySelectorAll('.close-popup');
+
+            // Open About Us popup
+            aboutUsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                aboutUsPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+
+            // Open Contact Us popup
+            contactUsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                contactUsPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+
+            // Close popups when clicking the X button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    aboutUsPopup.style.display = 'none';
+                    contactUsPopup.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+            });
+
+            // Close popups when clicking outside the content
+            window.addEventListener('click', function(e) {
+                if (e.target === aboutUsPopup) {
+                    aboutUsPopup.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+                if (e.target === contactUsPopup) {
+                    contactUsPopup.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Handle contact form submission (just for demonstration)
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Mensagem enviada com sucesso! (Esta é apenas uma demonstração)');
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

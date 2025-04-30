@@ -1,8 +1,183 @@
 ﻿@page
 @model EmotiWork.Pages.PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Proteção de Dados - EmotiWork";
+    Layout = null;
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/privacy.css" asp-append-version="true" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="home-body">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="/Team" class="nav-link">
+                        <i class="fas fa-users"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Dashboard" class="nav-link">
+                        <i class="fas fa-gauge-high"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Questionnaire" class="nav-link">
+                        <i class="fas fa-circle-question"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Statistics" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Notifications" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Reports" class="nav-link">
+                        <i class="fas fa-user-secret"></i>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-bottom">
+                    <a href="/Settings" class="nav-link">
+                        <i class="fas fa-gear"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="logo-container">
+                <a href="/Home" class="logo-link">
+                    <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+                    <span class="logo-text">EmotiWork</span>
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="/Profile" class="user-link">
+                    <img src="~/img/user-avatar.png" alt="User Avatar" class="user-avatar" />
+                    <span class="user-name">José</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="content-container privacy-container">
+            <h1 class="privacy-title">PROTEÇÃO DE DADOS</h1>
+
+            <div class="privacy-content">
+                <section class="privacy-section">
+                    <h2>Introdução</h2>
+                    <p>
+                        A EmotiWork está comprometida em proteger a privacidade e os dados pessoais dos nossos utilizadores.
+                        Esta política de proteção de dados descreve como recolhemos, utilizamos, armazenamos e protegemos as suas informações
+                        ao utilizar a nossa plataforma de monitorização de bem-estar no local de trabalho.
+                    </p>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Dados Recolhidos</h2>
+                    <p>A EmotiWork recolhe os seguintes tipos de dados:</p>
+                    <ul>
+                        <li><strong>Dados de perfil:</strong> Nome, cargo, departamento e informações profissionais básicas.</li>
+                        <li><strong>Respostas a questionários:</strong> As suas respostas aos questionários diários sobre bem-estar, emoções e ambiente de trabalho.</li>
+                        <li><strong>Dados de utilização:</strong> Informações sobre como interage com a plataforma para melhorar a experiência do utilizador.</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Finalidade do Tratamento de Dados</h2>
+                    <p>Os dados recolhidos são utilizados para:</p>
+                    <ul>
+                        <li>Fornecer insights sobre o bem-estar emocional da equipa</li>
+                        <li>Gerar estatísticas e relatórios anónimos para a gestão</li>
+                        <li>Personalizar a experiência do utilizador na plataforma</li>
+                        <li>Melhorar continuamente os nossos serviços e funcionalidades</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Confidencialidade e Proteção</h2>
+                    <p>
+                        Todos os dados recolhidos são tratados com o mais alto nível de confidencialidade. Implementamos medidas de segurança
+                        técnicas e organizacionais para proteger os seus dados contra acesso não autorizado, alteração, divulgação ou destruição.
+                    </p>
+                    <p>
+                        As respostas individuais aos questionários são anónimas para os gestores e apenas são apresentadas em formato agregado,
+                        protegendo assim a privacidade de cada colaborador.
+                    </p>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Os Seus Direitos</h2>
+                    <p>Como utilizador, tem direito a:</p>
+                    <ul>
+                        <li>Aceder aos seus dados pessoais</li>
+                        <li>Retificar dados incorretos</li>
+                        <li>Solicitar a eliminação dos seus dados (direito ao esquecimento)</li>
+                        <li>Limitar o processamento dos seus dados</li>
+                        <li>Receber os seus dados num formato estruturado (portabilidade)</li>
+                        <li>Opor-se ao processamento dos seus dados em determinadas circunstâncias</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Período de Conservação</h2>
+                    <p>
+                        Os dados de questionários são mantidos por um período de 24 meses para permitir análises de tendências ao longo do tempo.
+                        Após este período, os dados serão anonimizados permanentemente ou eliminados.
+                    </p>
+                    <p>
+                        Os dados do perfil são conservados enquanto mantiver uma conta ativa na plataforma.
+                    </p>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Contacto</h2>
+                    <p>
+                        Para exercer os seus direitos ou para qualquer questão relacionada com a proteção dos seus dados,
+                        contacte o nosso Responsável pela Proteção de Dados através do email: <a href="mailto:dpo@emotiwork.com">dpo@emotiwork.com</a>
+                    </p>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Atualizações à Política</h2>
+                    <p>
+                        Esta política de proteção de dados pode ser atualizada periodicamente. A versão atual foi atualizada em 30 de abril de 2025.
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+            <div class="footer-content">
+                <div class="copyright">EmotiWork - 2025</div>
+                <div class="privacy-policy">
+                    <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
