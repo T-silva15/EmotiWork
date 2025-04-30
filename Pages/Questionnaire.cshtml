@@ -99,7 +99,9 @@
             else
             {
                 <!-- Original questionnaire content -->
-                <form method="post" asp-page="/Questionnaire">
+                <form method="post" id="questionnaireForm">
+                    @Html.AntiForgeryToken()
+
                     <!-- Question Navigation -->
                     <div class="question-navigation">
                         <div class="question-number active">1</div>
@@ -150,7 +152,7 @@
 
                     <!-- Submit button - only visible on last question -->
                     <div class="submit-container" style="display: none;">
-                        <button type="submit" class="submit-button">Submeter Respostas</button>
+                        <button type="submit" id="submitButton" class="submit-button">Submeter Respostas</button>
                     </div>
                 </form>
             }
@@ -185,6 +187,7 @@
             const prevButton = document.getElementById('prev-question');
             const nextButton = document.getElementById('next-question');
             const submitContainer = document.querySelector('.submit-container');
+            const questionnaireForm = document.getElementById('questionnaireForm');
 
             // Fixed selectEmotion function
             window.selectEmotion = function(element) {
@@ -265,6 +268,33 @@
                 num.addEventListener('click', function() {
                     setActiveQuestion(i);
                 });
+            });
+
+            // Form submission validation
+            questionnaireForm.addEventListener('submit', function(e) {
+                // Check if all questions have answers
+                let allAnswered = true;
+                let firstUnanswered = -1;
+
+                for (let i = 0; i < 5; i++) {
+                    const answer = document.getElementById(`answer${i}`).value;
+                    if (!answer) {
+                        allAnswered = false;
+                        if (firstUnanswered === -1) {
+                            firstUnanswered = i;
+                        }
+                    }
+                }
+
+                if (!allAnswered) {
+                    e.preventDefault();
+                    alert('Por favor, responda a todas as perguntas antes de submeter.');
+                    setActiveQuestion(firstUnanswered);
+                    return false;
+                }
+
+                console.log("Form is being submitted with data:", Array.from(new FormData(questionnaireForm)));
+                return true;
             });
 
             // Initialize
