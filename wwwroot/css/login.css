@@ -86,7 +86,16 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center; 
+    box-sizing: border-box; 
 }
+
+    .login-button:hover {
+        background-color: #8bc8e8;
+    }
+
 
     .login-button:hover {
         background-color: #8bc8e8;

@@ -83,45 +83,77 @@
 
         <!-- Page Content -->
         <div class="content-container questionnaire-container">
-            <!-- Question Navigation -->
-            <div class="question-navigation">
-                <div class="question-number active">1</div>
-                <div class="question-number">2</div>
-                <div class="question-number">3</div>
-                <div class="question-number">4</div>
-                <div class="question-number">5</div>
-            </div>
-
-            <!-- Question Content -->
-            <div class="question-content">
-                <div class="question-text">Como te sentiste hoje?</div>
-
-                <div class="emotion-options">
-                    <div class="emotion-row">
-                        <div class="emotion-option">
-                            <div class="emotion-box">Feliz</div>
-                        </div>
-                        <div class="emotion-option">
-                            <div class="emotion-box">Impaciente</div>
-                        </div>
+            @if (Model.IsQuestionnaireSubmitted)
+            {
+                <!-- Show when questionnaire has already been submitted -->
+                <div class="questionnaire-completed">
+                    <div class="completed-icon">
+                        <i class="fas fa-check-circle"></i>
                     </div>
-                    <div class="emotion-row">
-                        <div class="emotion-option">
-                            <div class="emotion-box">Nervoso</div>
-                        </div>
-                        <div class="emotion-option">
-                            <div class="emotion-box">Triste</div>
-                        </div>
-                    </div>
+                    <h2>Questionário já foi preenchido</h2>
+                    <p>Obrigado pela sua participação! O questionário de hoje já foi preenchido.</p>
+                    <p>Volte amanhã para um novo questionário.</p>
+                    <a href="/Statistics" class="view-results-button">Ver Estatísticas</a>
                 </div>
-            </div>
+            }
+            else
+            {
+                <!-- Original questionnaire content -->
+                <form method="post" asp-page="/Questionnaire">
+                    <!-- Question Navigation -->
+                    <div class="question-navigation">
+                        <div class="question-number active">1</div>
+                        <div class="question-number">2</div>
+                        <div class="question-number">3</div>
+                        <div class="question-number">4</div>
+                        <div class="question-number">5</div>
+                    </div>
 
-            <!-- Navigation buttons -->
-            <div class="questionnaire-navigation">
-                <button id="prev-question" class="nav-button"><</button>
-                <div class="questionnaire-title">QUESTIONÁRIO</div>
-                <button id="next-question" class="nav-button">></button>
-            </div>
+                    <!-- Question Content -->
+                    <div class="question-content">
+                        <div class="question-text">Como te sentiste hoje?</div>
+
+                        <!-- Hidden inputs for all questions -->
+                        <input type="hidden" name="Answers[0]" id="answer0" value="" />
+                        <input type="hidden" name="Answers[1]" id="answer1" value="" />
+                        <input type="hidden" name="Answers[2]" id="answer2" value="" />
+                        <input type="hidden" name="Answers[3]" id="answer3" value="" />
+                        <input type="hidden" name="Answers[4]" id="answer4" value="" />
+
+                        <!-- Emotion Options -->
+                        <div class="emotion-options" id="emotionOptions">
+                            <div class="emotion-row">
+                                <div class="emotion-option">
+                                    <div class="emotion-box" data-value="Feliz" onclick="selectEmotion(this)">Feliz</div>
+                                </div>
+                                <div class="emotion-option">
+                                    <div class="emotion-box" data-value="Impaciente" onclick="selectEmotion(this)">Impaciente</div>
+                                </div>
+                            </div>
+                            <div class="emotion-row">
+                                <div class="emotion-option">
+                                    <div class="emotion-box" data-value="Nervoso" onclick="selectEmotion(this)">Nervoso</div>
+                                </div>
+                                <div class="emotion-option">
+                                    <div class="emotion-box" data-value="Triste" onclick="selectEmotion(this)">Triste</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation buttons -->
+                    <div class="questionnaire-navigation">
+                        <button type="button" id="prev-question" class="nav-button">&lt;</button>
+                        <div class="questionnaire-title">QUESTIONÁRIO</div>
+                        <button type="button" id="next-question" class="nav-button">&gt;</button>
+                    </div>
+
+                    <!-- Submit button - only visible on last question -->
+                    <div class="submit-container" style="display: none;">
+                        <button type="submit" class="submit-button">Submeter Respostas</button>
+                    </div>
+                </form>
+            }
         </div>
 
         <!-- Footer -->
@@ -145,14 +177,39 @@
                 "O que esperas para amanhã?"
             ];
 
-            let currentQuestionIndex = 0;
+            // Global variable accessible to onClick handlers
+            window.currentQuestionIndex = 0;
+
             const questionNumbers = document.querySelectorAll('.question-number');
             const questionText = document.querySelector('.question-text');
             const prevButton = document.getElementById('prev-question');
             const nextButton = document.getElementById('next-question');
+            const submitContainer = document.querySelector('.submit-container');
 
-            // Set active question
+            // Fixed selectEmotion function
+            window.selectEmotion = function(element) {
+                // Get current question index from the global variable
+                let questionIndex = window.currentQuestionIndex;
+
+                // Remove selected class from all boxes
+                const allBoxes = document.querySelectorAll('.emotion-box');
+                allBoxes.forEach(box => box.classList.remove('selected'));
+
+                // Add selected class to clicked box
+                element.classList.add('selected');
+
+                // Update the hidden input value for the current question
+                document.getElementById(`answer${questionIndex}`).value = element.dataset.value;
+
+                // For debugging
+                console.log(`Selected: ${element.dataset.value} for question ${questionIndex}`);
+            };
+
+            // Set active question - update to handle selections for each question
             function setActiveQuestion(index) {
+                // Update global variable
+                window.currentQuestionIndex = index;
+
                 // Update question numbers
                 questionNumbers.forEach((num, i) => {
                     if (i === index) {
@@ -165,30 +222,47 @@
                 // Update question text
                 questionText.textContent = questions[index];
 
+                // Clear selected option visual indicator when changing questions
+                const allBoxes = document.querySelectorAll('.emotion-box');
+                allBoxes.forEach(box => box.classList.remove('selected'));
+
+                // If we have a saved answer for this question, highlight it
+                const savedAnswer = document.getElementById(`answer${index}`).value;
+                if (savedAnswer) {
+                    const boxToSelect = document.querySelector(`.emotion-box[data-value="${savedAnswer}"]`);
+                    if (boxToSelect) {
+                        boxToSelect.classList.add('selected');
+                    }
+                }
+
                 // Update button states
                 prevButton.disabled = index === 0;
                 nextButton.disabled = index === questions.length - 1;
+
+                // Show submit button on last question
+                if (index === questions.length - 1) {
+                    submitContainer.style.display = 'block';
+                } else {
+                    submitContainer.style.display = 'none';
+                }
             }
 
             // Navigation button event listeners
             prevButton.addEventListener('click', function() {
-                if (currentQuestionIndex > 0) {
-                    currentQuestionIndex--;
-                    setActiveQuestion(currentQuestionIndex);
+                if (window.currentQuestionIndex > 0) {
+                    setActiveQuestion(window.currentQuestionIndex - 1);
                 }
             });
 
             nextButton.addEventListener('click', function() {
-                if (currentQuestionIndex < questions.length - 1) {
-                    currentQuestionIndex++;
-                    setActiveQuestion(currentQuestionIndex);
+                if (window.currentQuestionIndex < questions.length - 1) {
+                    setActiveQuestion(window.currentQuestionIndex + 1);
                 }
             });
 
             // Number navigation
             questionNumbers.forEach((num, i) => {
                 num.addEventListener('click', function() {
-                    currentQuestionIndex = i;
                     setActiveQuestion(i);
                 });
             });

@@ -131,3 +131,69 @@
         background-color: #ccc;
         cursor: not-allowed;
     }
+
+.questionnaire-completed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.completed-icon {
+    font-size: 5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.questionnaire-completed h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.questionnaire-completed p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.view-results-button {
+    display: inline-block;
+    background-color: #a8d8f0;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+    .view-results-button:hover {
+        background-color: #8bc8e8;
+    }
+
+.submit-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    background-color: #a8d8f0;
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    .submit-button:hover {
+        background-color: #8bc8e8;
+    }
+
+.submit-container {
+    margin-top: 20px;
+    text-align: center;
+}
