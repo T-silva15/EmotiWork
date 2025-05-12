@@ -176,21 +176,17 @@
 }
 
 .export-btn {
-    background-color: #75bef0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    background-color: #0F1F0F !important;
+    color: #fff !important;
+    padding: 10px;
+    font-weight: bold !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
 }
 
-.export-btn:hover {
-    background-color: #54a7dd;
-}
+    .export-btn:hover {
+        background-color: #0F1F0F !important;
+        color: #444 !important;
+    }
 
 /* Responsive Adjustments */
 @media (max-width: 1200px) {
@@ -398,36 +394,47 @@
 }
 
     .recommendation-tag.personal {
-        background-color: #e3f2fd;
-        color: #1976d2;
+        background-color: #FFD700; 
+        color: #000 !important; 
+        border: 1px solid #000;
+        font-weight: bold;
+        padding: 0.2em 0.8em;
+        border-radius: 1em;
+        margin-right: 0.5em;
     }
 
     .recommendation-tag.team {
-        background-color: #e8f5e9;
-        color: #388e3c;
+        background-color: #800080;
+        color: #fff !important; 
+        border: 1px solid #000;
+        font-weight: bold;
+        padding: 0.2em 0.8em;
+        border-radius: 1em;
+        margin-right: 0.5em;
     }
 
     .recommendation-tag.department {
-        background-color: #fff3e0;
-        color: #f57c00;
+        background-color: #0F1F0F;
+        color: #fff !important;
+        border: 1px solid #000;
+        font-weight: bold;
+        padding: 0.2em 0.8em;
+        border-radius: 1em;
+        margin-right: 0.5em;
     }
 
 .view-all-recommendations-btn {
-    display: block;
-    width: fit-content;
-    margin: 10px auto 0;
-    padding: 8px 16px;
-    background-color: #75bef0;
+    background-color: #0F1F0F !important;
+    font-weight: bold;
+    padding: 10px;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
     .view-all-recommendations-btn:hover {
-        background-color: #54a7dd;
+        background-color: #0F1F0F !important;
+        color: #444 !important;
+        border-color: #0F1F0F;
     }
 
 /* Modal enhancements */

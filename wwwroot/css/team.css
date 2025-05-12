@@ -90,7 +90,7 @@
     }
 
     .metric-value.warning {
-        color: #ffc107;
+        color: #a743e6;
     }
 
     .metric-value.negative {
@@ -202,16 +202,17 @@
 }
 
 .status-value.online {
-    color: #28a745;
+    color: #0D6E1E; 
 }
 
 .status-value.away {
-    color: #ffc107;
+    color: #8a0627;
 }
 
 .status-value.offline {
-    color: #6c757d;
+    color: #6c757d; 
 }
+
 
 .view-all-wrapper {
     display: flex;

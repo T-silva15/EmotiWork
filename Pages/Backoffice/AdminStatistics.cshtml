@@ -20,6 +20,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <!-- Chart.js for charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Adding accessibility styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Fix contrast issues */
+        .card-icon {
+            color: #2e86c1; /* Darker blue for better contrast */
+        }
+
+        .export-btn {
+            background-color: #2e86c1; /* Darker blue for better contrast */
+        }
+
+            .export-btn:hover {
+                background-color: #1e6091;
+            }
+
+        .recommendations-info-btn {
+            color: #2e86c1; /* Darker blue for better contrast */
+        }
+
+        .recommendation-icon {
+            color: #2e86c1; /* Darker blue for better contrast */
+        }
+
+        .view-all-recommendations-btn {
+            background-color: #2e86c1;
+        }
+
+            .view-all-recommendations-btn:hover {
+                background-color: #1e6091;
+            }
+
+        .filter-btn.active {
+            background-color: #2e86c1;
+            border-color: #2e86c1;
+        }
+
+        /* Progress bar colors */
+        .progress-bar.high {
+            background-color: #0D6E1E; /* Darker green for better contrast */
+        }
+
+        .progress-bar.medium {
+            background-color: #2e86c1; /* Darker blue for better contrast */
+        }
+
+        .progress-bar.low {
+            background-color: #c0392b; /* Darker red for better contrast */
+        }
+    </style>
 </head>
 <body class="home-body">
     <!-- Left Sidebar -->
@@ -27,38 +88,38 @@
         <nav class="sidebar-nav">
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="/Team" class="nav-link">
+                    <a href="/Team" class="nav-link" aria-label="Equipa">
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="/Dashboard" class="nav-link">
+                    <a href="/Dashboard" class="nav-link" aria-label="Dashboard">
                         <i class="fas fa-gauge-high"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Questionnaire" class="nav-link">
+                    <a href="/Questionnaire" class="nav-link" aria-label="Questionário">
                         <i class="fas fa-circle-question"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Statistics" class="nav-link">
+                    <a href="/Statistics" class="nav-link" aria-label="Estatísticas">
                         <i class="fas fa-chart-line"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Notifications" class="nav-link">
+                    <a href="/Notifications" class="nav-link" aria-label="Notificações">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge"></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Reports" class="nav-link">
+                    <a href="/Reports" class="nav-link" aria-label="Relatórios">
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-item-bottom">
-                    <a href="/Settings" class="nav-link">
+                    <a href="/Settings" class="nav-link" aria-label="Definições">
                         <i class="fas fa-gear"></i>
                     </a>
                 </li>
@@ -90,7 +151,8 @@
                 <h1 class="page-title">ESTATÍSTICAS ADMIN</h1>
                 <div class="filters-container">
                     <div class="filter-item">
-                        <select class="filter-dropdown" id="periodFilter">
+                        <label for="periodFilter" class="sr-only">Selecionar período de tempo</label>
+                        <select class="filter-dropdown" id="periodFilter" aria-label="Selecionar período de tempo">
                             <option selected>Semanal</option>
                             <option>Mensal</option>
                             <option>Trimestral</option>
@@ -98,7 +160,8 @@
                         </select>
                     </div>
                     <div class="filter-item">
-                        <select class="filter-dropdown" id="teamFilter">
+                        <label for="teamFilter" class="sr-only">Selecionar equipa</label>
+                        <select class="filter-dropdown" id="teamFilter" aria-label="Selecionar equipa">
                             <option selected>Equipa</option>
                             <option>Mark01</option>
                             <option>Dev02</option>
@@ -108,7 +171,8 @@
                         </select>
                     </div>
                     <div class="filter-item">
-                        <select class="filter-dropdown" id="departmentFilter">
+                        <label for="departmentFilter" class="sr-only">Selecionar departamento</label>
+                        <select class="filter-dropdown" id="departmentFilter" aria-label="Selecionar departamento">
                             <option selected>Departamento</option>
                             <option>Marketing</option>
                             <option>Desenvolvimento</option>
@@ -321,7 +385,7 @@
         <div class="wellbeing-recommendations">
             <h2 class="recommendations-title">
                 <i class="fas fa-lightbulb"></i> Recomendações de Bem-Estar
-                <button class="recommendations-info-btn" id="recommendationsInfoBtn" title="Sobre as Recomendações">
+                <button class="recommendations-info-btn" id="recommendationsInfoBtn" title="Sobre as Recomendações" aria-label="Informações sobre as recomendações">
                     <i class="fas fa-info-circle"></i>
                 </button>
             </h2>
@@ -361,17 +425,17 @@
                 </div>
             </div>
 
-            <button class="view-all-recommendations-btn" id="viewAllRecommendationsBtn">
+            <button class="view-all-recommendations-btn" id="viewAllRecommendationsBtn" aria-label="Ver todas as recomendações de bem-estar">
                 Ver Todas as Recomendações
             </button>
         </div>
 
         <!-- Recommendations Info Modal -->
-        <div id="recommendationsInfoModal" class="modal">
+        <div id="recommendationsInfoModal" class="modal" role="dialog" aria-labelledby="infoModalTitle" aria-modal="true">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title">Sobre as Recomendações</h1>
-                    <span class="close-modal">&times;</span>
+                    <h2 id="infoModalTitle" class="modal-title">Sobre as Recomendações</h2>
+                    <button class="close-modal" aria-label="Fechar modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <p>As recomendações de bem-estar são geradas automaticamente com base em:</p>
@@ -387,18 +451,18 @@
         </div>
 
         <!-- All Recommendations Modal -->
-        <div id="allRecommendationsModal" class="modal">
+        <div id="allRecommendationsModal" class="modal" role="dialog" aria-labelledby="allRecsModalTitle" aria-modal="true">
             <div class="modal-content modal-content-large">
                 <div class="modal-header">
-                    <h1 class="modal-title">Recomendações de Bem-Estar</h1>
-                    <span class="close-modal">&times;</span>
+                    <h2 id="allRecsModalTitle" class="modal-title">Recomendações de Bem-Estar</h2>
+                    <button class="close-modal" aria-label="Fechar modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="recommendations-filter">
-                        <button class="filter-btn active" data-filter="all">Todas</button>
-                        <button class="filter-btn" data-filter="personal">Pessoais</button>
-                        <button class="filter-btn" data-filter="team">Equipa</button>
-                        <button class="filter-btn" data-filter="department">Departamentais</button>
+                    <div class="recommendations-filter" role="tablist">
+                        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+                        <button class="filter-btn" data-filter="personal" role="tab" aria-selected="false">Pessoais</button>
+                        <button class="filter-btn" data-filter="team" role="tab" aria-selected="false">Equipa</button>
+                        <button class="filter-btn" data-filter="department" role="tab" aria-selected="false">Departamentais</button>
                     </div>
 
                     <div class="recommendations-grid">
@@ -520,6 +584,20 @@
     </main>
 
     <script>
+        // Define a more accessible color palette
+        const colorPalette = {
+            blue: 'rgb(46, 134, 193)',
+            blueLight: 'rgba(46, 134, 193, 0.2)',
+            green: 'rgb(13, 110, 30)',
+            greenLight: 'rgba(13, 110, 30, 0.2)',
+            amber: 'rgb(179, 108, 0)',
+            amberLight: 'rgba(179, 108, 0, 0.2)',
+            red: 'rgb(192, 57, 43)',
+            redLight: 'rgba(192, 57, 43, 0.2)',
+            purple: 'rgb(142, 68, 173)',
+            purpleLight: 'rgba(142, 68, 173, 0.2)'
+        };
+
         // Sample data for charts (static mockup)
         document.addEventListener('DOMContentLoaded', function() {
             // Department Distribution Chart
@@ -531,11 +609,11 @@
                     datasets: [{
                         data: [15, 35, 20, 18, 12],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.7)',
-                            'rgba(54, 162, 235, 0.7)',
-                            'rgba(255, 206, 86, 0.7)',
-                            'rgba(75, 192, 192, 0.7)',
-                            'rgba(153, 102, 255, 0.7)'
+                            colorPalette.red,
+                            colorPalette.blue,
+                            colorPalette.amber,
+                            colorPalette.green,
+                            colorPalette.purple
                         ],
                         borderWidth: 1
                     }]
@@ -559,8 +637,8 @@
                     datasets: [{
                         label: 'Média de Humor (/40)',
                         data: [34, 32, 30, 28, 26],
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: colorPalette.blue,
+                        borderColor: colorPalette.blue,
                         borderWidth: 1
                     }]
                 },
@@ -589,24 +667,24 @@
                     datasets: [{
                         label: 'Marketing',
                         data: [30, 32, 31, 33, 34, 34],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                        borderColor: colorPalette.red,
+                        backgroundColor: 'rgba(192, 57, 43, 0.1)',
                         tension: 0.4,
                         fill: true
                     },
                     {
                         label: 'Desenvolvimento',
                         data: [28, 30, 31, 32, 31, 32],
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                        borderColor: colorPalette.blue,
+                        backgroundColor: 'rgba(46, 134, 193, 0.1)',
                         tension: 0.4,
                         fill: true
                     },
                     {
                         label: 'Recursos Humanos',
                         data: [27, 28, 29, 30, 29, 30],
-                        borderColor: 'rgba(255, 206, 86, 1)',
-                        backgroundColor: 'rgba(255, 206, 86, 0.1)',
+                        borderColor: colorPalette.amber,
+                        backgroundColor: 'rgba(179, 108, 0, 0.1)',
                         tension: 0.4,
                         fill: true
                     }]
@@ -632,8 +710,8 @@
                     datasets: [{
                         data: [87, 13],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.7)',
-                            'rgba(201, 203, 207, 0.7)'
+                            colorPalette.green,
+                            '#6c757d' // Keep gray for non-responses
                         ],
                         borderWidth: 1
                     }]
@@ -657,10 +735,10 @@
                     datasets: [{
                         label: 'Produtividade',
                         data: [70, 95, 65, 82, 75],
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: colorPalette.blueLight,
+                        borderColor: colorPalette.blue,
                         borderWidth: 2,
-                        pointBackgroundColor: 'rgba(54, 162, 235, 1)'
+                        pointBackgroundColor: colorPalette.blue
                     }]
                 },
                 options: {
@@ -717,8 +795,12 @@
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     // Update active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
                     this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
 
                     const filter = this.getAttribute('data-filter');
 
@@ -732,79 +814,6 @@
                     });
                 });
             });
-
-            // Simple recommendation generation system
-            function generateRecommendations() {
-                // In a real implementation, this would use actual data from the backend
-                // and apply more sophisticated rules to generate recommendations
-
-                // For this demo, we're using static recommendations
-                const personalRecommendations = [
-                    {
-                        icon: 'fa-clock',
-                        title: 'Pausa Ativa',
-                        text: 'Considere fazer uma pausa de 5 minutos a cada hora de trabalho. Os dados mostram que o período mais produtivo é durante a manhã.',
-                        type: 'personal'
-                    },
-                    {
-                        icon: 'fa-moon',
-                        title: 'Melhor Descanso',
-                        text: 'O seu padrão de entrada indica possível cansaço matinal. Considere ajustar a rotina de sono para melhorar o descanso.',
-                        type: 'personal'
-                    },
-                    {
-                        icon: 'fa-mug-hot',
-                        title: 'Intervalos Regulares',
-                        text: 'Recomenda-se fazer intervalos curtos entre tarefas longas. Considere utilizar a técnica Pomodoro para maior produtividade.',
-                        type: 'personal'
-                    }
-                ];
-
-                const teamRecommendations = [
-                    {
-                        icon: 'fa-users',
-                        title: 'Dinâmica de Equipa',
-                        text: 'A sua equipa está com níveis de humor abaixo da média. Considere realizar uma reunião para alinhar expectativas e melhorar o ambiente.',
-                        type: 'team'
-                    },
-                    {
-                        icon: 'fa-calendar',
-                        title: 'Almoços em Equipa',
-                        text: 'As equipas que fazem refeições juntas regularmente reportam maior sentido de pertença. Considere organizar um almoço em grupo.',
-                        type: 'team'
-                    },
-                    {
-                        icon: 'fa-comments',
-                        title: 'Comunicação Eficaz',
-                        text: 'Os dados indicam oportunidade para melhorar a comunicação interna. Considere implementar reuniões semanais mais curtas e objetivas.',
-                        type: 'team'
-                    }
-                ];
-
-                const departmentRecommendations = [
-                    {
-                        icon: 'fa-building',
-                        title: 'Gestão de Carga',
-                        text: 'O departamento de Marketing apresenta sinais de sobrecarga. Considere redistribuir tarefas ou estender prazos para melhorar o bem-estar.',
-                        type: 'department'
-                    },
-                    {
-                        icon: 'fa-clipboard-list',
-                        title: 'Gestão de Expectativas',
-                        text: 'Os dados indicam que as expectativas de produtividade podem estar muito elevadas. Considere rever metas com a liderança.',
-                        type: 'department'
-                    },
-                    {
-                        icon: 'fa-handshake',
-                        title: 'Colaboração Interdepartamental',
-                        text: 'Os dados mostram oportunidades de melhoria na colaboração entre Marketing e Desenvolvimento. Considere sessões de alinhamento.',
-                        type: 'department'
-                    }
-                ];
-
-                return [...personalRecommendations, ...teamRecommendations, ...departmentRecommendations];
-            }
-
 
             // Close modals when clicking outside
             window.addEventListener('click', function(e) {

@@ -25,38 +25,38 @@
         <nav class="sidebar-nav">
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="/Team" class="nav-link">
+                    <a href="/Team" class="nav-link" aria-label="Equipa">
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="/Dashboard" class="nav-link">
+                    <a href="/Dashboard" class="nav-link" aria-label="Dashboard">
                         <i class="fas fa-gauge-high"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Questionnaire" class="nav-link">
+                    <a href="/Questionnaire" class="nav-link" aria-label="Questionário">
                         <i class="fas fa-circle-question"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Statistics" class="nav-link">
+                    <a href="/Statistics" class="nav-link" aria-label="Estatísticas">
                         <i class="fas fa-chart-line"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Notifications" class="nav-link">
+                    <a href="/Notifications" class="nav-link" aria-label="Notificações">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge"></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Reports" class="nav-link">
+                    <a href="/Reports" class="nav-link" aria-label="Relatórios">
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-item-bottom">
-                    <a href="/Settings" class="nav-link">
+                    <a href="/Settings" class="nav-link" aria-label="Definições">
                         <i class="fas fa-gear"></i>
                     </a>
                 </li>
@@ -87,12 +87,14 @@
             <div class="reports-header">
                 <h1 class="page-title">BACKOFFICE - GESTÃO DE DENÚNCIAS</h1>
                 <div class="filter-container">
+                    <label for="statusFilter" class="visually-hidden">Filtrar por estado</label>
                     <select id="statusFilter" class="filter-select">
                         <option value="all">Todos os Estados</option>
                         <option value="new">Novos</option>
                         <option value="inProgress">Em Progresso</option>
                         <option value="resolved">Resolvidos</option>
                     </select>
+                    <label for="typeFilter" class="visually-hidden">Filtrar por tipo</label>
                     <select id="typeFilter" class="filter-select">
                         <option value="all">Todos os Tipos</option>
                         <option value="assedio">Assédio</option>
@@ -269,15 +271,15 @@
                         </div>
                     </div>
                     <div class="report-detail-content">
-                        <h3>Conteúdo da Denúncia</h3>
+                        <h2>Conteúdo da Denúncia</h2>
                         <div id="modalReportContent" class="report-detail-text">
                             Um colega tem feito comentários inadequados sobre a aparência constantemente, mesmo após pedidos para parar. Isto está a criar um ambiente de trabalho desconfortável e a afetar a produtividade da equipa.
                         </div>
                     </div>
                     <div class="report-notes-section">
-                        <h3>Notas de Acompanhamento</h3>
+                        <h2>Notas de Acompanhamento</h2>
+                        <label for="reportNotes" class="visually-hidden">Notas de Acompanhamento</label>
                         <textarea id="reportNotes" class="report-notes" placeholder="Adicione notas sobre o progresso da investigação desta denúncia..."></textarea>
-                    </div>
                     <div class="report-detail-actions">
                         <button id="modalNewBtn" class="btn btn-status btn-new">Marcar como Novo</button>
                         <button id="modalInProgressBtn" class="btn btn-status btn-in-progress">Marcar como Em Progresso</button>

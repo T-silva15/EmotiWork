@@ -29,7 +29,7 @@
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a href="/Dashboard" class="nav-link" aria-label="Dashboard">
                         <i class="fas fa-gauge-high"></i>
                     </a>
@@ -84,19 +84,26 @@
         </header>
 
         <!-- Page Content -->
-<div class="content-container vacation-container" style="padding-top: 20px; justify-content: flex-start;">
-    <h1 class="vacation-title">MARCAR FÉRIAS</h1>
+        <div class="content-container vacation-container" style="padding-top: 20px; justify-content: flex-start;">
+            <h1 class="vacation-title">MARCAR FÉRIAS</h1>
 
-    <div class="vacation-form-container" style="margin-bottom: 80px;">
+            <div class="vacation-form-container" style="margin-bottom: 80px;">
                 <div class="date-inputs-container">
                     <div class="date-field">
-                        <input type="text" id="startDate" class="date-input" placeholder="Data de início..." readonly />
+                        <label for="startDate">Data de início</label>
+                        <input type="text" id="startDate" class="date-input" placeholder="Data de início..." readonly aria-label="Selecione a data de início" />
                         <i class="fas fa-caret-down dropdown-icon"></i>
                         <div id="startDateCalendar" class="calendar-dropdown">
                             <div class="calendar-header">
-                                <button type="button" class="month-nav prev"><i class="fas fa-caret-up"></i></button>
+                                <button type="button" class="month-nav prev" aria-label="Mês anterior">
+                                    <i class="fas fa-caret-up"></i>
+                                    <span class="sr-only">Mês anterior</span>
+                                </button>
                                 <div class="month-year">abril de 2025</div>
-                                <button type="button" class="month-nav next"><i class="fas fa-caret-down"></i></button>
+                                <button type="button" class="month-nav next" aria-label="Mês seguinte">
+                                    <i class="fas fa-caret-down"></i>
+                                    <span class="sr-only">Mês seguinte</span>
+                                </button>
                             </div>
                             <div class="calendar-body">
                                 <div class="weekday-header">
@@ -110,13 +117,20 @@
                     </div>
 
                     <div class="date-field">
-                        <input type="text" id="endDate" class="date-input" placeholder="Data de fim..." readonly />
+                        <label for="endDate">Data de fim</label>
+                        <input type="text" id="endDate" class="date-input" placeholder="Data de fim..." readonly aria-label="Selecione a data de fim" />
                         <i class="fas fa-caret-down dropdown-icon"></i>
                         <div id="endDateCalendar" class="calendar-dropdown">
                             <div class="calendar-header">
-                                <button type="button" class="month-nav prev"><i class="fas fa-caret-up"></i></button>
+                                <button type="button" class="month-nav prev" aria-label="Mês anterior">
+                                    <i class="fas fa-caret-up"></i>
+                                    <span class="sr-only">Mês anterior</span>
+                                </button>
                                 <div class="month-year">junho de 2025</div>
-                                <button type="button" class="month-nav next"><i class="fas fa-caret-down"></i></button>
+                                <button type="button" class="month-nav next" aria-label="Mês seguinte">
+                                    <i class="fas fa-caret-down"></i>
+                                    <span class="sr-only">Mês seguinte</span>
+                                </button>
                             </div>
                             <div class="calendar-body">
                                 <div class="weekday-header">
@@ -131,7 +145,7 @@
                 </div>
 
                 <div class="vacation-actions">
-                    <button type="button" class="submit-btn">Submeter</button>
+                    <button type="button" class="submit-btn" aria-label="Submeter pedido de férias">Submeter</button>
                 </div>
             </div>
         </div>

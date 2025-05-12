@@ -25,38 +25,38 @@
         <nav class="sidebar-nav">
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="/Team" class="nav-link">
+                    <a href="/Team" class="nav-link" aria-label="Equipa">
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="/Dashboard" class="nav-link">
+                    <a href="/Dashboard" class="nav-link" aria-label="Dashboard">
                         <i class="fas fa-gauge-high"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Questionnaire" class="nav-link">
+                    <a href="/Questionnaire" class="nav-link" aria-label="Questionário">
                         <i class="fas fa-circle-question"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Statistics" class="nav-link">
+                    <a href="/Statistics" class="nav-link" aria-label="Estatísticas">
                         <i class="fas fa-chart-line"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Notifications" class="nav-link">
+                    <a href="/Notifications" class="nav-link" aria-label="Notificações">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge"></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Reports" class="nav-link">
+                    <a href="/Reports" class="nav-link" aria-label="Relatórios">
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-item-bottom">
-                    <a href="/Settings" class="nav-link">
+                    <a href="/Settings" class="nav-link" aria-label="Definições">
                         <i class="fas fa-gear"></i>
                     </a>
                 </li>
@@ -90,11 +90,13 @@
 
             <div class="announcement-card">
                 <div class="announcement-content-container">
+                    <label for="announcementText" class="visually-hidden">Texto do Anúncio</label>
                     <textarea id="announcementText" class="announcement-textarea" rows="8" placeholder="Digite aqui o seu anúncio...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
                 </div>
 
                 <div class="announcement-options">
                     <div class="filter-container">
+                        <label for="departmentFilter" class="visually-hidden">Selecionar departamento</label>
                         <select id="departmentFilter" class="filter-select">
                             <option value="all" selected>Departamento</option>
                             <option value="marketing">Marketing</option>
@@ -105,6 +107,7 @@
                             <option value="todos">Todos</option>
                         </select>
 
+                        <label for="teamFilter" class="visually-hidden">Selecionar equipa</label>
                         <select id="teamFilter" class="filter-select">
                             <option value="all" selected>Equipa</option>
                             <option value="mark01">Mark01</option>

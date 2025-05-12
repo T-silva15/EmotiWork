@@ -25,38 +25,38 @@
         <nav class="sidebar-nav">
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="/Team" class="nav-link">
+                    <a href="/Team" class="nav-link" aria-label="Equipa">
                         <i class="fas fa-users"></i>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="/Dashboard" class="nav-link">
+                    <a href="/Dashboard" class="nav-link" aria-label="Dashboard">
                         <i class="fas fa-gauge-high"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Questionnaire" class="nav-link">
+                    <a href="/Questionnaire" class="nav-link" aria-label="Questionário">
                         <i class="fas fa-circle-question"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Statistics" class="nav-link">
+                    <a href="/Statistics" class="nav-link" aria-label="Estatísticas">
                         <i class="fas fa-chart-line"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Notifications" class="nav-link">
+                    <a href="/Notifications" class="nav-link" aria-label="Notificações">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge"></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Reports" class="nav-link">
+                    <a href="/Reports" class="nav-link" aria-label="Relatórios">
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-item-bottom">
-                    <a href="/Settings" class="nav-link">
+                    <a href="/Settings" class="nav-link" aria-label="Definições">
                         <i class="fas fa-gear"></i>
                     </a>
                 </li>
@@ -86,20 +86,21 @@
         <div class="content-container questionnaires-management-container">
             <div class="questionnaires-header">
                 <h1 class="page-title">BACKOFFICE - GERIR QUESTIONÁRIOS</h1>
-                <button id="addQuestionnaireBtn" class="add-questionnaire-btn">
+                <button id="addQuestionnaireBtn" class="add-questionnaire-btn" aria-label="Adicionar novo questionário">
                     <i class="fas fa-plus"></i>
+                    <span class="sr-only">Adicionar novo questionário</span>
                 </button>
             </div>
 
             <div class="questionnaires-table-container">
-                <table class="questionnaires-table">
+                <table class="questionnaires-table" aria-label="Tabela de questionários">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Nº Perguntas</th>
-                            <th>Área</th>
-                            <th>Última Realização</th>
-                            <th>Ações</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Nº Perguntas</th>
+                            <th scope="col">Área</th>
+                            <th scope="col">Última Realização</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,11 +110,13 @@
                             <td>Vendas</td>
                             <td>28-03-2025</td>
                             <td class="actions-cell">
-                                <button class="delete-btn" title="Eliminar questionário">
+                                <button class="delete-btn" aria-label="Eliminar questionário Q-Marketing">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Eliminar questionário Q-Marketing</span>
                                 </button>
-                                <button class="edit-btn" title="Editar questionário">
+                                <button class="edit-btn" aria-label="Editar questionário Q-Marketing">
                                     <i class="fas fa-edit"></i>
+                                    <span class="sr-only">Editar questionário Q-Marketing</span>
                                 </button>
                             </td>
                         </tr>
@@ -123,11 +126,13 @@
                             <td>Tecnologia</td>
                             <td>25-03-2025</td>
                             <td class="actions-cell">
-                                <button class="delete-btn" title="Eliminar questionário">
+                                <button class="delete-btn" aria-label="Eliminar questionário Q-Desenvolvimento">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Eliminar questionário Q-Desenvolvimento</span>
                                 </button>
-                                <button class="edit-btn" title="Editar questionário">
+                                <button class="edit-btn" aria-label="Editar questionário Q-Desenvolvimento">
                                     <i class="fas fa-edit"></i>
+                                    <span class="sr-only">Editar questionário Q-Desenvolvimento</span>
                                 </button>
                             </td>
                         </tr>
@@ -137,11 +142,13 @@
                             <td>Recursos Humanos</td>
                             <td>27-03-2025</td>
                             <td class="actions-cell">
-                                <button class="delete-btn" title="Eliminar questionário">
+                                <button class="delete-btn" aria-label="Eliminar questionário Q-RH">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Eliminar questionário Q-RH</span>
                                 </button>
-                                <button class="edit-btn" title="Editar questionário">
+                                <button class="edit-btn" aria-label="Editar questionário Q-RH">
                                     <i class="fas fa-edit"></i>
+                                    <span class="sr-only">Editar questionário Q-RH</span>
                                 </button>
                             </td>
                         </tr>
@@ -151,11 +158,13 @@
                             <td>Finanças</td>
                             <td>21-03-2025</td>
                             <td class="actions-cell">
-                                <button class="delete-btn" title="Eliminar questionário">
+                                <button class="delete-btn" aria-label="Eliminar questionário Q-Finanças">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Eliminar questionário Q-Finanças</span>
                                 </button>
-                                <button class="edit-btn" title="Editar questionário">
+                                <button class="edit-btn" aria-label="Editar questionário Q-Finanças">
                                     <i class="fas fa-edit"></i>
+                                    <span class="sr-only">Editar questionário Q-Finanças</span>
                                 </button>
                             </td>
                         </tr>
@@ -165,11 +174,13 @@
                             <td>Geral</td>
                             <td>15-03-2025</td>
                             <td class="actions-cell">
-                                <button class="delete-btn" title="Eliminar questionário">
+                                <button class="delete-btn" aria-label="Eliminar questionário Q-CargaHorária">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Eliminar questionário Q-CargaHorária</span>
                                 </button>
-                                <button class="edit-btn" title="Editar questionário">
+                                <button class="edit-btn" aria-label="Editar questionário Q-CargaHorária">
                                     <i class="fas fa-edit"></i>
+                                    <span class="sr-only">Editar questionário Q-CargaHorária</span>
                                 </button>
                             </td>
                         </tr>
@@ -190,14 +201,14 @@
     </main>
 
     <!-- Questionnaire Modal (For both Add and Edit) -->
-    <div id="questionnaireModal" class="modal">
+    <div id="questionnaireModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title">Adicionar Questionário</h1>
-                <span class="close-modal">&times;</span>
+                <h1 id="modalTitle" class="modal-title">Adicionar Questionário</h1>
+                <button class="close-modal" aria-label="Fechar modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="questionnaireForm" class="questionnaire-form">
+                <form id="questionnaireForm" class="questionnaire-form" aria-labelledby="modalTitle">
                     <div class="form-group">
                         <label for="questionnaireName">Nome do Questionário</label>
                         <input type="text" id="questionnaireName" name="questionnaireName" class="form-control" required>
@@ -217,21 +228,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Perguntas</label>
-                        <div id="questions-container">
+                        <h2 id="questions-label" class="form-section-heading">Perguntas</h2>
+                        <div id="questions-container" aria-labelledby="questions-label">
                             <div class="question-item">
                                 <div class="question-header">
                                     <span class="question-number">Pergunta 1</span>
-                                    <button type="button" class="remove-question-btn">
+                                    <button type="button" class="remove-question-btn" aria-label="Remover pergunta 1">
                                         <i class="fas fa-trash"></i>
+                                        <span class="sr-only">Remover pergunta 1</span>
                                     </button>
                                 </div>
                                 <div class="question-input-group">
-                                    <input type="text" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
+                                    <label for="question-1" class="sr-only">Pergunta 1</label>
+                                    <input type="text" id="question-1" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
                                 </div>
                                 <div class="answer-type-select">
-                                    <label>Tipo de Resposta:</label>
-                                    <select name="answerTypes[]" class="form-control answer-type">
+                                    <label for="answer-type-1">Tipo de Resposta:</label>
+                                    <select id="answer-type-1" name="answerTypes[]" class="form-control answer-type">
                                         <option value="text">Texto</option>
                                         <option value="multiplechoice">Escolha Múltipla</option>
                                         <option value="emotion">Emoção</option>
@@ -239,29 +252,31 @@
                                     </select>
                                 </div>
                                 <div class="options-container" style="display: none;">
-                                    <label>Opções:</label>
-                                    <div class="options-list">
+                                    <h3 id="options-label-1" class="form-subsection-heading">Opções:</h3>
+                                    <div class="options-list" aria-labelledby="options-label-1">
                                         <div class="option-input">
-                                            <input type="text" class="form-control" placeholder="Opção 1">
-                                            <button type="button" class="remove-option-btn">
+                                            <label for="option-1-1" class="sr-only">Opção 1</label>
+                                            <input type="text" id="option-1-1" class="form-control" placeholder="Opção 1">
+                                            <button type="button" class="remove-option-btn" aria-label="Remover opção 1">
                                                 <i class="fas fa-times"></i>
+                                                <span class="sr-only">Remover opção 1</span>
                                             </button>
                                         </div>
                                     </div>
-                                    <button type="button" class="add-option-btn">
+                                    <button type="button" class="add-option-btn" aria-label="Adicionar opção">
                                         <i class="fas fa-plus"></i> Adicionar Opção
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" id="add-question-btn" class="btn btn-secondary">
+                        <button type="button" id="add-question-btn" class="btn btn-secondary" aria-label="Adicionar nova pergunta">
                             <i class="fas fa-plus"></i> Adicionar Pergunta
                         </button>
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" class="btn btn-cancel close-modal-btn">Cancelar</button>
-                        <button type="submit" class="btn btn-submit">Guardar</button>
+                        <button type="button" class="btn btn-cancel close-modal-btn" aria-label="Cancelar">Cancelar</button>
+                        <button type="submit" class="btn btn-submit" aria-label="Guardar questionário">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -281,7 +296,7 @@
             const submitBtn = document.querySelector('.btn-submit');
             const addQuestionBtn = document.getElementById('add-question-btn');
             const questionsContainer = document.getElementById('questions-container');
-            
+
             // Variables to track if we're editing or adding
             let isEditing = false;
             let currentQuestionnaireRow = null;
@@ -295,16 +310,18 @@
                 questionItem.innerHTML = `
                     <div class="question-header">
                         <span class="question-number">Pergunta ${questionCounter}</span>
-                        <button type="button" class="remove-question-btn">
+                        <button type="button" class="remove-question-btn" aria-label="Remover pergunta ${questionCounter}">
                             <i class="fas fa-trash"></i>
+                            <span class="sr-only">Remover pergunta ${questionCounter}</span>
                         </button>
                     </div>
                     <div class="question-input-group">
-                        <input type="text" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
+                        <label for="question-${questionCounter}" class="sr-only">Pergunta ${questionCounter}</label>
+                        <input type="text" id="question-${questionCounter}" name="questions[]" class="form-control" placeholder="Digite a pergunta..." required>
                     </div>
                     <div class="answer-type-select">
-                        <label>Tipo de Resposta:</label>
-                        <select name="answerTypes[]" class="form-control answer-type">
+                        <label for="answer-type-${questionCounter}">Tipo de Resposta:</label>
+                        <select id="answer-type-${questionCounter}" name="answerTypes[]" class="form-control answer-type">
                             <option value="text">Texto</option>
                             <option value="multiplechoice">Escolha Múltipla</option>
                             <option value="emotion">Emoção</option>
@@ -312,16 +329,18 @@
                         </select>
                     </div>
                     <div class="options-container" style="display: none;">
-                        <label>Opções:</label>
-                        <div class="options-list">
+                            <h3 id="options-label-${questionCounter}" class="form-subsection-heading">Opções:</h3>
+                            <div class="options-list" aria-labelledby="options-label-${questionCounter}">
                             <div class="option-input">
-                                <input type="text" class="form-control" placeholder="Opção 1">
-                                <button type="button" class="remove-option-btn">
+                                <label for="option-${questionCounter}-1" class="sr-only">Opção 1</label>
+                                <input type="text" id="option-${questionCounter}-1" class="form-control" placeholder="Opção 1">
+                                <button type="button" class="remove-option-btn" aria-label="Remover opção 1">
                                     <i class="fas fa-times"></i>
+                                    <span class="sr-only">Remover opção 1</span>
                                 </button>
                             </div>
                         </div>
-                        <button type="button" class="add-option-btn">
+                        <button type="button" class="add-option-btn" aria-label="Adicionar opção">
                             <i class="fas fa-plus"></i> Adicionar Opção
                         </button>
                     </div>
@@ -348,21 +367,23 @@
                 addOptionBtn.addEventListener('click', function() {
                     const optionsList = this.previousElementSibling;
                     const optionsCount = optionsList.querySelectorAll('.option-input').length;
-                    
+
                     const optionInput = document.createElement('div');
                     optionInput.className = 'option-input';
                     optionInput.innerHTML = `
-                        <input type="text" class="form-control" placeholder="Opção ${optionsCount + 1}">
-                        <button type="button" class="remove-option-btn">
+                        <label for="option-${questionCounter}-${optionsCount + 1}" class="sr-only">Opção ${optionsCount + 1}</label>
+                        <input type="text" id="option-${questionCounter}-${optionsCount + 1}" class="form-control" placeholder="Opção ${optionsCount + 1}">
+                        <button type="button" class="remove-option-btn" aria-label="Remover opção ${optionsCount + 1}">
                             <i class="fas fa-times"></i>
+                            <span class="sr-only">Remover opção ${optionsCount + 1}</span>
                         </button>
                     `;
-                    
+
                     const removeOptionBtn = optionInput.querySelector('.remove-option-btn');
                     removeOptionBtn.addEventListener('click', function() {
                         optionsList.removeChild(optionInput);
                     });
-                    
+
                     optionsList.appendChild(optionInput);
                 });
 
@@ -374,7 +395,13 @@
                 const questionItems = questionsContainer.querySelectorAll('.question-item');
                 questionCounter = questionItems.length;
                 questionItems.forEach((item, index) => {
-                    item.querySelector('.question-number').textContent = `Pergunta ${index + 1}`;
+                    const questionNumber = index + 1;
+                    const questionNumberSpan = item.querySelector('.question-number');
+                    const removeQuestionBtn = item.querySelector('.remove-question-btn');
+
+                    questionNumberSpan.textContent = `Pergunta ${questionNumber}`;
+                    removeQuestionBtn.setAttribute('aria-label', `Remover pergunta ${questionNumber}`);
+                    removeQuestionBtn.querySelector('.sr-only').textContent = `Remover pergunta ${questionNumber}`;
                 });
             }
 
@@ -414,21 +441,25 @@
                 btn.addEventListener('click', function() {
                     const optionsList = this.previousElementSibling;
                     const optionsCount = optionsList.querySelectorAll('.option-input').length;
-                    
+                    const questionItem = this.closest('.question-item');
+                    const questionNumber = Array.from(questionsContainer.children).indexOf(questionItem) + 1;
+
                     const optionInput = document.createElement('div');
                     optionInput.className = 'option-input';
                     optionInput.innerHTML = `
-                        <input type="text" class="form-control" placeholder="Opção ${optionsCount + 1}">
-                        <button type="button" class="remove-option-btn">
+                        <label for="option-${questionNumber}-${optionsCount + 1}" class="sr-only">Opção ${optionsCount + 1}</label>
+                        <input type="text" id="option-${questionNumber}-${optionsCount + 1}" class="form-control" placeholder="Opção ${optionsCount + 1}">
+                        <button type="button" class="remove-option-btn" aria-label="Remover opção ${optionsCount + 1}">
                             <i class="fas fa-times"></i>
+                            <span class="sr-only">Remover opção ${optionsCount + 1}</span>
                         </button>
                     `;
-                    
+
                     const removeOptionBtn = optionInput.querySelector('.remove-option-btn');
                     removeOptionBtn.addEventListener('click', function() {
                         optionsList.removeChild(optionInput);
                     });
-                    
+
                     optionsList.appendChild(optionInput);
                 });
             });
@@ -440,62 +471,62 @@
                 modalTitle.textContent = 'Adicionar Questionário';
                 submitBtn.textContent = 'Adicionar';
                 isEditing = false;
-                
+
                 // Reset questions container to just one question
                 questionsContainer.innerHTML = '';
                 questionsContainer.appendChild(createQuestionItem());
                 questionCounter = 1;
                 updateQuestionNumbers();
-                
+
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
             });
-            
+
             // Close modal when X is clicked
             closeModal.addEventListener('click', function() {
                 closeModalFunction();
             });
-            
+
             // Close modal when Cancel button is clicked
             cancelBtn.addEventListener('click', function() {
                 closeModalFunction();
             });
-            
+
             // Function to close the modal
             function closeModalFunction() {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
-            
+
             // Close modal when clicking outside the modal content
             window.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     closeModalFunction();
                 }
             });
-            
+
             // Close modal on escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && modal.style.display === 'block') {
                     closeModalFunction();
                 }
             });
-            
+
             // Handle form submission (just for visual demo)
             questionnaireForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
+
                 const questionnaireName = document.getElementById('questionnaireName').value;
                 const questionnaireArea = document.getElementById('questionnaireArea').value;
                 const questionsCount = document.querySelectorAll('.question-item').length;
-                
+
                 // Generate current date for "last executed" field
                 const today = new Date();
                 const day = String(today.getDate()).padStart(2, '0');
                 const month = String(today.getMonth() + 1).padStart(2, '0');
                 const year = today.getFullYear();
                 const formattedDate = day + '-' + month + '-' + year;
-                
+
                 // In a real implementation, you would send this data to the server
                 if (isEditing && currentQuestionnaireRow) {
                     // Update existing row with new values
@@ -504,7 +535,7 @@
                     cells[1].textContent = questionsCount;
                     cells[2].textContent = questionnaireArea;
                     // Don't update the last execution date when editing
-                    
+
                     alert('Questionário atualizado com sucesso!');
                 } else {
                     // Create a new row
@@ -516,29 +547,31 @@
                         <td>${questionnaireArea}</td>
                         <td>${formattedDate}</td>
                         <td class="actions-cell">
-                            <button class="delete-btn" title="Eliminar questionário">
+                            <button class="delete-btn" aria-label="Eliminar questionário ${questionnaireName}">
                                 <i class="fas fa-times"></i>
+                                <span class="sr-only">Eliminar questionário ${questionnaireName}</span>
                             </button>
-                            <button class="edit-btn" title="Editar questionário">
+                            <button class="edit-btn" aria-label="Editar questionário ${questionnaireName}">
                                 <i class="fas fa-edit"></i>
+                                <span class="sr-only">Editar questionário ${questionnaireName}</span>
                             </button>
                         </td>
                     `;
-                    
+
                     // Add event listeners to the new buttons
                     const newDeleteBtn = newRow.querySelector('.delete-btn');
                     const newEditBtn = newRow.querySelector('.edit-btn');
-                    
+
                     addDeleteEventListener(newDeleteBtn);
                     addEditEventListener(newEditBtn);
-                    
+
                     tableBody.appendChild(newRow);
                     alert('Questionário adicionado com sucesso!');
                 }
-                
+
                 closeModalFunction();
             });
-            
+
             // Function to add delete event listener
             function addDeleteEventListener(button) {
                 button.addEventListener('click', function() {
@@ -547,57 +580,57 @@
                     }
                 });
             }
-            
+
             // Function to add edit event listener
             function addEditEventListener(button) {
                 button.addEventListener('click', function() {
                     currentQuestionnaireRow = this.closest('tr');
                     const cells = currentQuestionnaireRow.querySelectorAll('td');
-                    
+
                     // Get data from the row
                     const name = cells[0].textContent;
                     const questionsCount = parseInt(cells[1].textContent, 10);
                     const area = cells[2].textContent;
-                    
+
                     // Set form values
                     document.getElementById('questionnaireName').value = name;
                     document.getElementById('questionnaireArea').value = area;
-                    
+
                     // Reset questions container
                     questionsContainer.innerHTML = '';
-                    
+
                     // Add the appropriate number of question fields
                     for (let i = 0; i < questionsCount; i++) {
                         const newQuestion = createQuestionItem();
-                        
+
                         // Set some placeholder questions for demo purposes
                         if (i === 0) newQuestion.querySelector('input[name="questions[]"]').value = "Como te sentiste hoje?";
                         if (i === 1) newQuestion.querySelector('input[name="questions[]"]').value = "O que causou esse sentimento?";
                         if (i === 2) newQuestion.querySelector('input[name="questions[]"]').value = "Como foi o teu dia de trabalho?";
-                        
+
                         questionsContainer.appendChild(newQuestion);
                     }
-                    
+
                     // Update question numbering
                     updateQuestionNumbers();
-                    
+
                     // Update modal for editing
                     modalTitle.textContent = 'Editar Questionário';
                     submitBtn.textContent = 'Atualizar';
                     isEditing = true;
-                    
+
                     // Show the modal
                     modal.style.display = 'block';
                     document.body.style.overflow = 'hidden';
                 });
             }
-            
+
             // Add event listeners to existing delete buttons
             const deleteButtons = document.querySelectorAll('.delete-btn');
             deleteButtons.forEach(button => {
                 addDeleteEventListener(button);
             });
-            
+
             // Add event listeners to existing edit buttons
             const editButtons = document.querySelectorAll('.edit-btn');
             editButtons.forEach(button => {

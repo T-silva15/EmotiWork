@@ -54,7 +54,7 @@
                         <i class="fas fa-user-secret"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-item-bottom">
+                <li class="nav-item active nav-item-bottom">
                     <a href="/Settings" class="nav-link" aria-label="Definições">
                         <i class="fas fa-gear"></i>
                     </a>
@@ -83,75 +83,80 @@
         </header>
 
         <!-- Page Content -->
-        <div class="content-container settings-container">
-            <h1 class="page-title">DEFINIÇÕES</h1>
+               <div class="content-container settings-container">
+                   <h1 class="page-title">DEFINIÇÕES</h1>
 
-            <div class="settings-form">
-                <!-- Preferred Time Section -->
-                <div class="settings-section">
-                    <div class="settings-label">Horário Preferido</div>
-                    <div class="settings-options">
-                        <div class="vertical-highlight"></div>
-                        <div class="option-group">
-                            <label class="radio-option">
-                                <input type="radio" name="preferred-time" checked />
-                                <span class="radio-custom"></span>
-                                <span class="radio-label">Fim do Dia de Trabalho</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="preferred-time" />
-                                <span class="radio-custom"></span>
-                                <span class="radio-label">Início do Dia Seguinte</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                   <div class="settings-form">
+                       <!-- Preferred Time Section -->
+                       <div class="settings-section">
+                           <div class="settings-label">Horário Preferido</div>
+                           <div class="settings-options">
+                               <div class="vertical-highlight"></div>
+                               <div class="option-group">
+                                   <label class="radio-option">
+                                       <input type="radio" name="preferred-time" id="preferred-time-end" checked />
+                                       <span class="radio-custom"></span>
+                                       <span class="radio-label">Fim do Dia de Trabalho</span>
+                                   </label>
+                                   <label class="radio-option">
+                                       <input type="radio" name="preferred-time" id="preferred-time-start" />
+                                       <span class="radio-custom"></span>
+                                       <span class="radio-label">Início do Dia Seguinte</span>
+                                   </label>
+                               </div>
+                           </div>
+                       </div>
 
-                <!-- Questionnaire Notifications Section -->
-                <div class="settings-section">
-                    <div class="settings-label">Notificações de Questionários</div>
-                    <div class="settings-options">
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="notifications-toggle" class="toggle-input" checked />
-                            <label for="notifications-toggle" class="toggle-label"></label>
-                        </div>
-                    </div>
-                </div>
+                       <!-- Questionnaire Notifications Section -->
+                       <div class="settings-section">
+                            <div class="settings-options" style="justify-content: flex-start; width: 100%;">
+                                <div class="toggle-switch" style="display: flex; align-items: center; margin-left: 0;">
+                                    <input type="checkbox" id="notifications-toggle" class="toggle-input" checked />
+                                    <label for="notifications-toggle" class="toggle-label">
+                                        <span class="sr-only">Ativar Notificações</span>
+                                    </label>
+                                    <span style="margin-left: 90px; font-size: 18px;">Ativar Notificações</span>
+                                </div>
+                            </div>
+                       </div>
 
-                <!-- Notification Timing Options -->
-                <div class="notification-timing-container">
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="time-5" class="checkbox-input" checked />
-                        <label for="time-5" class="checkbox-label">
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">5 minutos</span>
-                        </label>
-                    </div>
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="time-15" class="checkbox-input" checked />
-                        <label for="time-15" class="checkbox-label">
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">15 minutos</span>
-                        </label>
-                    </div>
-                    <div class="checkbox-option">
-                        <input type="checkbox" id="time-30" class="checkbox-input" />
-                        <label for="time-30" class="checkbox-label">
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">30 minutos</span>
-                        </label>
-                    </div>
-                    <div class="checkbox-option custom-time">
-                        <input type="checkbox" id="time-custom" class="checkbox-input" />
-                        <label for="time-custom" class="checkbox-label">
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">Outro (Especifique):</span>
-                        </label>
-                        <input type="text" class="custom-time-input" disabled />
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+                       <!-- Notification Timing Options -->
+                       <div class="notification-timing-container">
+                           <div class="checkbox-option">
+                               <input type="checkbox" id="time-5" class="checkbox-input" checked />
+                               <label for="time-5" class="checkbox-label">
+                                   <span class="checkbox-custom"></span>
+                                   <span class="checkbox-text">5 minutos</span>
+                               </label>
+                           </div>
+                           <div class="checkbox-option">
+                               <input type="checkbox" id="time-15" class="checkbox-input" checked />
+                               <label for="time-15" class="checkbox-label">
+                                   <span class="checkbox-custom"></span>
+                                   <span class="checkbox-text">15 minutos</span>
+                               </label>
+                           </div>
+                           <div class="checkbox-option">
+                               <input type="checkbox" id="time-30" class="checkbox-input" />
+                               <label for="time-30" class="checkbox-label">
+                                   <span class="checkbox-custom"></span>
+                                   <span class="checkbox-text">30 minutos</span>
+                               </label>
+                           </div>
+                           <div class="checkbox-option custom-time">
+                               <input type="checkbox" id="time-custom" class="checkbox-input" />
+                               <label for="time-custom" class="checkbox-label">
+                                   <span class="checkbox-custom"></span>
+                                   <span class="checkbox-text">Outro (Especifique):</span>
+                               </label>
+                               <label for="custom-time-input" class="sr-only">Especifique o tempo</label>
+                               <input type="text" id="custom-time-input" class="custom-time-input" disabled />
+                           </div>
+                       </div>
+                   </div>
+               </div>
 
         <!-- Footer -->
         <footer class="home-footer">
