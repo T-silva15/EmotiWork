@@ -1,60 +1,61 @@
 ﻿@page
 @model EmotiWork.Pages.LoginModel
 @{
-    ViewData["Title"] = "Login - EmotiWork";
-    Layout = null;
+   ViewData["Title"] = "Login - EmotiWork";
+   Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>@ViewData["Title"]</title>
+   <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+   <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 </head>
 <body class="login-body">
-    <!-- Header -->
-    <header class="login-header">
-        <div class="logo-container">
-            <a href="/Home" class="logo-link">
-                <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
-                <span class="logo-text">EmotiWork</span>
-            </a>
-        </div>
-    </header>
+   <!-- Header -->
+   <header class="login-header">
+       <div class="logo-container">
+           <a href="/Login" class="logo-link">
+               <img src="~/img/emotiwork.png" alt="EmotiWork Logo" class="logo-img" />
+               <span class="logo-text">EmotiWork</span>
+           </a>
+       </div>
+   </header>
 
-    <!-- Main Content -->
-    <main class="login-container">
-        <div class="login-form-container">
-            <h1 class="login-title">LOGIN</h1>
+   <!-- Main Content -->
+   <main class="login-container">
+       <div class="login-form-container">
+           <h1 class="login-title">LOGIN</h1>
 
-            <form class="login-form">
-                <div class="form-group">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
-                </div>
+           <form class="login-form">
+               <div class="form-group">
+                   <label for="email">Email</label>
+                   <input type="email" id="email" name="email" class="form-control" />
+               </div>
 
-                <div class="form-group">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
-                </div>
+               <div class="form-group">
+                   <label for="password">Password</label>
+                   <input type="password" id="password" name="password" class="form-control"/>
+               </div>
 
-                <div class="form-group">
-                    <a href="/Home" class="login-button">Login</a>
-                </div>
-            </form>
-        </div>
-    </main>
+               <div class="form-group">
+                   <a href="/Home" class="login-button">Login</a>
+               </div>
+           </form>
+       </div>
+   </main>
 
-    <!-- Footer -->
-    <footer class="login-footer">
-        <div class="footer-content">
-            <div class="copyright">EmotiWork - 2025</div>
-            <div class="privacy-policy">
-                <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
-            </div>
-        </div>
-    </footer>
+   <!-- Footer -->
+   <footer class="login-footer">
+       <div class="footer-content">
+           <div class="copyright">EmotiWork - 2025</div>
+           <div class="privacy-policy">
+               <a href="/Privacy" class="privacy-link">Proteção de Dados</a>
+           </div>
+       </div>
+   </footer>
 </body>
 </html>
-

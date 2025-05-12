@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Pages\Backoffice\AdminStatistics.cshtml.cs" />
+    <Content Include="Pages\Backoffice\Departments.cshtml.cs" />
+    <Content Include="Pages\Backoffice\Questionnaires.cshtml.cs" />
+    <Content Include="Pages\Backoffice\Reports.cshtml.cs" />
+    <Content Include="Pages\Backoffice\SendAnnouncement.cshtml.cs" />
+    <Content Include="Pages\Backoffice\Teams.cshtml.cs" />
+    <Content Include="Pages\Backoffice\Users.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
