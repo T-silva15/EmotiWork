@@ -16,6 +16,118 @@
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        /* Notification popup styles */
+        #notificationPopup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notification-container {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 700px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .notification-header {
+            background-color: #6eb5ff;
+            color: #fff;
+            padding: 10px;
+            margin: -20px -20px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .notification-header h2 {
+                margin: 0;
+                font-size: 24px;
+                text-align: center;
+                width: 100%;
+            }
+
+        .notification-logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+            .notification-logo img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #fff;
+            }
+
+        .notification-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .notification-date {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .notification-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-go {
+            background-color: #63b3ed;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Show notification button */
+        .show-notification-btn {
+            background-color: #63b3ed;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .show-notification-btn:hover {
+                background-color: #4a90e2;
+            }
+    </style>
 </head>
 <body class="home-body">
     <!-- Left Sidebar -->
@@ -86,8 +198,8 @@
 
             <div class="mood-selection">
                 <div class="mood-option">
-					<a href="/Questionnaire">
-						<img src="~/img/sadEmoji.png" alt="Happy" class="mood-emoji" />
+                    <a href="/Questionnaire">
+                        <img src="~/img/sadEmoji.png" alt="Happy" class="mood-emoji" />
                     </a>
                 </div>
                 <div class="mood-option">
@@ -112,6 +224,84 @@
                 </div>
             </div>
         </footer>
-	</main>
+    </main>
+
+    <!-- Notification Popup -->
+    <div id="notificationPopup">
+        <div class="notification-container">
+            <div class="notification-header">
+                <div class="notification-logo">
+                    <img src="~/img/EmotiWork.png" alt="EmotiWork" />
+                </div>
+                <h2>NOTIFICAÇÃO POPUP</h2>
+                <div class="notification-logo">
+                    <img src="~/img/EmotiWork.png" alt="EmotiWork" />
+                </div>
+            </div>
+            <div class="notification-content">
+                <p>
+                    Novo questionário disponível! Complete agora para nos ajudar a compreender melhor
+                    o seu bem-estar e melhorar o ambiente de trabalho.
+                </p>
+                <div class="notification-date">
+                    <span id="currentDate"></span>
+                </div>
+                <div class="notification-buttons">
+                    <button class="btn-cancel" id="closeNotification">Adiar</button>
+                    <button class="btn-go" id="goToQuestionnaire">Ir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for notification functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get notification popup elements
+            const notificationPopup = document.getElementById('notificationPopup');
+            const showNotification = document.getElementById('showNotification');
+            const closeNotification = document.getElementById('closeNotification');
+            const goToQuestionnaire = document.getElementById('goToQuestionnaire');
+
+            // Set current date in notification
+            const currentDateElement = document.getElementById('currentDate');
+            const now = new Date();
+            const formattedDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+            currentDateElement.textContent = formattedDate;
+
+            // Open notification popup when button is clicked
+            showNotification.addEventListener('click', function() {
+                notificationPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+
+            // Close notification popup
+            closeNotification.addEventListener('click', function() {
+                notificationPopup.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Go to questionnaire page
+            goToQuestionnaire.addEventListener('click', function() {
+                window.location.href = '/Questionnaire';
+            });
+
+            // Key press event for testing (press 'N' key)
+            document.addEventListener('keydown', function(e) {
+                if (e.key.toLowerCase() === 'n') {
+                    notificationPopup.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+            });
+
+            // Close popup when clicking outside the content
+            window.addEventListener('click', function(e) {
+                if (e.target === notificationPopup) {
+                    notificationPopup.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
