@@ -11,19 +11,6 @@
 
 An **accessibility-first** workplace well-being monitoring platform designed to ensure inclusive employee emotional health tracking, productivity metrics, and team dynamics through universally accessible questionnaires and data visualization.
 
-## 📋 Table of Contents
-
-- [🎯 Overview](#-overview)
-- [♿ Accessibility Features](#-accessibility-features)
-- [✨ Features](#-features)
-- [🏗️ Project Structure](#️-project-structure)
-- [🚀 Getting Started](#-getting-started)
-- [💻 Usage](#-usage)
-- [🛠️ Technologies](#️-technologies)
-- [📊 Analytics & Insights](#-analytics--insights)
-- [🔮 Future Enhancements](#-future-enhancements)
-- [📄 License](#-license)
-
 ## ♿ Accessibility Features
 
 **EmotiWork prioritizes universal accessibility as its core mission**, ensuring that workplace well-being monitoring is inclusive and usable by all employees, regardless of their abilities or assistive technology needs.
