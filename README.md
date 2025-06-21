@@ -7,7 +7,7 @@
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA-blue.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Academic Project** | 3rd Year, 2nd Semester | **Final Grade: TBD** 🎯
+> **Academic Project** | 3rd Year, 2nd Semester | **Final Grade: 16/20** 🎯
 
 An **accessibility-first** workplace well-being monitoring platform designed to ensure inclusive employee emotional health tracking, productivity metrics, and team dynamics through universally accessible questionnaires and data visualization.
 
