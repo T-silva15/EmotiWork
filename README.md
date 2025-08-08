@@ -7,7 +7,7 @@
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA-blue.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Academic Project** | 3rd Year, 2nd Semester | **Final Grade: 16/20** 🎯
+> **Academic Project** | 3rd Year, 2nd Semester | **Final Grade: 18/20** 🎯
 
 An **accessibility-first** workplace well-being monitoring platform designed to ensure inclusive employee emotional health tracking, productivity metrics, and team dynamics through universally accessible questionnaires and data visualization.
 
@@ -282,7 +282,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **EmotiWork** - Transforming workplace well-being through accessible, inclusive emotional analytics
 
-Made with ❤️ and ♿ using ASP.NET Core 9.0 | Academic Excellence: TBD 🎯
+Made with ❤️ using ASP.NET Core 9.0
 
 *"Building a more inclusive workplace, one accessible feature at a time"*
 
